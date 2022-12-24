@@ -1,0 +1,5 @@
+  DATE                  TASK                                        PATH
+23.12.2022    rewrote road_build script                     DS -> graphs -> road_build.py
+22.12.2022    task number 1 from Addition folder            DS -> graphs -> ppl_split.py
+20.12.2022    new LeetCode tasks                            LC -> n_{number}.py
+20.12.2022    Avl_tree                                      DS -> trees -> avl_tree.py

@@ -4,3 +4,4 @@
 03.01.2023    script edited with complexity analysis        LC -> num_108.py
 03.01.2023    script edited with complexity analysis        DS -> graphs -> road_build.py
 03.01.2023    old task (dinamic programming) solved         DinamicProg -> golden_pyramid.py
+03.01.2023    dijkstra cmplexity added                      Algorithms -> dijkstra_sorted_dict.py

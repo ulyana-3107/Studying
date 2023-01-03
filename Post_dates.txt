@@ -1,3 +1,4 @@
   DATE                  TASK                                        PATH                            
 02.01.2023    updated ppl_split.py                          DS -> graphs -> ppl_split.py  
 02.01.2023    eiler loop search added                       DS -> graphs -> find_eiler_loop.py
+03.01.2023    function complexity                           LC -> num_108.py

@@ -16,6 +16,7 @@ def dijkstra(n, edges) -> None:
         cur_weight = v_marks[e[0]] + edge_weights[edge_]
         if cur_weight < v_marks[e[1]]:
             v_marks[e[1]] = cur_weight
+    print(f'v_marks after calculating shortest path: {v_marks}')
     changed = False
     for e in edges:
         if e in edge_weights:
@@ -30,8 +31,9 @@ def dijkstra(n, edges) -> None:
     if changed:
         print('graph has negative-weighted edges')
 
-    print(f'v_marks after calculating shortest path: {v_marks}')
+    print(f'v_marks after calculating2 shortest path: {v_marks}')
 
-edges = [(1, 2, 1), (1, 3, 2), (2, 4, 3), (3, 4, 3), (4, 5, 5), (4, 6, 2)]
+
+edges = [(1, 2, -4), (1, 3, 2), (2, 4, 3), (3, 4, 3), (4, 5, 5), (4, 6, 2)]
 dijkstra(6, edges)
 

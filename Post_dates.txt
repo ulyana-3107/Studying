@@ -1,7 +1,2 @@
   DATE                  TASK                                        PATH                            
-02.01.2023    updated ppl_split.py                          DS -> graphs -> ppl_split.py  
-02.01.2023    eiler loop search added                       DS -> graphs -> find_eiler_loop.py
-03.01.2023    script edited with complexity analysis        LC -> num_108.py
-03.01.2023    script edited with complexity analysis        DS -> graphs -> road_build.py
-03.01.2023    old task (dinamic programming) solved         DinamicProg -> golden_pyramid.py
-03.01.2023    dijkstra cmplexity added                      Algorithms -> dijkstra_sorted_dict.py
+08.01.2023           bellman ford algorithm realisations        Algorithms

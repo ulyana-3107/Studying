@@ -1,2 +1,2 @@
   DATE                  TASK                                        PATH                            
-08.01.2023           bellman ford algorithm realisations        Algorithms
+09.01.2023           

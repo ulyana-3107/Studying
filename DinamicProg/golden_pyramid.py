@@ -1,4 +1,4 @@
-def golden_triangle_norec(triangle:list) -> int:
+def golden_triangle_norec(triangle: list) -> int:
     result = triangle[0]
     n = len(triangle)
     counter = 1

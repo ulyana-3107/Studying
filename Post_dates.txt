@@ -1,3 +1,4 @@
-  DATE                  TASK                                        PATH                            
+  DATE                  TASK                                        PATH          
+12.01.2023            ppl_split (slow but right)               Addition -> ppl_split_varsion2.py
 09.01.2023           complexity analysis                       DS -> graphs -> road_dest_bfs.py
 12.01.2023            avl_tree                                 DS -> trees -> avl_tree.py

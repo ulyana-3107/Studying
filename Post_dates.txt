@@ -1,2 +1,3 @@
   DATE                  TASK                                        PATH          
 17.01.2023          ladders but slow**10                      root -> num_of_ladders.py
+17.01.2023          links finder                              RegEx -> links_detect.py

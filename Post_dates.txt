@@ -4,5 +4,5 @@
 30.01.2023          eiler loop found                            DS -> graphs -> find_eiler_loop2.py
 30.01.2023          block 1 big O task n_7 + another            root -> turtle_ways.py
                     approaches  
-                    
+30.01.2023          ladders fast no comments solution          root -> ladders2.py
 Comments: LC -  Разобрала быстрые решения + внизу добавлены еще несколько реализаций + оценка всех функций

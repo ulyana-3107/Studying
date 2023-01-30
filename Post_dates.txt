@@ -1,5 +1,6 @@
   DATE                  TASK                                        PATH          
 25.01.2023          LC tasks                                    LC -> n_{number}.py
 28.01.2023          roads destroying                            DS -> graphs -> road_dest.py
+30.01.2023          eiler loop found                            DS -> graphs -> find_eiler_loop2.py
 
 Comments: LC -  Разобрала быстрые решения + внизу добавлены еще несколько реализаций + оценка всех функций

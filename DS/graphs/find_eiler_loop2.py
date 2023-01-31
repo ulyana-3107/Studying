@@ -2,28 +2,30 @@ from __future__ import annotations
 
 
 def create_graph(edges: list | tuple, n: int) -> dict:
-    dict_res = {i: [] for i in range(1, n + 1)}
-    for e in edges:
-        e1, e2 = e
+    dict_res = {i: [] for i in range(1, n + 1)}  # O(1)
+    for e in edges:  # O(E)
+        e1, e2 = e  # O(1)
         dict_res[e1].append(e2)
         dict_res[e2].append(e1)
     return dict_res
+# O(1) + O(E) -> O(E)
 
 
 def loop_search(edges_: list, n_: int, start=1) -> list:
-    lst, lifo, fifo = [], [start], []
-    graph = create_graph(edges_, n_)
-    while len(lifo):
-        v = lifo.pop()
-        nbrs = graph[v]
-        if len(nbrs):
+    lst, lifo, fifo = [], [start], []  # O(1)
+    graph = create_graph(edges_, n_)  # O(E), where E - number of edges
+    while len(lifo):  # if N - number of vertices - O(N)
+        v = lifo.pop()  # O(1)
+        nbrs = graph[v]  # O(1)
+        if len(nbrs):  # O(1)
             next_one = nbrs[0]
             lifo.extend([v, next_one])
-            graph[v].remove(next_one)
-            graph[next_one].remove(v)
+            graph[v].remove(next_one)  # O(N - 2) -> O(N) - worst case
+            graph[next_one].remove(v)  # O(N)
         else:
             fifo.append(v)
     return fifo
+# O(1) + O(E) + O(N)*(O(1)+max(O(N), O(1)) -> O(E) + O(N**2) - worst case
 
 
 n1, arr1 = 3, [(1, 2), (1, 3), (3, 2)]

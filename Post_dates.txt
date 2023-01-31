@@ -1,4 +1,4 @@
   DATE                  TASK                                        PATH          
 31.01.2023          eiler loop big o added                      DS -> graphs -> find_eiler_loop2.py
 31.01.2023          block 1 complexity analisys edited          root -> turtle_ways.py
-
+31.01.2023          LC 1926 task complexity analisys added      LC -> n_1926.py

@@ -3,32 +3,34 @@ from collections import deque
 
 class Solution:
     def nearestExit(self, maze, entrance) -> int:
-        rows, cols = len(maze), len(maze[0])
-        dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        rows, cols = len(maze), len(maze[0])  # O(1)
+        dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))  # O(1)
 
-        start_row, start_col = entrance
-        maze[start_row][start_col] = "+"
+        start_row, start_col = entrance  # O(1)
+        maze[start_row][start_col] = "+"  # O(1)
 
-        queue = deque()
-        queue.append([start_row, start_col, 0])
+        queue = deque()  # O(1)
+        queue.append([start_row, start_col, 0])  # O(1)
 
-        while queue:
-            curr_row, curr_col, curr_distance = queue.popleft()
+        while queue:  # O(M*N) - the worst case where M, N - size of a matrix.
+            curr_row, curr_col, curr_distance = queue.popleft()  # O(1)
 
-            for d in dirs:
-                next_row = curr_row + d[0]
-                next_col = curr_col + d[1]
+            for d in dirs:  # O(4) -> O(1)
+                next_row = curr_row + d[0]  # O(1)
+                next_col = curr_col + d[1]  # O(1)
 
                 if 0 <= next_row < rows and 0 <= next_col < cols \
-                        and maze[next_row][next_col] == ".":
+                        and maze[next_row][next_col] == ".":  # O(1)
 
-                    if 0 == next_row or next_row == rows - 1 or 0 == next_col or next_col == cols - 1:
-                        return curr_distance + 1
+                    if 0 == next_row or next_row == rows - 1 or 0 == next_col or next_col == cols - 1:  # O(1)
+                        return curr_distance + 1  # O(1)
 
-                    maze[next_row][next_col] = "+"
-                    queue.append([next_row, next_col, curr_distance + 1])
-
+                    maze[next_row][next_col] = "+"  # O(1)
+                    queue.append([next_row, next_col, curr_distance + 1])  # O(1)
         return -1
+# 6 - 13: O(1)
+# 16 - 29: O(1)
+# 6 - 30: O(1) + O(M*N) * O(1) -> O(M*N).
 
 
 # assume that 1 - wall, 0 - empty cell, 2 - entrance

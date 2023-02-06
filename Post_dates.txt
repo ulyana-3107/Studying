@@ -4,3 +4,4 @@
 31.01.2023          LC 1926 task complexity analisys added      LC -> n_1926.py
 31.01.2023          Detailed description added                  DS -> graphs -> road_dest.py
 03.02.2023          Few RegEx files added                       root -> local_paths.py, a_id.py, links_detect.py
+06.02.2023          Parsing html using RegEx                    root -> del_div.py,  div_span.py

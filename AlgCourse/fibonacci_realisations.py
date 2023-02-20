@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0091)https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py -->
-<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark_colorblind" data-a11y-animated-images="system" data-turbo-loaded=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.turbo-progress-bar {
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark_colorblind" data-a11y-animated-images="system" data-turbo-loaded=""><head><meta http-equiv="Content-Type" content="text.txt/html; charset=UTF-8"><style type="text.txt/css">.turbo-progress-bar {
   position: fixed;
   display: block;
   top: 0;
@@ -220,7 +220,7 @@
   <div class="position-relative">
     <!-- '"` --><!-- </textarea></xmp> --><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="580457463" data-scoped-search-url="/ulyana-3107/old/search" data-owner-scoped-search-url="/users/ulyana-3107/search" data-unscoped-search-url="/search" data-turbo="false" action="https://github.com/ulyana-3107/old/search" accept-charset="UTF-8" method="get">
       <label class="form-control header-search-wrapper input-sm p-0 js-chromeless-input-container header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center">
-        <input type="text" class="form-control js-site-search-focus header-search-input jump-to-field js-jump-to-field js-site-search-field is-clearable" data-hotkey="s,/" name="q" data-test-selector="nav-search-input" placeholder="Search or jump to…" data-unscoped-placeholder="Search or jump to…" data-scoped-placeholder="Search or jump to…" autocapitalize="off" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-autocomplete="list" aria-controls="jump-to-results" aria-label="Search or jump to…" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" spellcheck="false" autocomplete="off">
+        <input type="text.txt" class="form-control js-site-search-focus header-search-input jump-to-field js-jump-to-field js-site-search-field is-clearable" data-hotkey="s,/" name="q" data-test-selector="nav-search-input" placeholder="Search or jump to…" data-unscoped-placeholder="Search or jump to…" data-scoped-placeholder="Search or jump to…" autocapitalize="off" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-autocomplete="list" aria-controls="jump-to-results" aria-label="Search or jump to…" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" spellcheck="false" autocomplete="off">
         <input type="hidden" value="BkzeJKf6AnmYniyFdmxL00p9Q_WCJ59RHn-5qrKzXlVu7VyMLyxvhgt2saBWAHssI1NItgUfDbHRpk-E84JAUA" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf">
         <input type="hidden" class="js-site-search-type-field" name="type">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" aria-hidden="true" class="mr-1 header-search-key-slash"><path fill="none" stroke="#979A9C" opacity=".4" d="M3.5.5h12c1.7 0 3 1.3 3 3v13c0 1.7-1.3 3-3 3h-12c-1.7 0-3-1.3-3-3v-13c0-1.7 1.3-3 3-3z"></path><path fill="#979A9C" d="M11.8 6L8 15.1h-.9L10.8 6h1z"></path></svg>
@@ -233,7 +233,7 @@
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" data-item-type="suggestion">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text.txt-center d-none">
       <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
     <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
 </svg>
@@ -247,14 +247,14 @@
 
     <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" width="28" height="28">
 
-    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text.txt-left no-wrap css-truncate css-truncate-target">
     </div>
 
     <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
-      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+      <span class="js-jump-to-badge-search-text.txt-default d-none" aria-label="in this repository">
         In this repository
       </span>
-      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+      <span class="js-jump-to-badge-search-text.txt-global d-none" aria-label="in all of GitHub">
         All GitHub
       </span>
       <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
@@ -280,7 +280,7 @@
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" data-item-type="scoped_search">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text.txt-center d-none">
       <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
     <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
 </svg>
@@ -294,14 +294,14 @@
 
     <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" width="28" height="28">
 
-    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text.txt-left no-wrap css-truncate css-truncate-target">
     </div>
 
     <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
-      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+      <span class="js-jump-to-badge-search-text.txt-default d-none" aria-label="in this repository">
         In this repository
       </span>
-      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+      <span class="js-jump-to-badge-search-text.txt-global d-none" aria-label="in all of GitHub">
         All GitHub
       </span>
       <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
@@ -318,7 +318,7 @@
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-owner-scoped-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" data-item-type="owner_scoped_search">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text.txt-center d-none">
       <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
     <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
 </svg>
@@ -332,14 +332,14 @@
 
     <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" width="28" height="28">
 
-    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text.txt-left no-wrap css-truncate css-truncate-target">
     </div>
 
     <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
-      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this user">
+      <span class="js-jump-to-badge-search-text.txt-default d-none" aria-label="in this user">
         In this user
       </span>
-      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+      <span class="js-jump-to-badge-search-text.txt-global d-none" aria-label="in all of GitHub">
         All GitHub
       </span>
       <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
@@ -356,7 +356,7 @@
 
 <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
   <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" data-item-type="global_search">
-    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text.txt-center d-none">
       <svg title="Repository" aria-label="Repository" role="img" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo js-jump-to-octicon-repo d-none flex-shrink-0">
     <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
 </svg>
@@ -370,14 +370,14 @@
 
     <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" width="28" height="28">
 
-    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text.txt-left no-wrap css-truncate css-truncate-target">
     </div>
 
     <div class="border rounded-2 flex-shrink-0 color-bg-subtle px-1 color-fg-muted ml-1 f6 d-none js-jump-to-badge-search">
-      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+      <span class="js-jump-to-badge-search-text.txt-default d-none" aria-label="in this repository">
         In this repository
       </span>
-      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+      <span class="js-jump-to-badge-search-text.txt-global d-none" aria-label="in all of GitHub">
         All GitHub
       </span>
       <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
@@ -429,7 +429,7 @@
       ulyana-3107
 </a>
     <!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="https://github.com/logout" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="E-acBS3BV4qq3dCG5z-1URTflES2PPX-sqRhh_e3cM7typ8PYMDgrVrv_tryVU2o4j8kOMjNdg0lwz7RtXzm7Q">
-      <button type="submit" class="Header-link mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade d-md-none btn-link d-block width-full text-left" style="padding-left: 2px;" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;}">
+      <button type="submit" class="Header-link mr-0 mr-md-3 py-2 py-md-3 border-top border-md-top-0 border-white-fade d-md-none btn-link d-block width-full text.txt-left" style="padding-left: 2px;" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;sign out&quot;,&quot;label&quot;:&quot;icon:logout&quot;}">
         <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-sign-out v-align-middle">
     <path fill-rule="evenodd" d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 010 1.5h-2.5a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 010 1.5h-2.5A1.75 1.75 0 012 13.25V2.75zm10.44 4.5H6.75a.75.75 0 000 1.5h5.69l-1.97 1.97a.75.75 0 101.06 1.06l3.25-3.25a.75.75 0 000-1.06l-3.25-3.25a.75.75 0 10-1.06 1.06l1.97 1.97z"></path>
 </svg>
@@ -514,7 +514,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
   </summary>
   <details-menu class="dropdown-menu dropdown-menu-sw" style="width: 180px" preload="" role="menu" data-focus-trap="suspended"><span class="sentinel" tabindex="0" aria-hidden="true"></span><span class="sentinel" tabindex="0" aria-hidden="true"></span><span class="sentinel" tabindex="0" aria-hidden="true"></span>
       <include-fragment src="/users/90414644/menu" loading="lazy">
-        <p class="text-center mt-3" data-hide-on-error="">
+        <p class="text.txt-center mt-3" data-hide-on-error="">
           <svg style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" data-view-component="true" class="anim-rotate">
   <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke"></circle>
   <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
@@ -604,18 +604,18 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           </svg>
         </div>
         <command-palette-scope data-catalyst="" class="d-inline-flex">
-          <div data-target="command-palette-scope.placeholder" hidden="" class="color-fg-subtle">/&nbsp;&nbsp;<span class="text-semibold color-fg-default">...</span>&nbsp;&nbsp;/&nbsp;&nbsp;</div>
-              <command-palette-token data-text="ulyana-3107" data-id="MDQ6VXNlcjkwNDE0NjQ0" data-type="owner" data-value="ulyana-3107" data-targets="command-palette-scope.tokens" class="color-fg-default text-semibold" style="white-space:nowrap;line-height:20px;" id="" data-catalyst="">ulyana-3107<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
-              <command-palette-token data-text="old" data-id="R_kgDOIpkT9w" data-type="repository" data-value="old" data-targets="command-palette-scope.tokens" class="color-fg-default text-semibold" style="white-space:nowrap;line-height:20px;" id="" data-catalyst="">old<span class="color-fg-subtle text-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+          <div data-target="command-palette-scope.placeholder" hidden="" class="color-fg-subtle">/&nbsp;&nbsp;<span class="text.txt-semibold color-fg-default">...</span>&nbsp;&nbsp;/&nbsp;&nbsp;</div>
+              <command-palette-token data-text="ulyana-3107" data-id="MDQ6VXNlcjkwNDE0NjQ0" data-type="owner" data-value="ulyana-3107" data-targets="command-palette-scope.tokens" class="color-fg-default text.txt-semibold" style="white-space:nowrap;line-height:20px;" id="" data-catalyst="">ulyana-3107<span class="color-fg-subtle text.txt-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
+              <command-palette-token data-text="old" data-id="R_kgDOIpkT9w" data-type="repository" data-value="old" data-targets="command-palette-scope.tokens" class="color-fg-default text.txt-semibold" style="white-space:nowrap;line-height:20px;" id="" data-catalyst="">old<span class="color-fg-subtle text.txt-normal">&nbsp;&nbsp;/&nbsp;&nbsp;</span></command-palette-token>
         </command-palette-scope>
         <div class="command-palette-input-group flex-1 form-control border-0 box-shadow-none" style="z-index: 0">
           <div class="command-palette-typeahead position-absolute d-flex flex-items-center Truncate">
             <span class="typeahead-segment input-mirror" data-target="command-palette-input.mirror"></span>
-            <span class="Truncate-text" data-target="command-palette-input.typeaheadText"></span>
+            <span class="Truncate-text.txt" data-target="command-palette-input.typeaheadText"></span>
             <span class="typeahead-segment" data-target="command-palette-input.typeaheadPlaceholder"></span>
           </div>
           <input class="js-overlay-input typeahead-input d-none" disabled="" tabindex="-1" aria-label="Hidden input for typeahead">
-          <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="js-input typeahead-input form-control border-0 box-shadow-none input-block width-full no-focus-indicator" aria-label="Command palette input" aria-haspopup="listbox" aria-expanded="false" aria-autocomplete="list" aria-controls="command-palette-page-stack" role="combobox" data-action="
+          <input type="text.txt" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="js-input typeahead-input form-control border-0 box-shadow-none input-block width-full no-focus-indicator" aria-label="Command palette input" aria-haspopup="listbox" aria-expanded="false" aria-autocomplete="list" aria-controls="command-palette-page-stack" role="combobox" data-action="
               input:command-palette-input#onInput
               keydown:command-palette-input#onKeydown
             " placeholder="Search or jump to...">
@@ -632,7 +632,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">#</kbd> to search pull requests
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -643,7 +643,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">#</kbd> to search issues
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -654,7 +654,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">#</kbd> to search discussions
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -665,7 +665,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">!</kbd> to search projects
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -676,7 +676,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;owner&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">@</kbd> to search teams
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -687,7 +687,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">@</kbd> to search people and organizations
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -698,7 +698,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type <kbd class="hx_kbd">&gt;</kbd> to activate command mode
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -709,7 +709,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Go to your accessibility settings to change your keyboard shortcuts
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -720,7 +720,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="#" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type author:@me to search your content
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -731,7 +731,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="#" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type is:pr to filter to pull requests
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -742,7 +742,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="#" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type is:issue to filter to issues
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -753,7 +753,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;owner&quot;,&quot;repository&quot;]" data-mode="#" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type is:project to filter to projects
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -764,7 +764,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
           <command-palette-tip class="color-fg-muted f6 px-3 py-1 my-2" data-scope-types="[&quot;&quot;,&quot;owner&quot;,&quot;repository&quot;]" data-mode="#" data-value="" data-match-mode="" data-catalyst="" hidden="">
             <div class="d-flex flex-items-start flex-justify-between">
               <div>
-                <span class="text-bold">Tip:</span>
+                <span class="text.txt-bold">Tip:</span>
                   Type is:open to filter to open content
               </div>
               <div class="ml-2 flex-shrink-0">
@@ -858,10 +858,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="top" data-group-title="Top result" data-group-hint="" data-group-limits="{}" data-default-priority="0" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Top result
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -870,10 +870,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="commands" data-group-title="Commands" data-group-hint="Type &gt; to filter" data-group-limits="{&quot;static_items_page&quot;:50,&quot;issue&quot;:50,&quot;pull_request&quot;:50,&quot;discussion&quot;:50}" data-default-priority="1" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Commands
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               Type &gt; to filter
             </span>
           </div>
@@ -882,10 +882,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="global_commands" data-group-title="Global Commands" data-group-hint="Type &gt; to filter" data-group-limits="{&quot;issue&quot;:0,&quot;pull_request&quot;:0,&quot;discussion&quot;:0}" data-default-priority="2" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Global Commands
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               Type &gt; to filter
             </span>
           </div>
@@ -894,10 +894,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="this_page" data-group-title="This Page" data-group-hint="" data-group-limits="{}" data-default-priority="3" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               This Page
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -906,10 +906,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="files" data-group-title="Files" data-group-hint="" data-group-limits="{}" data-default-priority="4" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Files
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -922,10 +922,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="pages" data-group-title="Pages" data-group-hint="" data-group-limits="{&quot;repository&quot;:10}" data-default-priority="6" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Pages
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -934,10 +934,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="access_policies" data-group-title="Access Policies" data-group-hint="" data-group-limits="{}" data-default-priority="7" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Access Policies
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -946,10 +946,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="organizations" data-group-title="Organizations" data-group-hint="" data-group-limits="{}" data-default-priority="8" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Organizations
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -958,10 +958,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="repositories" data-group-title="Repositories" data-group-hint="" data-group-limits="{}" data-default-priority="9" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Repositories
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -970,10 +970,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="references" data-group-title="Issues, pull requests, and discussions" data-group-hint="Type # to filter" data-group-limits="{}" data-default-priority="10" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Issues, pull requests, and discussions
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               Type # to filter
             </span>
           </div>
@@ -982,10 +982,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="teams" data-group-title="Teams" data-group-hint="" data-group-limits="{}" data-default-priority="11" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Teams
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -994,10 +994,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="users" data-group-title="Users" data-group-hint="" data-group-limits="{}" data-default-priority="12" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Users
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -1006,10 +1006,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="projects" data-group-title="Projects" data-group-hint="" data-group-limits="{}" data-default-priority="13" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Projects
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -1022,10 +1022,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="modes_help" data-group-title="Modes" data-group-hint="" data-group-limits="{}" data-default-priority="15" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Modes
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -1034,10 +1034,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
             <command-palette-item-group data-group-id="filters_help" data-group-title="Use filters in issues, pull requests, discussions, and projects" data-group-hint="" data-group-limits="{}" data-default-priority="16" data-catalyst="" class="py-2 border-top" hidden="true" data-skip-template="">
             
           <div class="d-flex flex-justify-between my-2 px-3">
-            <span data-target="command-palette-item-group.header" class="color-fg-muted text-bold f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted text.txt-bold f6 text.txt-normal">
               Use filters in issues, pull requests, discussions, and projects
             </span>
-            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text-normal">
+            <span data-target="command-palette-item-group.header" class="color-fg-muted f6 text.txt-normal">
               
             </span>
           </div>
@@ -1229,7 +1229,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
         <div class="flex-auto min-width-0 width-fit mr-3">
             
-  <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text-normal">
+  <div class=" d-flex flex-wrap flex-items-center wb-break-word f3 text.txt-normal">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-lock color-fg-muted mr-2">
     <path fill-rule="evenodd" d="M4 4v2h-.25A1.75 1.75 0 002 7.75v5.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-5.5A1.75 1.75 0 0012.25 6H12V4a4 4 0 10-8 0zm6.5 2V4a2.5 2.5 0 00-5 0v2h5zM12 7.5h.25a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-5.5a.25.25 0 01.25-.25H12z"></path>
 </svg>
@@ -1302,10 +1302,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 </svg>
                   </span>
                   <div>
-                    <div class="f5 text-bold">
+                    <div class="f5 text.txt-bold">
                       Participating and @mentions
                     </div>
-                    <div class="text-small color-fg-muted text-normal pb-1">
+                    <div class="text.txt-small color-fg-muted text.txt-normal pb-1">
                       Only receive notifications from this repository when participating or @mentioned.
                     </div>
                   </div>
@@ -1318,10 +1318,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 </svg>
                   </span>
                   <div>
-                    <div class="f5 text-bold">
+                    <div class="f5 text.txt-bold">
                       All Activity
                     </div>
-                    <div class="text-small color-fg-muted text-normal pb-1">
+                    <div class="text.txt-small color-fg-muted text.txt-normal pb-1">
                       Notified of all notifications on this repository.
                     </div>
                   </div>
@@ -1334,10 +1334,10 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 </svg>
                   </span>
                   <div>
-                    <div class="f5 text-bold">
+                    <div class="f5 text.txt-bold">
                       Ignore
                     </div>
-                    <div class="text-small color-fg-muted text-normal pb-1">
+                    <div class="text.txt-small color-fg-muted text.txt-normal pb-1">
                       Never be notified.
                     </div>
                   </div>
@@ -1351,14 +1351,14 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
                 </span>
                 <div>
                   <div class="d-flex flex-items-start flex-justify-between">
-                    <div class="f5 text-bold">Custom</div>
+                    <div class="f5 text.txt-bold">Custom</div>
                     <div class="f5 pr-1">
                       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-arrow-right">
     <path fill-rule="evenodd" d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"></path>
 </svg>
                     </div>
                   </div>
-                  <div class="text-small color-fg-muted text-normal pb-1">
+                  <div class="text.txt-small color-fg-muted text.txt-normal pb-1">
                     Select events you want to be notified of in addition to participating and @mentions.
                   </div>
                 </div>
@@ -1392,21 +1392,21 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 </svg>
                 </button>
 
-                <h1 class="pt-1 pr-4 pb-0 pl-0 f5 text-bold">
+                <h1 class="pt-1 pr-4 pb-0 pl-0 f5 text.txt-bold">
                   Custom
                 </h1>
               </header>
 
               <fieldset>
                 <legend>
-                  <div class="text-small color-fg-muted pt-0 pr-3 pb-3 pl-6 pl-sm-5 border-bottom mb-3">
+                  <div class="text.txt-small color-fg-muted pt-0 pr-3 pb-3 pl-6 pl-sm-5 border-bottom mb-3">
                     Select events you want to be notified of in addition to participating and @mentions.
                   </div>
                 </legend>
                 <div data-target="notifications-list-subscription-form.labelInputs">
                 </div>
                   <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
-                    <label class="f5 text-normal">
+                    <label class="f5 text.txt-normal">
                       <input type="checkbox" name="thread_types[]" value="Issue" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
                       Issues
                     </label>
@@ -1414,7 +1414,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
                   </div>
                   <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
-                    <label class="f5 text-normal">
+                    <label class="f5 text.txt-normal">
                       <input type="checkbox" name="thread_types[]" value="PullRequest" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
                       Pull requests
                     </label>
@@ -1422,7 +1422,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
                   </div>
                   <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
-                    <label class="f5 text-normal">
+                    <label class="f5 text.txt-normal">
                       <input type="checkbox" name="thread_types[]" value="Release" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
                       Releases
                     </label>
@@ -1430,7 +1430,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
                   </div>
                   <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
-                    <label class="f5 text-normal">
+                    <label class="f5 text.txt-normal">
                       <input type="checkbox" name="thread_types[]" value="Discussion" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated" aria-describedby="Discussion-disabled" aria-disabled="true">
                       Discussions
                     </label>
@@ -1441,7 +1441,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
                   </div>
                   <div class="form-checkbox mr-3 ml-6 ml-sm-5 mb-2 mt-0">
-                    <label class="f5 text-normal">
+                    <label class="f5 text.txt-normal">
                       <input type="checkbox" name="thread_types[]" value="SecurityAlert" data-targets="notifications-list-subscription-form.threadTypeCheckboxes" data-action="change:notifications-list-subscription-form#threadTypeCheckboxesUpdated">
                       Security alerts
                     </label>
@@ -1512,7 +1512,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
       <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto js-deferred-toggler-target" data-turbo="false" action="https://github.com/ulyana-3107/old/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="qj3thK9idkTfTUREW4VCoZ41uHeEBSkI88QRhVadLSASMyzKQUrnyL3bZ-xWMA6YWoscLUdmoYVcutJbkHCecg" autocomplete="off">
           <input type="hidden" value="9GOrQ6DTUhPdopu4h77SihgxxgOua8W-SXMT2OP_X11MbWoNTvvDn780uBCKC56z3I9iWW0ITTPmDdAGJRLsDw" data-csrf="true" class="js-confirm-csrf-token">
         <input type="hidden" name="context" value="repository">
-          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:580457463,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="da51e5c6c15c258de96eaa4c61aee4d408cffb8359517f1909b9ebda9e8fe570" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar" aria-label="Unstar this repository (0)" type="submit" data-view-component="true" class="rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
+          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:580457463,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="da51e5c6c15c258de96eaa4c61aee4d408cffb8359517f1909b9ebda9e8fe570" data-ga-click="Repository, click unstar button, action:files#disambiguate; text.txt:Unstar" aria-label="Unstar this repository (0)" type="submit" data-view-component="true" class="rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2">
     <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"></path>
 </svg><span data-view-component="true" class="d-inline">
             Starred
@@ -1548,7 +1548,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
     <div data-view-component="true" class="unstarred BtnGroup flex-1">
       <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto" data-turbo="false" action="https://github.com/ulyana-3107/old/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="q5GZlnuZyjj1Qg0G1Eyb1yI-QA_rjVZQDgqxOKPM_hvyZ8nwdk7HrHo7Ur2-FMTGG0PeazIcu5UQubapAaSMGw" autocomplete="off">
         <input type="hidden" name="context" value="repository">
-          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:580457463,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="0b85538ca76c3de955c7ded324779b78a5752872761ae15dd137d480b5e96706" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star" aria-label="Star this repository (0)" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
+          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:580457463,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="0b85538ca76c3de955c7ded324779b78a5752872761ae15dd137d480b5e96706" data-ga-click="Repository, click star button, action:files#disambiguate; text.txt:Star" aria-label="Star this repository (0)" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-sm btn BtnGroup-item">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2">
     <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"></path>
 </svg><span data-view-component="true" class="d-inline">
             Star
@@ -1787,7 +1787,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
     <input-demux data-action="tab-container-change:input-demux#storeInput tab-container-changed:input-demux#updateInput" data-catalyst="">
       <tab-container class="d-flex flex-column js-branches-tags-tabs" style="min-height: 0;">
         <div class="SelectMenu-filter">
-          <input data-target="input-demux.source" id="context-commitish-filter-field" class="SelectMenu-input form-control" aria-owns="ref-list-branches" data-controls-ref-menu-id="ref-list-branches" autofocus="" autocomplete="off" aria-label="Find or create a branch…" placeholder="Find or create a branch…" type="text">
+          <input data-target="input-demux.source" id="context-commitish-filter-field" class="SelectMenu-input form-control" aria-owns="ref-list-branches" data-controls-ref-menu-id="ref-list-branches" autofocus="" autocomplete="off" aria-label="Find or create a branch…" placeholder="Find or create a branch…" type="text.txt">
         </div>
 
         <div class="SelectMenu-tabs" role="tablist" data-target="input-demux.control">
@@ -1892,8 +1892,8 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 </modal-dialog></div>
 
 
-  <h2 id="blob-path" class="breadcrumb flex-auto flex-self-center min-width-0 text-normal mx-2 width-full width-md-auto flex-order-1 flex-md-order-none mt-3 mt-md-0">
-    <span class="js-repo-root text-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-turbo-frame="repo-content-turbo-frame" href="https://github.com/ulyana-3107/old"><span>old</span></a></span></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-turbo-frame="repo-content-turbo-frame" href="https://github.com/ulyana-3107/old/tree/main/Alg_Ds_Course_Stepik"><span>Alg_Ds_Course_Stepik</span></a></span><span class="separator">/</span><strong class="final-path">fibonacci_realisations.py</strong>
+  <h2 id="blob-path" class="breadcrumb flex-auto flex-self-center min-width-0 text.txt-normal mx-2 width-full width-md-auto flex-order-1 flex-md-order-none mt-3 mt-md-0">
+    <span class="js-repo-root text.txt-bold"><span class="js-path-segment d-inline-block wb-break-all"><a data-turbo-frame="repo-content-turbo-frame" href="https://github.com/ulyana-3107/old"><span>old</span></a></span></span><span class="separator">/</span><span class="js-path-segment d-inline-block wb-break-all"><a data-turbo-frame="repo-content-turbo-frame" href="https://github.com/ulyana-3107/old/tree/main/Alg_Ds_Course_Stepik"><span>Alg_Ds_Course_Stepik</span></a></span><span class="separator">/</span><strong class="final-path">fibonacci_realisations.py</strong>
       <span class="separator">/</span><details class="details-reset details-overlay d-inline" id="jumpto-symbol-select-menu">
     <summary aria-haspopup="menu" data-hotkey="r" data-hydro-click="{&quot;event_type&quot;:&quot;code_navigation.click_on_blob_definitions&quot;,&quot;payload&quot;:{&quot;action&quot;:&quot;click_on_blob_definitions&quot;,&quot;repository_id&quot;:580457463,&quot;ref&quot;:&quot;main&quot;,&quot;language&quot;:&quot;Python&quot;,&quot;backend&quot;:&quot;ALEPH_FUZZY&quot;,&quot;code_nav_context&quot;:&quot;BLOB_VIEW&quot;,&quot;retry_backend&quot;:&quot;&quot;,&quot;cross_repo_results_included&quot;:&quot;CROSS_REPO_UNKNOWN&quot;,&quot;in_repo_result_count&quot;:0,&quot;cross_repo_result_count&quot;:0,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="36a52ece6a69439f8ef524bd19102ebdcb204b063f938d602e659399480bfa2d" data-view-component="true" class="Link--secondary css-truncate btn-link" role="button">    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
     <path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
@@ -1911,7 +1911,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
         </button>
       </header>
         <div class="SelectMenu-filter">
-          <input class="SelectMenu-input form-control js-filterable-field" id="jumpto-symbols-filter-field" type="text" autocomplete="off" spellcheck="false" autofocus="" placeholder="Filter definitions" aria-label="Filter definitions">
+          <input class="SelectMenu-input form-control js-filterable-field" id="jumpto-symbols-filter-field" type="text.txt" autocomplete="off" spellcheck="false" autofocus="" placeholder="Filter definitions" aria-label="Filter definitions">
         </div>
       <div class="SelectMenu-list">
         <div data-filterable-for="jumpto-symbols-filter-field" data-filterable-type="substring">
@@ -1950,7 +1950,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
       <footer class="SelectMenu-footer">
         <div class="d-flex flex-justify-between">
           Code navigation index up-to-date
-          <svg class="octicon octicon-dot-fill text-green" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
+          <svg class="octicon octicon-dot-fill text.txt-green" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
         </div>
       </footer>
     </div>
@@ -1969,18 +1969,18 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
         <li class="d-block d-md-none">
           <a class="dropdown-item d-flex flex-items-baseline" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FIND_FILE_BUTTON&quot;,&quot;repository_id&quot;:580457463,&quot;originating_url&quot;:&quot;https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py&quot;,&quot;user_id&quot;:90414644}}" data-hydro-click-hmac="56d3dc0394b49e2ecc9e86248b00d076b09b93b248a35a31c7dcbb9555f49bca" data-ga-click="Repository, find file, location:repo overview" data-hotkey="t" href="https://github.com/ulyana-3107/old/find/main">
             <span class="flex-auto">Go to file</span>
-            <span class="text-small color-fg-muted" aria-hidden="true">T</span>
+            <span class="text.txt-small color-fg-muted" aria-hidden="true">T</span>
 </a>        </li>
         <li data-toggle-for="blob-more-options-details">
             <button data-toggle-for="jumpto-line-details-dialog" type="button" data-view-component="true" class="dropdown-item btn-link">    <span class="d-flex flex-items-baseline">
               <span class="flex-auto">Go to line</span>
-              <span class="text-small color-fg-muted" aria-hidden="true">L</span>
+              <span class="text.txt-small color-fg-muted" aria-hidden="true">L</span>
             </span>
 </button>        </li>
         <li data-toggle-for="blob-more-options-details">
             <button data-toggle-for="jumpto-symbol-select-menu" type="button" data-view-component="true" class="dropdown-item btn-link">    <span class="d-flex flex-items-baseline">
               <span class="flex-auto">Go to definition</span>
-              <span class="text-small color-fg-muted" aria-hidden="true">R</span>
+              <span class="text.txt-small color-fg-muted" aria-hidden="true">R</span>
             </span>
 </button>        </li>
         <li class="dropdown-divider" role="none"></li>
@@ -2034,7 +2034,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
         </span>
         <div class="flex-1 d-flex flex-items-center ml-3 min-width-0">
           <div class="css-truncate css-truncate-overflow">
-            <a class="text-bold Link--primary" rel="author" data-hovercard-type="user" data-hovercard-url="/users/ulyana-3107/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ulyana-3107">ulyana-3107</a>
+            <a class="text.txt-bold Link--primary" rel="author" data-hovercard-type="user" data-hovercard-url="/users/ulyana-3107/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/ulyana-3107">ulyana-3107</a>
 
               <span class="markdown-title">
                 <a data-pjax="true" title="&#39;lol&#39;" class="Link--secondary" href="https://github.com/ulyana-3107/old/commit/3b58378ea60125f512538c54d5dc2b5f29690bb9">'lol'</a>
@@ -2049,7 +2049,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
         <div class="ml-3 d-flex flex-shrink-0 flex-items-center flex-justify-end color-fg-muted no-wrap">
           <span class="d-none d-md-inline">
             <span>Latest commit</span>
-            <a class="text-small text-mono Link--secondary" href="https://github.com/ulyana-3107/old/commit/3b58378ea60125f512538c54d5dc2b5f29690bb9" data-pjax="">3b58378</a>
+            <a class="text.txt-small text.txt-mono Link--secondary" href="https://github.com/ulyana-3107/old/commit/3b58378ea60125f512538c54d5dc2b5f29690bb9" data-pjax="">3b58378</a>
             <span itemprop="dateModified"><relative-time datetime="2022-12-20T16:10:16Z" class="no-wrap" title="Dec 20, 2022, 7:10 PM GMT+3">Dec 20, 2022</relative-time></span>
           </span>
 
@@ -2115,7 +2115,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
   <div class="Box-header js-blob-header py-2 pr-2 d-flex flex-shrink-0 flex-md-row flex-items-center">
 
 
-  <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1">
+  <div class="text.txt-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1">
 
       56 lines (48 sloc)
       <span class="file-info-divider"></span>
@@ -2144,14 +2144,14 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
       <div class="SelectMenu-modal width-full">
         <div class="SelectMenu-list SelectMenu-list--borderless py-2">
           <!-- '"` --><!-- </textarea></xmp> --><form class="SelectMenu-item js-update-url-with-hash " data-turbo="false" action="https://github.com/ulyana-3107/old/edit/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="XoZaFsuqv3Wcx_RIE03Yd0jre0BVgC_TXDpq4uwL6C-HfOLSM2AbRlou0wQlZ1kn-zA9CeufduDSog2wmS3u3w" autocomplete="off">
-              <button title="Edit this file" data-test-selector="edit-text-button" type="submit" data-view-component="true" class="btn-invisible btn width-full d-flex flex-justify-between color-fg-default text-normal p-0">    <div class="mr-5">Edit this file</div>
+              <button title="Edit this file" data-test-selector="edit-text.txt-button" type="submit" data-view-component="true" class="btn-invisible btn width-full d-flex flex-justify-between color-fg-default text.txt-normal p-0">    <div class="mr-5">Edit this file</div>
               <div class="color-fg-muted">E</div>
 </button></form>
-            <a aria-label="Open this file in github.dev" data-test-selector="github-dev-link" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.dev_link_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:580457463,&quot;actor_id&quot;:90414644,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:false}}" href="https://github.dev/" data-view-component="true" class="SelectMenu-item js-github-dev-shortcut js-blob-dropdown-click width-full d-flex flex-justify-between color-fg-default f5 text-normal">
+            <a aria-label="Open this file in github.dev" data-test-selector="github-dev-link" data-dropdown-tracking="{&quot;type&quot;:&quot;blob_edit_dropdown.dev_link_click&quot;,&quot;context&quot;:{&quot;repository_id&quot;:580457463,&quot;actor_id&quot;:90414644,&quot;edit_enabled&quot;:true,&quot;small_screen&quot;:false}}" href="https://github.dev/" data-view-component="true" class="SelectMenu-item js-github-dev-shortcut js-blob-dropdown-click width-full d-flex flex-justify-between color-fg-default f5 text.txt-normal">
               <div class="mr-5 no-wrap">Open in github.dev</div>
               <div class="color-fg-muted">.</div>
 </a>
-            <a data-platforms="windows,mac" data-test-selector="github-desktop-link" aria-label="Open this file in GitHub Desktop" href="https://desktop.github.com/" data-view-component="true" class="SelectMenu-item no-wrap js-remove-unless-platform width-full text-normal color-fg-default f5">
+            <a data-platforms="windows,mac" data-test-selector="github-desktop-link" aria-label="Open this file in GitHub Desktop" href="https://desktop.github.com/" data-view-component="true" class="SelectMenu-item no-wrap js-remove-unless-platform width-full text.txt-normal color-fg-default f5">
               Open in GitHub Desktop
 </a>        </div>
       </div>
@@ -2267,7 +2267,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
 
 
       
-    <div itemprop="text" class="Box-body p-0 blob-wrapper data type-python  gist-border-0">
+    <div itemprop="text.txt" class="Box-body p-0 blob-wrapper data type-python  gist-border-0">
 
         
 <div class="js-blob-code-container blob-code-content">
@@ -2547,7 +2547,7 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
     <summary data-hotkey="l" aria-label="Jump to line" role="button"></summary>
     <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast linejump" aria-label="Jump to line" role="dialog" aria-modal="true">
       <!-- '"` --><!-- </textarea></xmp> --><form class="js-jump-to-line-form Box-body d-flex" data-turbo="false" action="https://github.com/ulyana-3107/old/blob/main/Alg_Ds_Course_Stepik/fibonacci_realisations.py" accept-charset="UTF-8" method="get">
-        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text" placeholder="Jump to line…" aria-label="Jump to line" autofocus="">
+        <input class="form-control flex-auto mr-3 linejump-input js-jump-to-line-field" type="text.txt" placeholder="Jump to line…" aria-label="Jump to line" autofocus="">
           <button data-close-dialog="" type="submit" data-view-component="true" class="btn">    Go
 </button>
 </form>    </details-dialog>
@@ -2593,17 +2593,17 @@ alt= "@ulyana-3107" size= "20" height= "20" width= "20" data - view - component=
     <nav aria-label="footer" class="col-12 col-lg-8">
       <h3 class="sr-only" id="sr-footer-heading">Footer navigation</h3>
       <ul class="list-style-none d-flex flex-wrap col-12 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0" aria-labelledby="sr-footer-heading">
-          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}">Terms</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}">Privacy</a></li>
-          <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security">Security</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}">Status</a></li>
-          <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text:Docs" href="https://docs.github.com/">Docs</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://support.github.com/?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}">Contact GitHub</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text:Pricing&quot;}">Pricing</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text:api&quot;}">API</a></li>
-        <li class="mr-3 mr-lg-0"><a href="https://services.github.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text:training&quot;}">Training</a></li>
-          <li class="mr-3 mr-lg-0"><a href="https://github.blog/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text:blog&quot;}">Blog</a></li>
-          <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to terms&quot;,&quot;label&quot;:&quot;text.txt:terms&quot;}">Terms</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text.txt:privacy&quot;}">Privacy</a></li>
+          <li class="mr-3 mr-lg-0"><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text.txt:security&quot;}" href="https://github.com/security">Security</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://www.githubstatus.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text.txt:status&quot;}">Status</a></li>
+          <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to help, text.txt:Docs" href="https://docs.github.com/">Docs</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://support.github.com/?tags=dotcom-footer" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text.txt:contact&quot;}">Contact GitHub</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Pricing&quot;,&quot;label&quot;:&quot;text.txt:Pricing&quot;}">Pricing</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://docs.github.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to api&quot;,&quot;label&quot;:&quot;text.txt:api&quot;}">API</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://services.github.com/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to training&quot;,&quot;label&quot;:&quot;text.txt:training&quot;}">Training</a></li>
+          <li class="mr-3 mr-lg-0"><a href="https://github.blog/" data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to blog&quot;,&quot;label&quot;:&quot;text.txt:blog&quot;}">Blog</a></li>
+          <li><a data-ga-click="Footer, go to about, text.txt:about" href="https://github.com/about">About</a></li>
       </ul>
     </nav>
   </div>

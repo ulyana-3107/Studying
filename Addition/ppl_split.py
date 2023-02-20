@@ -1,3 +1,6 @@
+from ppl_split_version2 import m
+
+
 def possible(n, matrix) -> tuple:
     if n == 2:
         return [1], [2], True
@@ -33,7 +36,7 @@ n3, m3 = 5, [[0, 1, 0, 0, 0], [1, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 1, 0, 1],
 n4, m4 = 6, [[0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1],
              [1, 0, 1, 0, 1, 0]]
 n5, m5 = 5, [[0, 0, 0, 1, 1], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1], [1, 1, 1, 0, 0], [1, 1, 1, 0, 0]]
-n_, m_ = n5, m5
+n_, m_ = 4, m
 
 with open('ppl_split_input.txt', 'w', encoding='utf-8-sig') as in_writer:
     in_writer.write(str(n_) + '\n')

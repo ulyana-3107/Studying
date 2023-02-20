@@ -1,3 +1,6 @@
+# Полиморфизм - возможность работать с разными объектами единым образом, т.е. через единый интерфейс.
+
+
 class Mammal(object):
     def move(self):
         print('I move')
@@ -50,3 +53,43 @@ def intro(language):
 # person1, person2 = Russian(), English()
 # person1.say_hello()
 # person2.say_hello()
+
+
+class Shark(object):
+    def swim(self):
+        print('The Shark is swimming')
+
+    def swim_backwards(self):
+        print('The Shark can not swim backwards!')
+
+    def skeleton(self):
+        print('The Shark\'s skeleton is made of cartilage')
+
+
+class Clownfish(object):
+    def swim(self):
+        print('The clownfish is swimming')
+
+    def swim_backwards(self):
+        print('The clownfish can swim backwards')
+
+    def skeleton(self):
+        print('The clownfish\'s skeleton is made of bones')
+
+
+# wally, casey = Shark(), Clownfish()
+# for fish in (wally, casey):
+#     fish.swim(), fish.swim_backwards(), fish.skeleton()
+#     print('~'*30)
+
+
+def in_the_pacific(fish):
+    fish.swim(), fish.swim_backwards(), fish.skeleton()
+    print('~'*30)
+
+
+# fish1, fish2 = Shark(), Clownfish()
+# in_the_pacific(fish1)
+# in_the_pacific(fish2)
+
+

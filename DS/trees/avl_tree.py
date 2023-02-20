@@ -1,3 +1,4 @@
+from collections import deque
 
 
 class Node(object):
@@ -21,6 +22,8 @@ class AvlTree:
             elems.sort()
             self.root = self.tree_build(elems)
             self.add_parents(self.root)
+            self.add_height()
+            print('heights: ', self.show_height())
         else:
             self.root = None
 
@@ -33,22 +36,95 @@ class AvlTree:
     def is_balanced(self) -> bool:
         return abs(self.node_height(self.root.left) - self.node_height(self.root.right)) in range(-1, 2)
 
+    def deepestNode(self, root):
+        if root == None:
+            return 0
+        q = deque()
+        q.append(root)
+        node = None
+        while len(q) != 0:
+            node = q.popleft()
+            if node.left is not None:
+                q.append(node.left)
+            if node.right is not None:
+                q.append(node.right)
+        return node
+
+    #  эта функция для создания ссылок на родителя у каждого нода
     def add_parents(self, root: Node) -> None:
         visited = set()
         fifo = [root]
         while fifo:
             v = fifo.pop()
             visited.add(v)
-            children = set()
             if v.left is not None:
-                children.add(v.left)
+                v.left.par = v
+                fifo.append(v.left)
             if v.right is not None:
-                children.add(v.right)
-            if len(children):
-                for c in children:
-                    c.par = v
-                    if c not in visited:
-                        fifo.append(c)
+                v.right.par = v
+                fifo.append(v.right)
+        result = self.lnr(self.root, [])
+
+
+    # эта функция показывает правильно ли найдены родители каждого нода (ссылки на родителей нужны для ротаций дерева
+    # при баллансировке)
+    def show_parents(self):
+        # collection = [self.root]
+        # node_parent = {}
+        # while collection:
+        #     parent = collection.pop()
+        #     if parent.left is not None:
+        #         node_parent[parent.left.value] = parent.value
+        #         collection.append(parent.left)
+        #     if parent.right is not None:
+        #         collection.append(parent.right)
+        #         node_parent[parent.right.value] = parent.value
+        # return node_parent
+        all_nodes = self.lnr(self.root, [])
+        for node in all_nodes:
+            if node.par:
+                parent = node.par.value
+            else:
+                parent = None
+            print(f'{node.value}, parent: {parent}')
+
+    def add_height(self):
+        arr = []
+        if self.root.left:
+            arr.append(self.root.left)
+        if self.root.right:
+            arr.append(self.root.right)
+        for node in arr:
+            leaf, h = self.deepestNode(node), 1
+            while leaf.value not in (self.root.left.value, self.root.right.value):
+                leaf.par.height = h
+                h += 1
+                leaf = leaf.par
+        left_height, right_height = None, None
+        if self.root.left:
+            left_height = self.root.left.height
+        if self.root.right:
+            right_height = self.root.right.height
+        if left_height and right_height:
+            self.root.height = max(left_height, right_height) + 1
+        elif left_height:
+            self.root.height = left_height + 1
+        else:
+            self.root.height = right_height + 1
+
+    # this is addtional function to check if heights are calculated right.
+    def show_height(self):
+        arr = [self.root]
+        heights = {self.root.value: self.root.height}
+        while len(arr):
+            v = arr.pop()
+            if v.left is not None:
+                heights[v.left.value] = v.left.height
+                arr.append(v.left)
+            if v.right is not None:
+                heights[v.right.value] = v.right.height
+                arr.append(v.right)
+        return heights
 
     def small_tree_build(self, elements):
         l_ = len(elements)
@@ -69,6 +145,16 @@ class AvlTree:
             node.left, node.right = self.tree_build(l_side), self.tree_build(r_side)
             return node
 
+    def update_height(self, new_node: Node):
+        parent = new_node.par
+        if parent.left and parent.right:
+            return
+        while new_node != self.root:
+            new_node.par.height += 1
+            new_node = new_node.par
+        new_node.height += 1
+        print(f'heights are updated: ,{self.show_height()}')
+
     def is_empty(self):
         return not self.root
 
@@ -87,7 +173,7 @@ class AvlTree:
                 new = Node(item)
                 node.left = new
                 new.par = node
-                node.height += 1
+                self.update_height(new)
                 self.balance_tree(new)
         elif item > node.value:
             if node.right:
@@ -96,7 +182,7 @@ class AvlTree:
                 new = Node(item)
                 node.right = new
                 new.par = node
-                node.height += 1
+                self.update_height(new)
                 self.balance_tree(new)
 
 
@@ -105,22 +191,22 @@ class AvlTree:
 # ределены) и если мы нашли нод с неподходящим фб то мы: 1) присваиваем найденный нод переменной "критический нод"
 # 2) определяем два параметра (1 - первая буква в зависимости от стороны поддерева с новым нодом
 # (L/R) 2 - вторая буква в зависимости от стороны где находится новый нод в поддереве 3) в зависимости от двух букв выби
-# рается нужная функция для ротации поддерева или всего дерева в которую передаются следующие параметры:
+# рается нужная функция для ротации поддерева или всего дерева в которую передаются следующие параметры: критический нод
+# и его родитель (возможно что родителя нет - и в таком случае будет вращаться все дерево).
 
 
     def balance_tree(self, node: Node):
-        critical_node = None
         new = node
-        while node != self.root:
+        while node.par:
             node = node.par
             l_h, r_h = 0, 0
-            if node.left:
+            if node.left is not None:
                 l_h = node.left.height
-            if node.right:
+            if node.right is not None:
                 r_h = node.right.height
             bf = l_h - r_h
             if bf not in range(-1, 2):
-                first_l, first_r, second_l, second_r = False * 4
+                first_l, first_r, second_l, second_r = False, False, False, False
                 if node.value > new.value:
                     first_l = True
                 else:
@@ -353,12 +439,23 @@ class AvlTree:
         return max(self.node_height(node.left), self.node_height(node.right)) + 1
 
 
-elements = [1, 2, 3, 4, 5]
-tree = AvlTree(elements)
-print(tree)
-tree.insert(6)
-print(tree)
-print(tree.root.right.right.par)
+# elements = [1, 2, 3, 4, 5]
+# tree = AvlTree(elements)
+# tree.insert(6)
+# print(tree)
+# case 1:
+# t = AvlTree()
+# t.root = Node(3)
+# t.root.left, t.root.right = Node(1), Node(4)
+# t.root.left.right = Node(2)
+# t.root.left.par, t.root.right.par = t.root, t.root
+# t.root.left.right.par = t.root.left
+# print(t)
+# t.insert(0)
+# print(t)
+
+
+
 
 # def height(self):  # ++
     #     if not self.root:

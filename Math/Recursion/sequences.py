@@ -1,4 +1,3 @@
-# make it a function later
 # base = 7
 # print(base)
 # for i in range(3):

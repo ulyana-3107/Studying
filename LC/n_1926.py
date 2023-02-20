@@ -1,22 +1,83 @@
 from collections import deque
 
 
+class Solution:
+    def nearestExit(self, maze, entrance) -> int:
+        rows, cols = len(maze), len(maze[0])  # O(1)
+        dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))  # O(1)
+
+        start_row, start_col = entrance  # O(1)
+        maze[start_row][start_col] = "+"  # O(1)
+
+        queue = deque()  # O(1)
+        queue.append([start_row, start_col, 0])  # O(1)
+
+        while queue:  # O(M*N) - the worst case where M, N - size of a matrix.
+            curr_row, curr_col, curr_distance = queue.popleft()  # O(1)
+
+            for d in dirs:  # O(4) -> O(1)
+                next_row = curr_row + d[0]  # O(1)
+                next_col = curr_col + d[1]  # O(1)
+
+                if 0 <= next_row < rows and 0 <= next_col < cols \
+                        and maze[next_row][next_col] == ".":  # O(1)
+
+                    if 0 == next_row or next_row == rows - 1 or 0 == next_col or next_col == cols - 1:  # O(1)
+                        return curr_distance + 1  # O(1)
+
+                    maze[next_row][next_col] = "+"  # O(1)
+                    queue.append([next_row, next_col, curr_distance + 1])  # O(1)
+        return -1
+# 6 - 13: O(1)
+# 16 - 29: O(1)
+# 6 - 30: O(1) + O(M*N) * O(1) -> O(M*N).
+
+
+# assume that 1 - wall, 0 - empty cell, 2 - entrance
+def first_approach(maze: list, entrance: list = None):  # R - number of rows, C - number of columns
+    len1, len2 = len(maze), len(maze[0])
+    # first we iterate through maze indexes and form a list of possible steps
+    steps, queue = [], deque([entrance + [0]])
+    for i in range(len(maze)):  # O(R)
+        for j in range(len(maze[i])):  # O(C)
+            if maze[i][j] == 0 and [i, j] != entrance:
+                steps.append([i, j])
+    while queue:  # it depends on the number of empty cells and answer(less -> while loop ends fast, more -> otherwise)
+        # O(?)
+        i, j, d = queue.popleft()
+        if i in (0, len1 - 1) and [i, j] != entrance or j in (0, len2 - 1) and [i, j] != entrance:
+            return d
+        else:
+            neighbours = [[i + 1, j], [i - 1, j], [i, j + 1], [i, j - 1]]
+            for n in neighbours:
+                if n in steps:
+                    queue.append(n + [d + 1])
+    return -1
+#  O(R*C) + O(?)
+
+
+maze, entrance = [[0, 1, 0, 1], [0, 1, 1, 1], [0, 1, 1, 1], [0, 1, 1, 1]], [2, 0]
+maze1, entrance1 = [[1, 0, 0, 1, 0, 1], [1, 0, 0, 1, 1, 1], [1, 0, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0],
+                    [1, 0, 1, 0, 1, 1]], [5, 3]
+# print(first_approach(maze1, entrance1))
+
+
 def show_maze(maze, entrance) -> None:
     maze[entrance[0]][entrance[1]] = 'S'
     print('\t\tMaze:')
-    for m in maze:
+    for m in maze:  # O(len(maze)) -> if R - number of rows -> O(R)
         print(m)
 
 
-def find_exit(maze, entrance) -> int:
-    show_maze(maze, entrance)
+def second_approach(maze, entrance) -> int:
+    show_maze(maze, entrance)  # O(R)
     rows, cols = len(maze), len(maze[0])
     s_row, s_col = entrance
     maze[s_row][s_col] = '+'
     queue = deque()
     queue.append([s_row, s_col, 0])
     dist = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-    while queue:
+    while queue:  # O(R * C)
         curr_row, curr_col, curr_dist = queue.popleft()
         for d in dist:
             next_row, next_col = curr_row + d[0], curr_col + d[1]
@@ -26,71 +87,7 @@ def find_exit(maze, entrance) -> int:
                 maze[next_row][next_col] = '+'
                 queue.append((next_row, next_col, curr_dist + 1))
     return -1
-
-
-# Underdone solution
-
-# def find_exits_ways(maze: list, entrance) -> tuple:  # +
-#     m, n, exits, moves = len(maze), len(maze[0]), set(), set()
-#     for i in range(m):
-#         for j in range(n):
-#             if i in (0, m - 1) or j in (0, n - 1):
-#                 if maze[i][j] != '+' and (i, j) != entrance:
-#                     exit_ = (i, j)
-#                     exits.add(exit_)
-#             if maze[i][j] == '.' and (i, j) != entrance:
-#                 moves.add((i, j))
-#     return exits, moves
-#
-# # def form_steps(entrance:list, moves:set) -> dict:
-# #     entrance_a, entrance_b = entrance
-# #     steps = dict()
-# #     for m in moves:
-# #         diff_a, diff_b = abs(m[0] - entrance_a), abs(m[1] - entrance_b)
-# #         steps[m] = diff_a + diff_b
-# #     return steps
-#
-#
-# def bfs_maze(entrance, moves, exits) -> tuple:
-#     visited, queue = {entrance}, deque([entrance])
-#     steps = 0
-#     while queue:
-#         curr = queue.popleft()
-#         if curr in exits:
-#             break
-#         else:
-#             i1, i2 = curr
-#             neighbours = [(i1 + 1, i2), (i1 - 1, i2), (i1, i2 + 1), (i1, i2 - 1)]
-#             for n in neighbours:
-#                 if n in moves:
-#                     if n in visited:
-#                         continue
-#                     steps += 1
-#                     queue.append(n)
-#                     visited.add(n)
-#     if curr != entrance:
-#         return curr, steps
-#     else:
-#         return entrance, 0
-#
-#
-# def get_out_of_maze(maze: list, entrance: tuple) -> Union[int, str]:
-#     exits, moves = find_exits_ways(maze, entrance)
-#     show_maze(maze, entrance)
-#     print(f'\nentrance: {entrance},\nexits: {exits}, \nmoves: {moves}\n')
-#     if not len(exits) and not len(moves) and 0 in entrance:
-#         return 0
-#     if not len(exits):
-#         return -1
-#     closest_exit = bfs_maze(entrance, moves, exits)
-#     if closest_exit:
-#         print(f'closest exit: {closest_exit[0]}')
-#     if closest_exit:
-#         return f'Number of steps needed:{closest_exit[1]}'
-#     else:
-#         return -1
-
-# mazes:
+# O(R * C)
 
 
 m_, e_ = [["+", ".", "+", "+", "+", "+", "+"], ["+", ".", "+", ".", ".", ".", "+"], ["+", ".", "+", ".", "+", ".", "+"],
@@ -111,76 +108,9 @@ m7, e7 = [['+' for _ in range(4)], ['+', '.', '.', '+'], ['+', '.', '.', '+'], [
 
 tests = [(m_, e_), (m0, e0), (m1, e1), (m2, e2), (m3, e3), (m4, e4), (m5, e5), (m6, e6), (m7, e7)]
 
-for t in tests:
-    l = len(t[0][0])
-    print(find_exit(t[0], t[1]))
-    print('~' * 40)
-    # print(get_out_of_maze(t[0], t[1]), '\n'+'-' * 50)
 
-
-# Plan
-# 1) find all the exits, add them to set, create SortedDict
-# 2) find all the paths to that exits
-# 3) return the first element of SortedDict
-
-# def find_shortest_path(start:tuple, end:tuple) -> tuple:  # another realisation
-#     pass
-
-# steps_exit = SortedDict() # another realisation
-    # for exit in exits:   # another realisation
-    #     path_steps = find_shortest_path(entrance, exit)
-    #     steps_exit[path_steps[1]] = exit
-    # for s in steps_exit.keys():
-    #     step = s
-    #     break
-    # return step
-
-    #class Solution:
-    # def find_exits_ways(maze:list, entrance) -> tuple: # check if possible to speed up this function
-    #     m, n, exits, moves = len(maze), len(maze[0]), set(), set()
-    #     for i in range(m):
-    #         for j in range(n):
-    #             if i in (0, m - 1, n - 1) or j in (0, m - 1, n - 1):
-    #                 if maze[i][j] != '+' and [i, j] != entrance:
-    #                     exit = (i, j)
-    #                     exits.add(exit)
-    #             if maze[i][j] == '.' and [i, j] != entrance:
-    #                 moves.add((i, j))
-    #     return exits, moves
-    #
-    # def form_steps(entrance:list, moves:set) -> dict:
-    #     entrance_a, entrance_b = entrance
-    #     steps = dict()
-    #     for m in moves:
-    #         diff_a, diff_b = abs(m[0] - entrance_a), abs(m[1] - entrance_b)
-    #         steps[m] = diff_a + diff_b
-    #     return steps
-    #
-    # def bfs_maze(entrance, moves, exits) -> tuple:
-    #     visited, queue = {entrance}, deque([entrance])
-    #     while queue:
-    #         curr = queue.popleft()
-    #         if curr in exits:
-    #             break
-    #         else:
-    #             i1, i2 = curr
-    #             neighbours = [(i1 + 1, i2), (i1 - 1, i2), (i1, i2 + 1), (i1, i2 - 1)]
-    #             for n in neighbours:
-    #                 if n in moves:
-    #                     queue.append(n)
-    #     if curr != entrance:
-    #         return curr
-    #     else:
-    #         return None
-    #
-    # def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
-    #     exits_moves = find_exits_ways(maze, entrance)
-    #     exits, moves = exits_moves
-    #     show_maze(maze, entrance)
-    #     if not len(exits):
-    #         return -1
-    #     steps, closest_exit = form_steps(entrance, moves), bfs_maze(tuple(entrance), moves, exits)
-    #     if closest_exit:
-    #         return steps[closest_exit]
-    #     else:
-    #         return -1
+# for t in tests:
+#     l = len(t[0][0])
+#     print(find_exit(t[0], t[1]))
+#     print('~' * 40)
+    # print(first_approach(t[0], t[1]), '\n'+'-' * 50)

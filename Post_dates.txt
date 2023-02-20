@@ -1,7 +1,2 @@
   DATE                  TASK                                        PATH          
-31.01.2023          eiler loop big o added                      DS -> graphs -> find_eiler_loop2.py
-31.01.2023          block 1 complexity analisys edited          root -> turtle_ways.py
-31.01.2023          LC 1926 task complexity analisys added      LC -> n_1926.py
-31.01.2023          Detailed description added                  DS -> graphs -> road_dest.py
-03.02.2023          Few RegEx files added                       root -> local_paths.py, a_id.py, links_detect.py
-06.02.2023          Parsing html using RegEx                    root -> del_div.py,  div_span.py
+20.02.2023          turtle_ways.py time complexity edited       root -> turtle_ways.py

@@ -4,4 +4,5 @@
 21.02               n_1926.py - time complexity edited          LC -> n_1926.py
 21.02               n_907.py - time complexity edited           LC -> n_907.py
 21.02        find_eiler_loop2.py - while loop reevaluated       DS -> graphs -> find_eiler_loop2.py
+21.02               function roads_dest.py changed              DS -> graphs -> roads_dest.py
 comments: 2й пункт - это то, что не было проверено в прошлый раз. links_detect.py - tasks7, n1, пункт A;  a_id.py - tasks7, n2.

@@ -20,12 +20,12 @@ def loop_search(edges_: list, n_: int, start=1) -> list:
         if len(nbrs):  # O(1)
             next_one = nbrs[0]
             lifo.extend([v, next_one])  # O(2) -> O(1)
-            graph[v].remove(next_one)  # O(N - 2) -> O(N) - worst case
+            graph[v].remove(next_one)  # O(2) -> O(1)
             graph[next_one].remove(v)  # O(1)
         else:
             fifo.append(v)
     return fifo
-# O(1) + O(E) + O(N)*(O(1)+max(O(N), O(1)) -> O(E) + O(N**2) - worst case
+# O(1) + O(E) + O(N)*(O(1)+max(O(1), O(1)) -> O(E) + O(N) - worst case
 
 
 n1, arr1 = 3, [(1, 2), (1, 3), (3, 2)]

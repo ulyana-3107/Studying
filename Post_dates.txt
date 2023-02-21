@@ -2,5 +2,5 @@
 20.02.2023          turtle_ways.py time complexity edited       root -> turtle_ways.py
 20.02               links_detect.py, a_id.py                    root
 21.02               n_1926.py - time complexity edited          LC -> n_1926.py
-
+21.02               n_907.py - time complexity edited           LC -> n_907.py
 comments: 2й пункт - это то, что не было проверено в прошлый раз. links_detect.py - tasks7, n1, пункт A;  a_id.py - tasks7, n2.

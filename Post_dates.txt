@@ -6,3 +6,4 @@
 21.02               function roads_dest.py changed              DS -> graphs -> roads_dest.py
 23.02               task 1 from Addition new solution           Addition -> acquaintances_version2.py
 03.03               new regular expressions                     root -> regex(1a,1b,2,4).py
+03.03               hierarchy + fabric                          root -> figures.py, fabric.py

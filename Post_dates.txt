@@ -1,9 +1,4 @@
   DATE                  TASK                                        PATH          
-20.02.2023          turtle_ways.py time complexity edited       root -> turtle_ways.py
-21.02               n_1926.py - time complexity edited          LC -> n_1926.py
-21.02               n_907.py - time complexity edited           LC -> n_907.py
-21.02        find_eiler_loop2.py - while loop reevaluated       DS -> graphs -> find_eiler_loop2.py
-21.02               function roads_dest.py changed              DS -> graphs -> roads_dest.py
-23.02               task 1 from Addition new solution           Addition -> acquaintances_version2.py
-03.03               new regular expressions                     root -> regex(1a,1b,2,4).py
-03.03               hierarchy + fabric                          root -> figures.py, fabric.py
+06.03             regex 1a,b,4 edited.                    root-> regex1a,b,4.py
+06.03             regex2 added                            root-> regex2.py
+06.03             roads destroying script Big O added     DS -> graphs -> road_dest2.py

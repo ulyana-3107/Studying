@@ -14,18 +14,18 @@ def create_graph(edges: list | tuple, n: int) -> dict:
 def loop_search(edges_: list, n_: int, start=1) -> list:
     lst, lifo, fifo = [], [start], []  # O(1)
     graph = create_graph(edges_, n_)  # O(E), where E - number of edges
-    while len(lifo):  # if N - number of vertices - O(N)
+    while len(lifo):  # O(E)
         v = lifo.pop()  # O(1)
         nbrs = graph[v]  # O(1)
         if len(nbrs):  # O(1)
             next_one = nbrs[0]
             lifo.extend([v, next_one])  # O(2) -> O(1)
-            graph[v].remove(next_one)  # O(2) -> O(1)
+            graph[v].remove(next_one)  # O(N)
             graph[next_one].remove(v)  # O(1)
         else:
             fifo.append(v)
     return fifo
-# O(1) + O(E) + O(N)*(O(1)+max(O(1), O(1)) -> O(E) + O(N) - worst case
+# O(E*N)
 
 
 n1, arr1 = 3, [(1, 2), (1, 3), (3, 2)]

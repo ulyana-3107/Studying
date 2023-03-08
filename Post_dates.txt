@@ -2,3 +2,5 @@
 06.03             regex 1a,b,4 edited.                    root-> regex1a,b,4.py
 06.03             regex2 added                            root-> regex2.py
 06.03             roads destroying script Big O added     DS -> graphs -> road_dest2.py
+08.03             complexity analisys edited              DS -> graphs -> find_eiler_loop2.py
+

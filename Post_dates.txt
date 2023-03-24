@@ -5,3 +5,4 @@
 08.03             complexity analisys edited              DS -> graphs -> find_eiler_loop2.py
 08.03             block 3, n 8 (LC n 38) time complexity  LC -> n_38.py
 08.03             time complexity edited                  LC -> n_1926.py
+24.03       task 6 number 3 recursion (slowly) added      Root -> tickets_buying2.py

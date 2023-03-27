@@ -1,8 +1,2 @@
   DATE                  TASK                                        PATH          
-06.03             regex 1a,b,4 edited.                    root-> regex1a,b,4.py
-06.03             regex2 added                            root-> regex2.py
-06.03             roads destroying script Big O added     DS -> graphs -> road_dest2.py
-08.03             complexity analisys edited              DS -> graphs -> find_eiler_loop2.py
-08.03             block 3, n 8 (LC n 38) time complexity  LC -> n_38.py
-08.03             time complexity edited                  LC -> n_1926.py
-24.03       task 6 number 3 recursion (slowly) added      Root -> tickets_buying2.py
+27.03  Recursion(3), Regex(1a,b,3,4)  edited                        root

@@ -2,7 +2,7 @@ import re
 
 
 def local_paths(text: str) -> list:
-    pat = r'[D|C]:(?:[\|\\][A-Za-zа-яА-Я0-9._\s]+[\|\\]?)+;'
+    pat = r'[A-Z]:(?:[\|\\][A-Za-zа-яА-Я0-9._\s]+[\|\\]?)+;'
     return re.findall(pat, text, flags=re.MULTILINE)
 
 

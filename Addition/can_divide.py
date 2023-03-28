@@ -1,3 +1,10 @@
+# Описание: 
+# если людей < 3: сразу ответ - да, 1 и 2
+# находим 2х знакомых людей (если всего людей > 2) и разделяем по разным группам, а далее по одному добавляем в подходящие группы по условию: если можно добавить в 
+# любую группу, то оставляем на потом, если точно известно что в одну из групп человека нельзя добавить при этом во вторую можно - добавляем, если нельзя никуда доба
+# вить - ответ - нет.
+# если после итерации по всем людям никто никого не знает - ответ - да, и просто делим группу на две части.
+
 def create_dict(m: list, n: int) -> dict:
     d = {}
     for i in range(n):
@@ -7,7 +14,7 @@ def create_dict(m: list, n: int) -> dict:
 
 def dividible(matrix: list, n: int) -> tuple:
     if n < 3:
-        return True, {1}, {2}
+        return 'Yes', {1}, {2}
     known, ppl = create_dict(matrix, n), [False for i in range(n)]
     g1, g2 = set(), set()
     for i in range(n):
@@ -19,7 +26,7 @@ def dividible(matrix: list, n: int) -> tuple:
             known[i + 1].add(p)
             break
     if len(g1) == 0:
-        return True, [i + 1 for i in range(n//2)], [i + 1 for i in range(n//2, n)]
+        return 'Yes', [i + 1 for i in range(n//2)], [i + 1 for i in range(n//2, n)]
     temp = set()
     for i in range(n):
         if not ppl[i]:
@@ -37,11 +44,11 @@ def dividible(matrix: list, n: int) -> tuple:
                     g1.add(p)
                     ppl[p - 1] = True
                 elif len(a) > 0 and len(b) > 0:
-                    return False, set(), set()
+                    return 'No', set(), set()
                 else:
                     temp.add(p)
     if not len(temp):
-        return True, g1, g2
+        return 'Yes', g1, g2
     else:
         while len(temp):
             p = temp.pop()
@@ -54,8 +61,8 @@ def dividible(matrix: list, n: int) -> tuple:
                 g2.add(p)
                 ppl[p - 1] = True
             else:
-                return False, set(), set()
-        return True, g1, g2
+                return 'No', set(), set()
+        return 'Yes', g1, g2
 
 
 m = [[1, 0, 1, 0], [0, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]  # True

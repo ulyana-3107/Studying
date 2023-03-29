@@ -1,7 +1,7 @@
   DATE                  TASK                                        PATH          
 28.03    LeetCode 38 task another version + time complexity     LC -> n_38_version2.py
-27.03  Recursion(3), Regex(1a,b,3,4)  edited                    root
-28.03        additon (1)                                        Addition -> can_divide.py
-29.03       tasks 6, n 1                                        root -> ladders2.py
-29.03       tasks 6, n 4                                        root -> nails_nd_ropes.py
+27.03    Recursion(3), Regex(1a,b,3,4)  edited                  root
+28.03    additon (1)                                            Addition -> can_divide.py
+29.03    tasks 6, n 1                                           root -> ladders2.py
+29.03    tasks 6, n 4                                           root -> nails_nd_ropes.py
 

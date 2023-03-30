@@ -1,3 +1,3 @@
   DATE                  TASK                                        PATH          
 30.03            addition (1) edited                           Addition -> can_divide.py
-
+30.03            tasks 6 n 4                                   root -> nails_nd_ropes.py

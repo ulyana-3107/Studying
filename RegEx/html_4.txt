@@ -1,4 +1,0 @@
-﻿
-<div id="spannable">hello</div>
-    <div id="tagcloud"></div>
-    <div id="spannable"><a href="""">tag1</a></div>

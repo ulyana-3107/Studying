@@ -1,0 +1,8 @@
+﻿
+<div id="leftcol"> Some text</div>
+    <div><div id="tagcloud">
+        <span class="mytags"><a href="">tag1</a></span>
+        <span class=""mytags""><a href="">tag2</a></span>
+        <!-- and a few more spans of the same type -->
+    </div>
+    Some text</div>"

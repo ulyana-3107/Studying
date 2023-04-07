@@ -1,4 +1,17 @@
+from __future__ import annotations
 from collections import deque
+
+
+# !!! если вызывается ф-я add_heights() - обязательно вызывается ф-я add_parents()
+# TODO: добавить балансировку после вставки
+
+
+# Требования по методам:
+# * вставка и удаление по значению (O(logN))
+# * создание дерева из любого списка (O(NlogN)) - N*logN -Done
+# * обходы дерева (3 штуки за O(N) каждый)  - Done
+# * найти элемент по значению (O(logN)) - Done
+# * высота ((O(logN)) - Done
 
 
 class Node(object):
@@ -19,13 +32,13 @@ class Node(object):
 class AvlTree:
     def __init__(self, elems=None):
         if elems:
-            elems.sort()
-            self.root = self.tree_build(elems)
-            self.add_parents(self.root)
-            self.add_height()
-            print('heights: ', self.show_height())
+            elems.sort()  # O(NlogN)
+            self.root = self.tree_build(elems)  # O(logN)
         else:
-            self.root = None
+            self.root = None  # O(1)
+        self.parents = None
+        self.heights = None
+    # O(NlogN)*2 -> O(NlogN)
 
     def __str__(self, node=None):
         if self.is_empty():
@@ -33,8 +46,41 @@ class AvlTree:
         else:
             return f'{self.root}'
 
+    def additional_params(self, parents: bool, heights: bool) -> None:
+        if parents and heights:
+            self.add_parents(self.root)
+            self.add_heights()
+        elif parents:
+            self.add_parents(self.root)
+        else:
+            self.add_heights()
+
+    def height(self, node: Node = None) -> int:
+        if self.heights is None:
+            self.add_heights()
+        return self.heights[node]
+
+    # Additional function to check if parents are defined right.
+    def show_parents(self):
+        if not self.parents:
+            self.add_parents(self.root)
+        print('parents:')
+        for k, v in self.parents.items():
+            print(k.value, ':', v.value)
+
+    def show_heights(self):
+        if not self.heights:
+            self.add_heights()
+        print('heights:')
+        for k, v in self.heights.items():
+            print(k.value, ':', v)
+
     def is_balanced(self) -> bool:
-        return abs(self.node_height(self.root.left) - self.node_height(self.root.right)) in range(-1, 2)
+        if not self.heights:
+            self.additional_params(False, True)
+        a = self.heights[self.root.left] if self.root.left else 0
+        b = self.heights[self.root.right] if self.root.right else 0
+        return abs(a - b) in range(-1, 2)
 
     def deepestNode(self, root):
         if root == None:
@@ -50,54 +96,130 @@ class AvlTree:
                 q.append(node.right)
         return node
 
+    # def add_nodes_depth(self):
+    #     pass
+
+    # add balance tracking + balancing if needed
+    def insert_by_item(self, item: int) -> None:
+        node, new_node = self.root, None
+        while True:
+            if node.value == item:
+                break
+            elif node.value < item:
+                if node.right:
+                    node = node.right
+                else:
+                    new_node = Node(item)
+                    node.right = new_node
+                    if self.parents is not None:
+                        new_node.par = node
+                    break
+            else:
+                if node.left:
+                    node = node.left
+                else:
+                    new_node = Node(item)
+                    node.left = new_node
+                    if self.parents is not None:
+                        new_node.par = node
+                    break
+        if new_node:
+            if not self.parents and not self.heights:
+                self.additional_params(True, True)
+            elif not self.parents and self.heights:
+                self.add_parents(self.root)
+            elif not self.heights:
+                self.add_heights()
+            else:
+                self.update_heights()
+
+    def del_by_item(self, item: int) -> None:
+        if not self.heights:
+            if not self.parents:
+                self.additional_params(True, True)
+            self.additional_params(False, True)
+        node_del = self.find_node_by_item(item)
+        if node_del.left and not node_del.right:
+            if node_del.par:
+                if node_del.par.left == node_del:
+                    node_del.par.left = node_del.left
+                else:
+                    node_del.par.right = node_del.left
+                self.update_heights(node_del.par)
+            else:
+                self.root = node_del.left
+        elif node_del.right and not node_del.left:
+            if node_del.par:
+                if node_del.par.right == node_del:
+                    node_del.par.right = node_del.right
+                else:
+                    node_del.par.left = node_del.right
+                self.update_heights(node_del.par)
+            else:
+                self.root = node_del.right
+        elif not any([node_del.right, node_del.left]):
+            if not node_del.par:
+                self.root = None
+            else:
+                if node_del.par.left == node_del:
+                    node_del.par.left = None
+                else:
+                    node_del.par.right = None
+                self.update_heights(node_del.par)
+        # нужно еще добавить проверку на то, что у родителя удаляемого нода есть ли родители - если да - у всех поменять высоты
+        # else:
+        #     if node_del.par:
+        #         left_son, right_son = node_del.par.left == node_del, node_del.par.right == node_del
+        #         left_h, right_h = node_del.left.height, node_del.right.height
+        #         if left_h >= right_h:
+        #             a, b, c = node_del.left, node_del.left.left, node_del.right
+        #         else:
+        #             a, b, c = node_del.right, node_del.right.right, node_del.left
+        #         if left_son:
+        #             node_del.par.left = a
+        #             node_del.par.left.left = b
+        #             node_del.par.right = c
+        #         else:
+        #             node_del.par.right = a
+        #             node_del.par.right.left = b
+        #             node_del.par.right.right = c
+        #     else:
+        #         pass
+
+
+
+
+
     #  эта функция для создания ссылок на родителя у каждого нода
     def add_parents(self, root: Node) -> None:
-        visited = set()
+        visited, parents = set(), {}
         fifo = [root]
         while fifo:
             v = fifo.pop()
             visited.add(v)
             if v.left is not None:
                 v.left.par = v
+                parents[v.left] = v
                 fifo.append(v.left)
             if v.right is not None:
                 v.right.par = v
+                parents[v.right] = v
                 fifo.append(v.right)
-        result = self.lnr(self.root, [])
+        self.parents = parents
 
-
-    # эта функция показывает правильно ли найдены родители каждого нода (ссылки на родителей нужны для ротаций дерева
-    # при баллансировке)
-    def show_parents(self):
-        # collection = [self.root]
-        # node_parent = {}
-        # while collection:
-        #     parent = collection.pop()
-        #     if parent.left is not None:
-        #         node_parent[parent.left.value] = parent.value
-        #         collection.append(parent.left)
-        #     if parent.right is not None:
-        #         collection.append(parent.right)
-        #         node_parent[parent.right.value] = parent.value
-        # return node_parent
-        all_nodes = self.lnr(self.root, [])
-        for node in all_nodes:
-            if node.par:
-                parent = node.par.value
-            else:
-                parent = None
-            print(f'{node.value}, parent: {parent}')
-
-    def add_height(self):
-        arr = []
+    def add_heights(self) -> None:
+        if not self.parents:
+            self.add_parents(self.root)
+        arr, heights = [], {}
         if self.root.left:
             arr.append(self.root.left)
         if self.root.right:
             arr.append(self.root.right)
         for node in arr:
             leaf, h = self.deepestNode(node), 1
-            while leaf.value not in (self.root.left.value, self.root.right.value):
+            while leaf not in (self.root.left, self.root.right):
                 leaf.par.height = h
+                heights[leaf.par] = h
                 h += 1
                 leaf = leaf.par
         left_height, right_height = None, None
@@ -107,24 +229,14 @@ class AvlTree:
             right_height = self.root.right.height
         if left_height and right_height:
             self.root.height = max(left_height, right_height) + 1
+            heights[self.root] = max(left_height, right_height) + 1
         elif left_height:
             self.root.height = left_height + 1
+            heights[self.root] = left_height + 1
         else:
             self.root.height = right_height + 1
-
-    # this is addtional function to check if heights are calculated right.
-    def show_height(self):
-        arr = [self.root]
-        heights = {self.root.value: self.root.height}
-        while len(arr):
-            v = arr.pop()
-            if v.left is not None:
-                heights[v.left.value] = v.left.height
-                arr.append(v.left)
-            if v.right is not None:
-                heights[v.right.value] = v.right.height
-                arr.append(v.right)
-        return heights
+            heights[self.root] = right_height + 1
+        self.heights = heights
 
     def small_tree_build(self, elements):
         l_ = len(elements)
@@ -137,7 +249,7 @@ class AvlTree:
 
     def tree_build(self, elements):
         l_ = len(elements)
-        if l_ in range(1, 3 + 1):
+        if l_ in range(1, 4):
             node = self.small_tree_build(elements)
             return node
         else:
@@ -145,56 +257,10 @@ class AvlTree:
             node.left, node.right = self.tree_build(l_side), self.tree_build(r_side)
             return node
 
-    def update_height(self, new_node: Node):
-        parent = new_node.par
-        if parent.left and parent.right:
-            return
-        while new_node != self.root:
-            new_node.par.height += 1
-            new_node = new_node.par
-        new_node.height += 1
-        print(f'heights are updated: ,{self.show_height()}')
-
     def is_empty(self):
         return not self.root
 
-    def insert(self, item, node=None):
-        if self.is_empty():
-            self.root = Node(item)
-            return
-        if not node:
-            node = self.root
-        if item == node.value:
-            return
-        elif item < node.value:
-            if node.left:
-                self.insert(item, node.left)
-            else:
-                new = Node(item)
-                node.left = new
-                new.par = node
-                self.update_height(new)
-                self.balance_tree(new)
-        elif item > node.value:
-            if node.right:
-                self.insert(item, node.right)
-            else:
-                new = Node(item)
-                node.right = new
-                new.par = node
-                self.update_height(new)
-                self.balance_tree(new)
-
-
-# дерево баллансируется так: есть новый нод, который является листовым и мы поднимаемся вверх с помощью родителей,в это
-# время проверяя фактор балланса каждого родителя (отнимаем высоту правого поддерева от высоты левого (высоты заранее оп
-# ределены) и если мы нашли нод с неподходящим фб то мы: 1) присваиваем найденный нод переменной "критический нод"
-# 2) определяем два параметра (1 - первая буква в зависимости от стороны поддерева с новым нодом
-# (L/R) 2 - вторая буква в зависимости от стороны где находится новый нод в поддереве 3) в зависимости от двух букв выби
-# рается нужная функция для ротации поддерева или всего дерева в которую передаются следующие параметры: критический нод
-# и его родитель (возможно что родителя нет - и в таком случае будет вращаться все дерево).
-
-
+    #?
     def balance_tree(self, node: Node):
         new = node
         while node.par:
@@ -230,7 +296,7 @@ class AvlTree:
                     self.rl_rotation(node, parent)
                 else:
                     self.lr_rotation(node, parent)
-
+    #?
     def ll_rotation(self, critical_node: Node, parent: Node):
         left = critical_node.left
         a, b, c = left.left, left.right, critical_node.right
@@ -245,7 +311,7 @@ class AvlTree:
                 parent.left = a_
             else:
                 parent.right = a_
-
+    #?
     def rr_rotation(self, critical_node: Node, parent: Node):
         right = critical_node.right
         a, b, c = critical_node.left, right.left, right.right
@@ -259,7 +325,7 @@ class AvlTree:
                 parent.left = a_
             else:
                 parent.right = a_
-
+    #?
     def lr_rotation(self, critical_node: Node, parent: Node):
         left = critical_node.left
         a, b, c, d = left.left, left.right.left, left.right.right, critical_node.right
@@ -274,7 +340,7 @@ class AvlTree:
                 parent.left = a_
             else:
                 parent.right = a_
-
+    #?
     def rl_rotation(self, critical_node: Node, parent: Node):
         right = critical_node.right
         a, b, c, d = critical_node.left, right.left.left, right.left.right, right.right
@@ -301,26 +367,6 @@ class AvlTree:
                 root = root.left
             else:
                 root = root.right
-
-    def find_parent_node(self, item):
-        if item == self.root.value:
-            return None
-        if self.root.left == item or self.root.right == item:
-            return self.root
-        parent = self.root
-        if item < parent.value:
-            child = parent.left
-        else:
-            child = parent.right
-        while True:
-            if child.value == item:
-                break
-            parent = child
-            if item < child.value:
-                child = child.left
-            else:
-                child = child.right
-        return parent
 
     def lnr(self, node, arr):
         if node:
@@ -371,178 +417,11 @@ class AvlTree:
             node = node.right
         return node
 
-    def del_by_item(self, item, node=None):
-        if node:
-            parent = node.par
-        else:
-            parent = self.find_parent_node(item)
-        if not node:
-            item_node = self.find_node_by_item(item)
-        else:
-            item_node = node
-        if not parent:  # it means that the item to be deleted is root
-            a, b, c = item_node.is_leaf(), item_node.left and item_node.right, item_node.left or item_node.right
-            if a:
-                self.root = None
-            elif b:
-                pr = self.find_pr(item_node.left)
-                pr_val = pr.value
-                l_side, r_side = item_node.left, item_node.right
-                self.delete_leaf(l_side, pr)
-                self.root = Node(pr_val)
-                self.root.left, self.root.right = l_side, r_side
-            else:
-                if item_node.left:
-                    self.root = item_node.left
-                else:
-                    self.root = item_node.right
-            return
-        else:
-            parent_ = parent.par
-            if not parent_:
-                parent_ = parent
-            a, b, c = item_node.is_leaf(), item_node.left and item_node.right, item_node.left or item_node.right
-            if a:
-                if parent.left == item_node:
-                    parent.left = None
-                else:
-                    parent.right = None
-            elif b:
-                pr = self.find_pr(item_node.left)
-                pr_val = pr.value
-                l_side, r_side = item_node.left, item_node.right
-                self.delete_leaf(l_side, pr)
-                if parent.left == item_node:
-                    parent.left = Node(pr_val)
-                    parent.left.left, parent.left.right = l_side, r_side
-                else:
-                    parent.right = Node(pr_val)
-                    parent.right.left, parent.right.right = l_side, r_side
-            else:
-                if item_node.left:
-                    if parent.left == item_node:
-                        parent.left = item_node.left
-                    else:
-                        parent.right = item_node.left
-                else:
-                    if parent.right == item_node:
-                        parent.right = item_node.right
-                    else:
-                        parent.left = item_node.right
-            if not abs(parent_.left.height - parent_.right.height) in range(-1, 2):
-                self.balance_tree(item_node)
-            return
 
-    def node_height(self, node):
-        if not node:
-            return 0
-        return max(self.node_height(node.left), self.node_height(node.right)) + 1
-
-
-# elements = [1, 2, 3, 4, 5]
-# tree = AvlTree(elements)
-# tree.insert(6)
-# print(tree)
-# case 1:
-# t = AvlTree()
-# t.root = Node(3)
-# t.root.left, t.root.right = Node(1), Node(4)
-# t.root.left.right = Node(2)
-# t.root.left.par, t.root.right.par = t.root, t.root
-# t.root.left.right.par = t.root.left
-# print(t)
-# t.insert(0)
-# print(t)
-
-
-
-
-# def height(self):  # ++
-    #     if not self.root:
-    #         return 0
-    #     else:
-    #         return self.root.height
-
-
-# def is_parent(self):
-    #     if self.left or self.right:
-    #         return True
-    #     else:
-    #         return False
-
-
-# def get_height(self):
-    #     if self.is_leaf():
-    #         self.height = 0
-    #     elif not self.has_left_node():
-    #         self.height = self.right.get_height() + 1
-    #     elif not self.has_right_node():
-    #         self.height = self.left.get_height() + 1
-    #     else:
-    #         if self.left.get_height() > self.right.get_height():
-    #             self.height = self.left.get_height() + 1
-    #         else:
-    #             self.height = self.right.get_height() + 1
-    #     return self.height
-
-
-# def has_left_node(self):
-#     return self.left is not None
-#
-# def has_right_node(self):
-#     return self.right is not None
-
-# def get_balance(self):
-#     if self.is_leaf():
-#         return 0
-#     elif self.has_right_node() is False:
-#         return -self.left.height - 1
-#     elif self.has_left_node() is False:
-#         return self.right.height + 1
-#     else:
-#         return self.right.height - self.left.height
-
-# def left_rotation(self):
-#     right_child = self.right
-#     self.right = right_child.left
-#     right_child.left = self
-#     self.get_height()
-#     right_child.get_height()
-#     return right_child
-#
-# def right_rotation(self):
-#     left_child = self.left
-#     self.left = left_child.right
-#     left_child.right = self
-#     self.get_height()
-#     left_child.get_height()
-#     return left_child
-#
-# def min_value_node(self):
-#     if self.left:
-#         left_child = self.left
-#         while left_child.left:
-#             left_child = left_child.left
-#         return left_child
-#     else:
-#         return self
-
-# def balance_tree(self, node):
-#     b_factor = node.get_balance()
-#     if b_factor in range(-1, 2):
-#         return None
-#     if b_factor < -1:
-#         if node.left.get_balance() < 0:
-#             new_root = node.right_rotation()
-#         else:
-#             node.left = node.left.left_rotation()
-#             new_root = node.right_rotation()
-#     else:
-#         if node.right.get_balance() > 0:
-#             new_root = node.left_rotation()
-#         else:
-#             node.right = node.right.right_rotation()
-#             new_root = node.left_rotation()
-#     if node is self.root:
-#         self.root = new_root
-#     return new_root
+elements = [1, 2, 3]
+tree = AvlTree(elements)
+print(tree)
+tree.show_heights()
+tree.del_by_item(3)
+print(tree)
+tree.show_heights()

@@ -32,3 +32,23 @@ for num in nums:
     format_number(num)
 
 
+def replace(num: str) -> str:
+    pat = r'([+]?([7-8]?)([\(\s]{,2})(\d{3})([\)\s]{,2})(\d{3})([-]?)(\d{2})([-]?)(\d{2}))'
+    sub_pat = r'+7 \4 \6-\8-\10'
+    if re.search(pat, num):
+        if num[1] != '9' and num[0] != '9':
+            return re.sub(pat, sub_pat, num)
+        return 'Fail'
+    return 'Fail'
+
+
+nums = ['+7 123 456-78-90', '8(123)456-78-90', '7(123) 456-78-90', '1234567890', '123456789', '+9 123 456-78-90',
+        '+7 123 456+78=90', '+7(123 45678-90', '8(123  456-78-90']
+answers = ['+7 123 456-78-90', '+7 123 456-78-90', '+7 123 456-78-90', '+7 123 456-78-90', 'Fail!', 'Fail!', 'Fail!',
+           '+7 123 456-78-90', 'Fail!']
+
+
+for num in nums:
+    print(f'num: {num},    result: {replace(num)}'+'\n')
+
+

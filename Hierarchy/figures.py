@@ -4,8 +4,6 @@ Class hierarchy for representing geometric figures.
 from accessify import private
 import math
 
-# TODO: 1) add display method()
-
 
 class Vector(list):
 

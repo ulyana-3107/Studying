@@ -1,12 +1,13 @@
 import re
 
 
+def function(text: str) -> str:
+    pat = r'(?:([А-Яа-я]+)\s(\1))'
+    return re.sub(pat, r'\1', text)
+
+
 text = '''Довольно распространённая ошибка ошибка — это лишний повтор повтор слова слова. Смешно, не не правда ли? 
 Не нужно портить хор хоровод.'''
 
 
-def repeat_eliminate(text: str) -> str:
-    return re.sub(r'([а-яА-Я]+)\s(\1{1,})', r'\1', text)
-
-
-print(repeat_eliminate(text))
+print(function(text))

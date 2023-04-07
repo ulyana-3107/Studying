@@ -37,29 +37,28 @@ class Solution:
 def first_approach(maze: list, entrance: list = None):  # R - number of rows, C - number of columns
     len1, len2 = len(maze), len(maze[0])
     # first we iterate through maze indexes and form a list of possible steps
-    steps, queue = [], deque([entrance + [0]])
+    steps, queue = set(), deque([entrance + [0]])
     for i in range(len(maze)):  # O(R)
         for j in range(len(maze[i])):  # O(C)
             if maze[i][j] == 0 and [i, j] != entrance:
-                steps.append([i, j])
-    while queue:  # it depends on the number of empty cells and answer(less -> while loop ends fast, more -> otherwise)
-        # O(?)
-        i, j, d = queue.popleft()
+                steps.add((i, j))
+    while queue:  # O(R*C)
+        i, j, d = queue.popleft()  # O(1)
         if i in (0, len1 - 1) and [i, j] != entrance or j in (0, len2 - 1) and [i, j] != entrance:
             return d
         else:
-            neighbours = [[i + 1, j], [i - 1, j], [i, j + 1], [i, j - 1]]
-            for n in neighbours:
-                if n in steps:
-                    queue.append(n + [d + 1])
+            neighbours = [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]
+            for n in neighbours:  # O(4) -> O(1)
+                if n in steps:  # O(1)
+                    a, b = n[0], n[1]  # O(1)
+                    queue.append([a, b] + [d + 1])  # O(1)
     return -1
-#  O(R*C) + O(?)
+#  O(R*C) + O(R*C) -> O(R*C)
 
 
 maze, entrance = [[0, 1, 0, 1], [0, 1, 1, 1], [0, 1, 1, 1], [0, 1, 1, 1]], [2, 0]
 maze1, entrance1 = [[1, 0, 0, 1, 0, 1], [1, 0, 0, 1, 1, 1], [1, 0, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 0, 1, 0, 0, 0],
                     [1, 0, 1, 0, 1, 1]], [5, 3]
-# print(first_approach(maze1, entrance1))
 
 
 def show_maze(maze, entrance) -> None:

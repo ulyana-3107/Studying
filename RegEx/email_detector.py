@@ -28,4 +28,9 @@ def email_detector(text: str) -> list:
     return [m[0] for m in re.findall(pat, text)]
 
 
-print(email_detector(text))
+def email_detector2(text: str) -> list:
+    pat  = r'([a-z-A-Z.-]+@[a-zA-Z.-]+)'
+    return re.findall(pat, text)
+
+
+print(email_detector(text), email_detector2(text), sep='\n')

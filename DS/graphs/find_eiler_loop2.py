@@ -19,7 +19,7 @@ def loop_search(edges_: list, n_: int, start=1) -> list:
         nbrs = graph[v]  # O(1)
         if len(nbrs):  # O(1)
             next_one = nbrs[0]
-            lifo.extend([v, next_one])
+            lifo.extend([v, next_one]) # O(len(list)) -> O(2) -> O(1)
             graph[v].remove(next_one)  # O(N - 2) -> O(N) - worst case
             graph[next_one].remove(v)  # O(N)
         else:

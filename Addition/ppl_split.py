@@ -14,6 +14,7 @@ def possible(n, matrix) -> tuple:
                     known[i].add(j)
                 else:
                     known[i] = {j}
+    print(known)
     while all_ppl:
         p = all_ppl.pop()
         if p in known:
@@ -36,7 +37,8 @@ n3, m3 = 5, [[0, 1, 0, 0, 0], [1, 0, 0, 0, 0], [0, 0, 0, 1, 1], [0, 0, 1, 0, 1],
 n4, m4 = 6, [[0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1],
              [1, 0, 1, 0, 1, 0]]
 n5, m5 = 5, [[0, 0, 0, 1, 1], [0, 0, 0, 1, 1], [0, 0, 0, 1, 1], [1, 1, 1, 0, 0], [1, 1, 1, 0, 0]]
-n_, m_ = 4, m
+n_, m_ = 4, [[1, 0, 1, 0], [0, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]
+
 
 with open('ppl_split_input.txt', 'w', encoding='utf-8-sig') as in_writer:
     in_writer.write(str(n_) + '\n')

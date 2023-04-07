@@ -3,7 +3,7 @@ def first_approach(n: int, m: int):
         return 1
     else:
         return first_approach(n, m - 1) + first_approach(n - 1, m)
-# O(M**N)
+# O(M*N)
 
 
 def stack_approach(n_: int, m_: int):

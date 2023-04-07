@@ -42,7 +42,7 @@ def first_approach(array: list) -> int:
             arr.append(new)
             c += min(new)
     return c
-#  O(N**3)
+#  O(N**2) + O(N) -> O(N**2)
 
 
 def second_approach(A: list) -> int:

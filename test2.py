@@ -1,2 +1,18 @@
-a1, a2 = {1, 2, 3}, {3, 4, 5}
-print(a1.isdisjoint(a2))
+import re
+
+
+t = '''<div id="leftcol"><div>Test</div><span>Test</span> Some text</div>
+    <div><div id="tagcloud">
+        <span class="mytags"><a href="""">tag1</a></span>
+        <span class=""mytags""><a href="""">tag2</a></span>
+        <!-- and a few more spans of the same type -->
+    </div>
+    Some text</div>'''
+
+
+# <div>Test</div> должен быть удалён.
+pat = r'<div[^div]*(?:(?!span)[^div]*)</div>'
+print(re.sub(pat, '', t))
+
+
+

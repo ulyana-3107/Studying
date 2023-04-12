@@ -3,69 +3,6 @@ from collections import deque
 import bisect
 
 
-def rocks_heap_solution(seq: list) -> int:
-    seq2 = seq.copy()
-    heapq.heapify(seq2)
-
-    while len(seq2) > 1:
-        n = len(seq2)
-        largest = heapq.nlargest(2, enumerate(seq2), key=lambda x: x[1])
-        a, b, a_index, b_index = largest[0][1], largest[1][1], largest[0][0], largest[1][0]
-
-        if a == b:
-            if a_index in range(n - 2) and b_index in range(n - 2):
-                seq2[a_index], seq2[-2] = seq2[-2], seq2[a_index]
-                seq2[b_index], seq2[-1] = seq2[-1], seq2[b_index]
-            else:
-                case1 = a_index in range(n - 2, n) and b_index not in range(n - 2, n)
-                case2 = b_index in range(n - 2, n) and a_index not in range(n - 2, n)
-                if case1:
-                    repl_index = n - 1 if a_index == n - 2 else n - 2
-                    seq2[b_index], seq2[repl_index] = seq2[repl_index], seq2[a_index]
-                elif case2:
-                    repl_index = n - 1 if b_index == n - 2 else n - 2
-                    seq2[a_index], seq2[repl_index] = seq2[repl_index], seq2[a_index]
-
-            for i in range(2):
-                seq2.pop()
-        else:
-            diff = abs(a - b)
-
-            if a > b:
-                del_index, change_elem_index = b_index, a_index
-            else:
-                del_index, change_elem_index = a_index, b_index
-
-            seq2[change_elem_index] = diff
-
-            if del_index != n - 1:
-                seq2[del_index], seq2[-1] = seq2[-1], seq2[del_index]
-
-            seq2.pop()
-
-    return seq2[0] if len(seq2) else 0
-
-
-def rocks_heap2(arr: list) -> int:
-    arr2 = arr.copy()
-    arr2 = [-i for i in arr2]
-    heapq.heapify(arr2)
-
-    while len(arr2) > 1:
-
-        a = heapq.heappop(arr2)
-        b = heapq.heappop(arr2)
-
-        if a > b:
-            diff = -(-b + a)
-            bisect.insort(arr2, diff)
-        elif b > a:
-            diff = -(-a + b)
-            bisect.insort(arr2, diff)
-
-    return -arr2[0] if len(arr2) else 0
-
-
 def rocks_deque_solution(seq: list) -> int:
     seq2 = seq.copy()
     seq2 = deque(seq2)
@@ -155,6 +92,21 @@ def rocks_solution3(seq: list) -> int:
     return seq[0] if len(seq) else 0
 
 
+def rocks_heap2(arr: list) -> int:
+    arr = [-i for i in arr]
+    heapq.heapify(arr)
+
+    while len(arr) > 1:
+
+        a = heapq.heappop(arr)
+        b = heapq.heappop(arr)
+
+        if a != b:
+            heapq.heappush(arr, -b + a)
+
+    return -arr[0] if len(arr) else 0
+
+
 if __name__ == '__main__':
     arr0 = [1, 2, 3, 4, 5]  # 1
     arr1 = [0, 9, 8, 7, 6, 5, 4, 3]  # 0
@@ -163,7 +115,8 @@ if __name__ == '__main__':
     arr4 = [-1, -1, -1, -1, -3]  # -3
     arr5 = [0, 1, 0, 1]  # 0
     arr6 = [9, 9, 9, 9, 9]  # 9
-    for i in range(7):
+    arr7 = [4, 77, 27, 20, 37, 49, 76, 42, 46, 82]  # 0
+
+    for i in range(0, 8):
         name = 'arr' + str(i)
-        print(rocks_heap_solution(eval(name)), rocks_solution2(eval(name)),
-              rocks_solution3(eval(name)), rocks_deque_solution(eval(name)), sep=' ## ')
+        print(rocks_heap2(eval(name)))

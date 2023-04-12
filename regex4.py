@@ -6,16 +6,19 @@ import re
 
 def div_span(text: str) -> str:
     pat_old = r'(?:(.*?<div.*id=[\'"]spannable[\'"].*?>)(.{,20})(.*</div>))'
-    pat = r'(?:(.*?<)(div)(.*id=[\'"]spannable[\'"].*?>.{,20}.*</)(div>))'
-    sub_pat = r'\1span\3span>'
-    return re.sub(pat, sub_pat, text)
+    # pat = r'(?:(.*?<)(div)(.*id=[\'"]spannable[\'"].*?>.{,20}.*</)(div>))'
+    # sub_pat = r'\1span\3span>'
+    p = r'((<div)(.*?)id=[\'"]spannable[\'"](.*?>)(.{,20})</div>)'
+    sub_pat = r'<span\3\4\5</span>'
+    return re.sub(p, sub_pat, text)
 
 
-text = '''
-<div id="spannable">hello</div>
-    <div id="tagcloud"></div>
-    <div id="spannable"><a href="""">tag1</a></div>
-'''
+# text = '''
+# <div id="spannable">hello</div>
+#     <div id="tagcloud"></div>
+#     <div id="spannable"><a href="""">tag1</a></div>
+# '''
+text = '<div id="spannable">12345678901234567890</div>'
 
 with open('html_4.txt', 'w', encoding='utf-8-sig') as writer:
     writer.write(text)

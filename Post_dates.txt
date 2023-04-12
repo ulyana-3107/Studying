@@ -1,5 +1,0 @@
-  DATE                  TASK                                        PATH          
-30.03            addition (1) edited                           Addition -> can_divide.py
-30.03            tasks 6 n 4                                   root -> nails_nd_ropes.py
-31.03            regex 3,4 edited                              root -> regex3.py, regex4.py
-09.04            Probability theory tasks                      Math 

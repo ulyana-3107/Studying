@@ -19,15 +19,18 @@ def can_divide(graph: dict) -> str:
     start = unwatched_elements.pop()
     visited, stack = set(), deque([start])
     colors[start] = 1
+
     while len(visited) != len(graph):
         if not len(stack):
             elem = unwatched_elements.pop()
         else:
             elem = stack.popleft()
             unwatched_elements.discard(elem)
+
         visited.add(elem)
         clr = colors[elem]
         opposite_clr = 2 if clr == 1 else 1
+
         for nb in graph[elem]:
             if colors[nb] is not None:
                 if colors[nb] == clr:
@@ -35,12 +38,14 @@ def can_divide(graph: dict) -> str:
             else:
                 colors[nb] = opposite_clr
                 stack.append(nb)
+
     gr1, gr2 = set(), set()
     for k, v in colors.items():
         if v == 1:
             gr1.add(k)
         else:
             gr2.add(k)
+
     return 'Yes'
 
 

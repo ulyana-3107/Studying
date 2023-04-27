@@ -39,6 +39,7 @@ def can_divide(graph: dict) -> str:
                 colors[nb] = opposite_clr
                 stack.append(nb)
 
+    # for cases, when result of separation is needed
     gr1, gr2 = set(), set()
     for k, v in colors.items():
         if v == 1:

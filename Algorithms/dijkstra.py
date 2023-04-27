@@ -1,5 +1,4 @@
 from __future__ import annotations
-import heapq
 
 
 def create_graph(matrix: list, n: int) -> dict:

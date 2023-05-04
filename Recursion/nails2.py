@@ -24,6 +24,21 @@ def minimum_cost_2(seq: list) -> int:
     return round(diff[-1], 2)
 
 
+def rec_solution(seq, i, db: dict):
+    if i == 1:
+        if i not in db:
+            db[i] = seq[1] - seq[0]
+        return db[i]
+    elif i == 2:
+        if i not in db:
+            db[i] = seq[2] - seq[1] + seq[1] - seq[0]
+        return db[i]
+    else:
+        if i not in db:
+            db[i] = seq[i] - seq[i-1] + min(rec_solution(seq, i - 1, db), rec_solution(seq, i - 2, db))
+        return round(db[i], 2)
+
+
 if __name__ == '__main__':
     axis_2 = [1, 2]  # 1
     axis_1 = [1, 3, 8]  # 7
@@ -33,5 +48,7 @@ if __name__ == '__main__':
     axis3 = [11, 12, 14, 16, 18]  # 5
     axis4 = [11, 13, 14, 17, 21]  # 7
 
-    for i in range(5):
-        print(minimum_cost_2(eval('axis'+str(i))))
+    for n in range(5):
+        arr = eval('axis'+str(n))
+        i = len(arr) - 1
+        print(rec_solution(arr, i, {}))

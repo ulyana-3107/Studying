@@ -40,6 +40,243 @@ class AvlTree:
         else:
             return f'{self.root}'
 
+    def delete_by_item(self, root: Node, item: int):
+        node = root
+        node_found, child_num = None, 2
+
+        while node:
+            if node.value == item:
+                node_found = node
+                break
+            elif node.value > item:
+                node = node.left
+            else:
+                node = node.right
+
+        if not node_found.right or not node_found.left:
+            child_num -= 1
+        elif not node_found.right and not node_found.left:
+            child_num -= 1
+
+        # leaf case
+        if child_num == 0:
+
+            parent = node_found.par
+
+            if not parent:
+                self.root = None
+            else:
+                if parent.left == node_found:
+                    parent.left = None
+                    parent.height -= int(bool(parent.right is not None))
+                    self.heights[parent] = parent.height
+                else:
+                    parent.right = None
+                    parent.height -= int(bool(parent.left is not None))
+                    self.heights[parent] = parent.height
+
+                self.update_heights(parent, 2)
+
+        # node to be deleted has 1 child tree
+        elif child_num == 1:
+            parent = node_found.par
+            del self.heights[node_found]
+
+            if node_found.left is not None:
+                if parent:
+                    if parent.left == node_found:
+                        parent.left = node_found.left
+                        self.parents[parent.left] = parent.left.par = parent
+                        self.update_heights(parent.left, 2)
+                    else:
+                        parent.right = node_found.left
+                        self.parents[parent.right] = parent.right.par = parent
+                        self.update_heights(parent.right, 2)
+
+                else:
+                    self.root = node_found.left
+                    node_found.left.par = None
+                    del self.parents[node_found.left]
+            else:
+                if parent:
+                    if parent.left == node_found:
+                        parent.left = node_found.right
+                        self.parents[parent.left] = parent.left.par = parent
+                        self.update_heights(parent.left, 2)
+                    else:
+                        parent.right = node_found.right
+                        self.parents[parent.right] = parent.right.par = parent
+                        self.update_heights(parent.right, 2)
+
+                else:
+                    self.root = node_found.right
+                    node_found.right.par = None
+                    del self.parents[node_found.right]
+
+        else:
+            # left and right childs
+            parent = node_found.par
+            new_part = None
+            node_link_to_update = None
+
+            lr_h = node_found.left.right.height if node_found.left.right else 0
+            rl_h = node_found.right.left.height if node_found.right.left else 0
+
+            if lr_h + rl_h == 0:
+                if node_found.left.height >= node_found.right.height:
+
+                    node_found.left.right = node_found.right
+                    self.parents[node_found.right] = node_found.right.par = node_found.left
+                    new_part = node_found.left
+
+                    h_l = node_found.left.left.height if node_found.left.left else 0
+                    h_r = node_found.right.height
+
+                    if h_r > h_l:
+                        self.heights[new_part] = new_part.height = h_r + 1
+                else:
+                    node_found.right.left = node_found.left
+                    self.parents[node_found.left] = node_found.left.par = node_found.right
+                    new_part = node_found.right
+
+                    l_h = node_found.left.height
+                    r_h = node_found.right.right.height if node_found.right.right else 0
+
+                    if l_h > r_h:
+                        self.heights[new_part] = new_part.height = l_h + 1
+
+            else:
+
+                if lr_h >= rl_h:
+                    repl_tree = node_found.left.right
+                    pr = self.find_pr(repl_tree)
+                    if pr == repl_tree:
+                        node_found.left.right = None
+                        node_link_to_update = node_found.left
+                    else:
+                        par_pr = pr.par
+                        par_pr.right = None
+                        node_link_to_update = par_pr
+                else:
+                    repl_tree = node_found.right.left
+                    pr = self.find_pr(repl_tree)
+                    if pr == repl_tree:
+                        node_found.right.left = None
+                        node_link_to_update = node_found.right
+                    else:
+                        par_pr = pr.par
+                        par_pr.right = None
+                        node_link_to_update = par_pr
+
+                del self.parents[pr]
+                pr.left, pr.right = node_found.left, node_found.right
+                node_found.left.par = node_found.right.par = pr
+                self.parents[node_found.left] = self.parents[node_found.right] = pr
+                new_part = pr
+
+            if parent:
+                new_part.par = parent
+                self.parents[new_part] = parent
+                if parent.left == node_found:
+                    parent.left = new_part
+                else:
+                    parent.right = new_part
+            else:
+                new_part.par = None
+                self.root = new_part
+
+            if node_link_to_update:
+                self.update_heights(node_link_to_update, 3)
+
+        del self.parents[node_found]
+
+    def update_heights(self, node: Node, mode: int):
+        """
+        Function to update heights in a tree after changing it
+        :param node: new_inserted node/
+        :param mode: 1 - update after insertion, 2 - after deletion
+        :return: None
+        """
+        if mode == 1:
+            parent, child = node.par, node
+
+            while parent != self.root:
+
+                if parent.left == child:
+                    if not parent.right:
+                        parent.height += 1
+                        self.heights[parent] = parent.height
+                        parent, child = parent.par, parent
+                    else:
+                        parent.height = max(parent.left.height, parent.right.height) + 1
+                        self.heights[parent] = parent.height
+                        parent, child = parent.par, parent
+                else:
+                    if not parent.left:
+                        parent.height += 1
+                        self.heights[parent] = parent.height
+                        parent, child = parent.par, parent
+                    else:
+                        parent.height = max(parent.left.height, parent.right.height) + 1
+                        self.heights[parent] = parent.height
+                        parent, child = parent.par, parent
+
+            if parent.left == child:
+                if not parent.right:
+                    parent.height += 1
+                    self.heights[parent] = parent.height
+                else:
+                    self.heights[parent] = parent.height = max(parent.left.height, parent.right.height) + 1
+            else:
+                if not parent.left:
+                    parent.height += 1
+                    self.heights[parent] = parent.height
+                else:
+                    self.heights[parent] = parent.height = max(parent.left.height, parent.right.height) + 1
+
+        elif mode == 2:
+
+            start = node
+            parent = start.par
+            s = False
+
+            while parent != self.root:
+                curr_height = parent.height
+                l_h = parent.left.height if parent.left else 0
+                r_h = parent.right.height if parent.right else 0
+                new_height = max(l_h, r_h) + 1
+                if curr_height == new_height:
+                    s = True
+                    break
+                else:
+                    parent.height = new_height
+                    self.heights[parent] = new_height
+                    parent = parent.par
+            if not s:
+                l_h = parent.left.height if parent.left else 0
+                r_h = parent.right.height if parent.right else 0
+                new_height = max(l_h, r_h) + 1
+                curr_height = parent.height
+                if curr_height != new_height:
+                    parent.height = new_height
+                    self.heights[parent] = new_height
+
+        else:
+            start = node
+            parent = start.par
+
+            while parent != self.root:
+                self.change_height(parent, self.heights)
+                parent = parent.par
+
+            self.change_height(parent, self.heights)
+
+    def change_height(self, node: Node, heights: dict) -> None:
+        l_h = node.left.height if node.left else 0
+        r_h = node.right.height if node.right else 0
+        node.height = max(l_h, r_h) + 1
+        heights[node] = node.height
+
     # Эта функция рассчитана на то, что дерево сбалансированно
     def add_heights(self, root: Node, sub_tree: bool=False):
         if not sub_tree:
@@ -193,51 +430,6 @@ class AvlTree:
             self.root = left_part
             self.add_heights(self.root)
 
-    def update_heights(self, node: Node, mode: int):
-        """
-        Function to update heights in a tree after changing it
-        :param node: new_inserted node/
-        :param mode: 1 - update after insertion, 2 - after deletion
-        :return: None
-        """
-        if mode == 1:
-            parent, child = node.par, node
-            while parent != self.root:
-                l, r = parent.left == child, parent.right == child
-                if l:
-                    if not parent.right:
-                        parent.height += 1
-                        self.heights[parent] = parent.height
-                        parent, child = parent.par, parent
-                    else:
-                        parent.height = max(parent.left.height, parent.right.height) + 1
-                        self.heights[parent] = parent.height
-                        parent, child = parent.par, parent
-                elif r:
-                    if not parent.left:
-                        parent.height += 1
-                        self.heights[parent] = parent.height
-                        parent, child = parent.par, parent
-                    else:
-                        parent.height = max(parent.left.height, parent.right.height) + 1
-                        self.heights[parent] = parent.height
-                        parent, child = parent.par, parent
-            l, r = parent.left == child, parent.right == child
-            if l:
-                if not parent.right:
-                    parent.height += 1
-                    self.heights[parent] = parent.height
-                else:
-                    parent.height = max(parent.left.height, parent.right.height) + 1
-                    self.heights[parent] = parent.height
-            elif r:
-                if not parent.left:
-                    parent.height += 1
-                    self.heights[parent] = parent.height
-                else:
-                    parent.height = max(parent.left.height, parent.right.height) + 1
-                    self.heights[parent] = parent.height
-
     def add_parents(self, root: Node):
         queue = []
 
@@ -386,12 +578,19 @@ class AvlTree:
 
 
 if __name__ == '__main__':
-    elems = [1, 4, 9]
+    elems = [-3, -2, 0, 3, 6, 8, 10]
     tree = AvlTree(elems)
-    tree.root.right.left, tree.root.right.right = Node(6), Node(11)
-    tree.root.right.left.par, tree.root.right.right.par = tree.root.right, tree.root.right
+    tree.root.right.left.left, tree.root.right.right.right = Node(5), Node(13)
+    tree.root.right.left.height = tree.heights[tree.root.right.left] = 2
     tree.add_parents(tree.root)
-    tree.add_heights(tree.root)
-    tree.insert_by_item(tree.root, 5)
+    tree.add_heights(tree.root, True)
+    tree.root.right.right.left = Node(9)
+    tree.root.right.right.left.par = tree.parents[tree.root.right.right.left] = tree.root.right.right
+    # tree.root.right.left.right = Node(7)
+    # tree.root.right.left.right.par = tree.parents[tree.root.right.left.right] = tree.root.right.left
+    tree.delete_by_item(tree.root, 10)
     print(tree)
+    tree.show_parents()
+    tree.show_heights()
+
 

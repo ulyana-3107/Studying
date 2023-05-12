@@ -25,18 +25,15 @@ def minimum_cost_2(seq: list) -> int:
 
 
 def rec_solution(seq, i, db: dict):
+    if i in db:
+        return db[i]
     if i == 1:
-        if i not in db:
-            db[i] = seq[1] - seq[0]
-        return db[i]
+        db[i] = seq[1] - seq[0]
     elif i == 2:
-        if i not in db:
-            db[i] = seq[2] - seq[1] + seq[1] - seq[0]
-        return db[i]
+        db[i] = seq[2] - seq[1] + seq[1] - seq[0]
     else:
-        if i not in db:
-            db[i] = seq[i] - seq[i-1] + min(rec_solution(seq, i - 1, db), rec_solution(seq, i - 2, db))
-        return round(db[i], 2)
+        db[i] = seq[i] - seq[i-1] + min(rec_solution(seq, i - 1, db), rec_solution(seq, i - 2, db))
+    return round(db[i], 2)
 
 
 if __name__ == '__main__':

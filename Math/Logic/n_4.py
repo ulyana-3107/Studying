@@ -17,4 +17,3 @@ def check_function(func: list) -> None:
 
 if __name__ == '__main__':
     check_function([1, 0, 0])
-    

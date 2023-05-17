@@ -29,4 +29,5 @@ results = [0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
 if __name__ == '__main__':
     for i in range(1, 18):
         name = eval('var' + str(i))
+
         print(name, name == bool(results[i - 1]), '\n')

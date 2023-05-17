@@ -63,6 +63,7 @@ def all_pairs(*functions) -> None:
 if __name__ == '__main__':
     arr1, arr2 = [0, 0, 0, 0, 0, 0, 1, 1], [1, 0, 1, 0, 1, 1, 1, 1]
     arr3 = [1, 1, 1, 1, 0, 1, 1, 1]
+
     print(logical_consequence(arr1, arr2, arr3))
     # arr1 = [1, 0, 1, 0]
     # arr2 = [0, 1, 0, 1]

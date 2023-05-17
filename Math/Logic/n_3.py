@@ -13,4 +13,5 @@ def if_equivalent(*tr_tables) -> bool:
 
 
 if __name__ == '__main__':
+
     print(if_equivalent([0, 1, 0, 1], [0, 1, 0, 1], [0, 1, 0, 1]))

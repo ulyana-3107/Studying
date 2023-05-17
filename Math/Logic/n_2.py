@@ -14,4 +14,5 @@ results = [9, 1, -3, 10, -3]
 if __name__ == '__main__':
     for i in range(1, 6):
         name = eval('var' + str(i))
+
         print(name, name == results[i - 1])

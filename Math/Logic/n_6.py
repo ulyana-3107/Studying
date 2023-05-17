@@ -75,8 +75,10 @@ def calc_writeback(writeback: str) -> int:
 if __name__ == '__main__':
     tests = ['1*(2+9-8)/3', '1+8*9+3/3-8', '2+9*7-4/2', '8/4', '2+2', '1-0']
     for t in tests:
+
         wr = write_back(t)
         print(wr)
+
         print(calc_writeback(wr), '\n')
 
 

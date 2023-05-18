@@ -1,2 +1,3 @@
-﻿data_structures/trees -> avl_tree.py
+﻿Math/logic/n_numberoftask.py
+data_structures/trees -> avl_tree.py
 LC -> rocks.py(edited)

@@ -112,6 +112,4 @@ if __name__ == '__main__':
     for t in tests:
 
         wr = write_back(t)
-        print(wr)
-
         print(calc_writeback(wr), '\n')

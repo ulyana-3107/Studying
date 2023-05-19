@@ -4,28 +4,8 @@
 from n_9_3 import create_truth_table
 
 
-def equivalence(a: int | bool, b: int | bool) -> int:
-    return int(a == b)
-
-
-def xor(a: int | bool, b: int | bool) -> int:
-    return 1 if a != b else 0
-
-
 def implication(a: int | bool, b: int | bool) -> int:
     return 0 if (a, b) == (1, 0) else 1
-
-
-def inversion(a: int | bool) -> int:
-    return int(not a)
-
-
-def conjugation(a: int | bool, b: int | bool) -> int:
-    return a and b
-
-
-def disjunction(a: int | bool, b: int | bool) -> int:
-    return a or b
 
 
 def write_back(expression: str) -> str:
@@ -73,7 +53,8 @@ def write_back(expression: str) -> str:
 
 def calc_writeback(writeback: str, values: list) -> int | bool:
     writeback = writeback.lower()
-    signs = {'!': inversion, '&': conjugation, '^': conjugation, '>': implication, '~': equivalence, '+': xor, '|':disjunction}
+    signs = {'!': lambda x: int(not(x)), '&': lambda x, y: int(x and y), '^': lambda x, y: int(x and y), '>': implication,
+             '~': lambda x, y: int(x == y), '+': lambda x, y: int(x != y), '|': lambda x, y: int(x or y)}
     vals = ''.join([v for v in writeback if v not in signs])
     ind, stack = {}, []
 
@@ -98,8 +79,8 @@ def calc_writeback(writeback: str, values: list) -> int | bool:
 
 
 if __name__ == '__main__':
-    expressions = ['A|B&!C~B', 'B>A^B~A']
-    signs = '|&!~^>'
+    expressions = ['A|B&!C~B', 'B>A^B~A', 'A>B|(!A^B)']
+    signs = '|&!~^>()'
 
     for exp in expressions:
         values = [v for v in exp if v not in signs]

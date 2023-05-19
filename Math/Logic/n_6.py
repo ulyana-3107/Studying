@@ -1,6 +1,6 @@
 # Написать программу, которая для строк математических выражений (а-ля «1+8*9+3/3-8») вычисляла значение этого
 # выражения. Для простоты считаем, что из операций доступны лишь +,-,*,/, а все значения – целые числа. Функция “eval”
-# под запретом. Подсказка: польская обратная запись.
+# под запретом.
 
 
 def write_back(expression: str) -> str:
@@ -64,24 +64,8 @@ def write_back(expression: str) -> str:
     return res_str
 
 
-def sum_op(a: int, b: int) -> int:
-    return a + b
-
-
-def subtract_op(a: int, b: int) -> int:
-    return a - b
-
-
-def mult_op(a: int, b: int) -> int:
-    return a * b
-
-
-def div_op(a: int, b: int) -> float|int:
-    return a/b
-
-
 def calc_writeback(writeback: str) -> int:
-    operators = {'+': sum_op, '-': subtract_op, '*': mult_op, '/': div_op}
+    operators = {'+': lambda a, b: a + b, '-': lambda a, b: a - b, '*': lambda a, b: a * b, '/': lambda a, b: int(a/b)}
     stack = []
     el = ''
 
@@ -112,4 +96,4 @@ if __name__ == '__main__':
     for t in tests:
 
         wr = write_back(t)
-        print(calc_writeback(wr), '\n')
+        print(wr, '\n', calc_writeback(wr), '\n\n')

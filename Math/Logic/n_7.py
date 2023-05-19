@@ -4,18 +4,6 @@
 from n_9_3 import create_truth_table
 
 
-def conjugation(a: int | bool, b: int | bool) -> bool:
-    return a and b
-
-
-def disjunction(a: int | bool, b: int | bool) -> bool:
-    return a or b
-
-
-def inversion(a: int | bool) -> int:
-    return int(not a)
-
-
 def write_back(expression: str) -> str:
     priority = {'(': 0, '!': 3, '&': 2, '^': 2, '|': 1}
     stack, res_str = [], ''
@@ -31,7 +19,7 @@ def write_back(expression: str) -> str:
 
             res_str += elem
         else:
-            if not len(stack):
+            if not len(stack) or elem == '(':
                 stack.append(elem)
                 continue
 
@@ -64,7 +52,8 @@ def write_back(expression: str) -> str:
 def calc_writeback(writeback: str, values: list) -> bool:
     writeback = writeback.lower()
     vals, ind = '', {}
-    signs = {'!': inversion, '&': conjugation, '^': conjugation, '|': disjunction}
+    signs = {'!': lambda x: int(not x), '&': lambda x, y: int(x and y), '^': lambda x, y: int(x and y),
+             '|': lambda x, y: int(x or y)}
 
     for elem in writeback:
         if elem not in signs:
@@ -94,8 +83,8 @@ def calc_writeback(writeback: str, values: list) -> bool:
 
 
 if __name__ == '__main__':
-    expressions = ['A&B|C', 'A^B^!C|B^A']
-    signs = '!&|^'
+    expressions = ['A&B|C', 'A^B^!C|B^A', 'P|(Q^!T)']
+    signs = '!&|^()'
 
     for exp in expressions:
 

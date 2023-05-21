@@ -1,3 +1,4 @@
-﻿Math/logic/n_numberoftask.py
+﻿Math ->случайные_величины_2.jpg
+Math/logic/n_numberoftask.py
 data_structures/trees -> avl_tree.py
 LC -> rocks.py(edited)

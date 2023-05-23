@@ -3,7 +3,7 @@
 # под запретом.
 
 
-def write_back(expression: str) -> str:
+def calc_expression(expression: str) -> str:
     operators = {'+': lambda a, b: a + b, '-': lambda a, b: a - b, '*': lambda a, b: a * b,
                  '/': lambda a, b: int(a / b)}
     stack, res, num = [], [], ''
@@ -74,5 +74,5 @@ if __name__ == '__main__':
     results = [1, 66, 15, 63, 2, 4, 1]
     for t in tests:
 
-        wr = write_back(t)
+        wr = calc_expression(t)
         print(wr, '\n')

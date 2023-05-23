@@ -4,7 +4,9 @@
 
 
 def write_back(expression: str) -> str:
-    stack, res_str, num = [], '', ''
+    operators = {'+': lambda a, b: a + b, '-': lambda a, b: a - b, '*': lambda a, b: a * b,
+                 '/': lambda a, b: int(a / b)}
+    stack, res, num = [], [], ''
     priority = {'(': 1, '*': 3, '/': 3, '+': 2, '-': 2, ')': None}
 
     for i in expression:
@@ -14,8 +16,7 @@ def write_back(expression: str) -> str:
 
         else:
             if len(num):
-                # square brackets are used to identify numbers that are > 9.
-                res_str += '[' + num + ']'
+                res.append(int(num))
                 num = ''
 
             if i == '(':
@@ -24,7 +25,9 @@ def write_back(expression: str) -> str:
             elif i == ')':
 
                 while stack[-1] != '(':
-                    res_str += stack.pop()
+                    res.append(stack.pop())
+                    operand, r, l = res.pop(), res.pop(), res.pop()
+                    res.append(operators[operand](l, r))
                 stack.pop()
 
             else:
@@ -45,8 +48,9 @@ def write_back(expression: str) -> str:
 
                             if len(stack):
                                 if priority[stack[-1]] >= pr:
-                                    res_str += stack.pop()
-
+                                    res.append(stack.pop())
+                                    operand, r, l = res.pop(), res.pop(), res.pop()
+                                    res.append(operators[operand](l, r))
                                 else:
                                     break
 
@@ -54,46 +58,21 @@ def write_back(expression: str) -> str:
                                 break
 
                         stack.append(i)
-
-    if len(num):
-        res_str += '[' + num + ']'
+    if num:
+        res.append(int(num))
 
     while len(stack):
-        res_str += stack.pop()
+        res.append(stack.pop())
+        operand, r, l = res.pop(), res.pop(), res.pop()
+        res.append(operators[operand](l, r))
 
-    return res_str
-
-
-def calc_writeback(writeback: str) -> int:
-    operators = {'+': lambda a, b: a + b, '-': lambda a, b: a - b, '*': lambda a, b: a * b, '/': lambda a, b: int(a/b)}
-    stack = []
-    el = ''
-
-    for elem in writeback:
-
-        if elem == '[':
-            el += ''
-            continue
-
-        elif elem in '0123456789':
-            el += elem
-
-        elif elem == ']':
-
-            stack.append(el)
-            el = ''
-
-        else:
-            r_op, l_op = int(stack.pop()), int(stack.pop())
-            stack.append(operators[elem](l_op, r_op))
-
-    return int(stack[0])
+    return res[0]
 
 
 if __name__ == '__main__':
     tests = ['1*(2+9-8)/3', '1+8*9+3/3-8', '(4+7)+12/3', '2+9*7-4/2', '8/4', '2+2', '1-0']
-    results = [1, 66, 63, 2, 4, 1]
+    results = [1, 66, 15, 63, 2, 4, 1]
     for t in tests:
 
         wr = write_back(t)
-        print(wr, '\n', calc_writeback(wr), '\n\n')
+        print(wr, '\n')

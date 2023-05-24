@@ -1,4 +1,5 @@
-﻿Math ->случайные_величины_2.jpg
-Math/logic/n_numberoftask.py
-data_structures/trees -> avl_tree.py
-LC -> rocks.py(edited)
+﻿Math/Logic/n_6, 7, 8, 9_3.py (edited)
+Regex -> regex4.py (edited)
+
+
+

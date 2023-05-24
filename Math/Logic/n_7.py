@@ -2,22 +2,27 @@
 # (а-ля «A & B | C»). Для простоты ограничимся операциями: конъюнкция (&), дизъюнкция (|), отрицание (!), а переменные
 # состоят из одной заглавной буквы.
 from n_9_3 import create_truth_table
+from collections import deque
 
 
-def write_back(expression: str) -> str:
+def calc_expression(expression: str, table: list) -> list:
+    signs = {'!': lambda x: int(not x), '&': lambda x, y: int(x and y), '^': lambda x, y: int(x and y),
+             '|': lambda x, y: int(x or y)}
     priority = {'(': 0, '!': 3, '&': 2, '^': 2, '|': 1}
-    stack, res_str = [], ''
+    stack, expr, res, vals, ind = [], [], [], set(), {}
 
     for elem in expression:
         if elem not in priority:
+
             if elem == ')':
 
                 while stack[-1] != '(':
-                    res_str += stack.pop()
+                    expr.append(stack.pop())
                 stack.pop()
                 continue
 
-            res_str += elem
+            expr.append(elem)
+
         else:
             if not len(stack) or elem == '(':
                 stack.append(elem)
@@ -33,7 +38,7 @@ def write_back(expression: str) -> str:
                 if len(stack):
                     pr_ = priority[stack[-1]]
                     if pr_ >= pr:
-                        res_str += stack.pop()
+                        expr.append(stack.pop())
                         continue
 
                     break
@@ -44,42 +49,47 @@ def write_back(expression: str) -> str:
             stack.append(elem)
 
     while len(stack):
-        res_str += stack.pop()
+        expr.append(stack.pop())
 
-    return res_str
-
-
-def calc_writeback(writeback: str, values: list) -> bool:
-    writeback = writeback.lower()
-    vals, ind = '', {}
-    signs = {'!': lambda x: int(not x), '&': lambda x, y: int(x and y), '^': lambda x, y: int(x and y),
-             '|': lambda x, y: int(x or y)}
-
-    for elem in writeback:
+    for elem in expr:
         if elem not in signs:
-            vals += elem
+            vals.add(elem)
+    vals = ''.join(vals)
 
-    for k, v in enumerate(vals):
-        if v not in ind:
-            ind[v] = k
+    for i in range(len(vals)):
+        ind[vals[i]] = i
 
-    stack = []
+    for t in table:
+        rpn = deque(expr)
+        lst = []
 
-    for elem in writeback:
-        if elem in vals:
-            stack.append(values[ind[elem]])
-            continue
+        while len(rpn) > 1:
+            while rpn[0] not in signs:
+                lst.append(rpn.popleft())
 
-        if elem == '!':
-            op = stack.pop()
-            stack.append(signs[elem](op))
-            continue
+            lst.append(rpn.popleft())
 
-        r_op, l_op = stack.pop(), stack.pop()
-        stack.append(signs[elem](l_op, r_op))
-        continue
+            if lst[-1] == '!':
+                operand, r = lst.pop(), lst.pop()
 
-    return stack[-1]
+                if not type(r) == int:
+                    r = t[ind[r]]
+
+                rpn.appendleft(signs[operand](r))
+
+            else:
+                operand, r, l = lst.pop(), lst.pop(), lst.pop()
+
+                if not type(l) == int:
+                    l = t[ind[l]]
+                if not type(r) == int:
+                    r = t[ind[r]]
+
+                rpn.appendleft(signs[operand](l, r))
+
+        res.append(rpn[0])
+
+    return res
 
 
 if __name__ == '__main__':
@@ -90,11 +100,5 @@ if __name__ == '__main__':
 
         nums = [num for num in exp if num not in signs]
         table = create_truth_table(len(set(nums)))
-        wr = write_back(exp)
-        results = []
 
-        for t in table:
-            results.append(calc_writeback(wr, t))
-
-        print(exp, results, sep = '\n')
-        print('\n' + '-'*30)
+        print(calc_expression(exp, table))

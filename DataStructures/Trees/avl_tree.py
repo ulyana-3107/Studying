@@ -33,6 +33,8 @@ class AvlTree:
         else:
             self.root = None
         self.parents, self.heights = {}, {}
+        self.add_parents(self.root)
+        self.add_heights(self.root)
 
     def __str__(self, node=None):
         if self.is_empty():
@@ -69,7 +71,8 @@ class AvlTree:
                     parent.height -= int(bool(parent.left is None))
                     self.heights[parent] = parent.height
 
-            self.check_balance(parent)
+            n = parent.left if parent.left else parent.right
+            self.check_balance(n)
 
         # node to be deleted has 1 child tree
         elif child_num == 1:
@@ -312,8 +315,6 @@ class AvlTree:
         r_h = root.right.height if root.right else 0
         self.heights[root] = root.height = max(l_h, r_h) + 1
 
-        self.show_heights()
-
     def show_heights(self):
         print('Heights:\n')
 
@@ -459,7 +460,6 @@ class AvlTree:
                 self.parents[parent.right] = parent.right.par = parent
                 queue.append(parent.right)
 
-        self.show_parents()
 
     def show_parents(self):
         print('Parents:\n')
@@ -608,20 +608,10 @@ class AvlTree:
 
 
 if __name__ == '__main__':
-
-    elems = [-7, -6, 0, 8]
+    elems = [64, 32, 16, 48, 8, 24, 72, 68, 84]
     tree = AvlTree(elems)
-    tree.add_parents(tree.root)
-    tree.add_heights(tree.root, True)
-    tree.insert_by_item(tree.root, -4)
-    tree.root.left.left.left = Node(-9)
-    tree.root.left.left.left.par = tree.parents[tree.root.left.left.left] = tree.root.left.left
-    tree.root.left.left.height, tree.root.left.height, tree.root.height = 2, 3, 4
-    tree.heights[tree.root.left.left], tree.heights[tree.root.left], tree.heights[tree.root] = 2, 3, 4
-    tree.root.left.right.left = Node(-5)
-    tree.parents[tree.root.left.right.left] = tree.root.left.right.left.par = tree.root.left.right
-    tree.root.left.right.height = tree.heights[tree.root.left.right] = 2
-    tree.delete_by_item(tree.root, -6)
+    tree.insert_by_item(tree.root, 70)
+    tree.delete_by_item(tree.root, 84)
     print(tree)
     tree.show_parents()
     tree.show_heights()

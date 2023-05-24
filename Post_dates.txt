@@ -1,4 +1,5 @@
-﻿Math/Logic/n_6, 7, 8, 9_3.py (edited)
+﻿OS/working_with_paths.py
+Math/Logic/n_6, 7, 8, 9_3.py (edited)
 Regex -> regex4.py (edited)
 DataStructures/Trees -> avl_tree.py (edited)
 

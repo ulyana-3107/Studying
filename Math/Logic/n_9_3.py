@@ -22,25 +22,22 @@ def disjunction(a: int | bool, b: int | bool) -> bool:
 
 
 def create_truth_table(n: int) -> list:
-    """
-    n - number of parameters in a formula
-    """
-    num = 2 ** n
-    table = [[] for _ in range(num)]
-    val, counter = 0, 0
+    table = [[] for i in range(2**n)]
 
     for i in range(n):
-        mid = int(num/2**(i + 1))
+        middle = 2**n//2**i
+        elem, j = 0, 0
 
         for t in table:
-            t.append(val)
-            counter += 1
+            if j == middle:
+                j = 0
+                elem = 1 if elem == 0 else 0
 
-            if counter == mid:
-                counter = 0
-                val = 1 if val == 0 else 0
+            t.append(elem)
+            j += 1
 
-    return table
+    for t in table:
+        yield t
 
 
 def prove_tautology1(table: list):

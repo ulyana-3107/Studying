@@ -39,5 +39,9 @@ def copy_files(src: str | Path, ext: str = '.xml') -> None:
                 queue.append(elem)
 
 
-src = 'C:\\Users\\andre\\PycharmProjects\\Studying\\OS\\files\\test2'
-copy_files(src)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Script to copy files from source to destination folder')
+    parser.add_argument('src', type=str, help='path to source folder')
+    parser.add_argument('--extension', type=str, default=None, help='file with given extension will be copied')
+    args = parser.parse_args()
+    copy_files(args.src, args.extension)

@@ -10,7 +10,7 @@ def need_replace(m) -> bool:
 
 
 def div_to_span(text: str) -> str:
-    p = r'((<div)(\s?)(id=[\'"]spannable[\'"])(.*?>)((?:(?:<div.*?</div>)?.*))</(div)>)'
+    p = r'((<div)(.*?)(id=[\'"]spannable[\'"])(.*?>)((?:(?:<div.*?</div>)?.*))</(div)>)'
     sub_p = r'<span\3\4\5\6</span>'
 
     for obj in re.findall(p, text):
@@ -35,7 +35,10 @@ if __name__ == '__main__':
 
     text4 = '<div><span id="spannable">12345678901234567890</span></div>'
 
+    text5 = '<div style="color:red" id="spannable">12345678901234567890</div>'
+
     print(div_to_span(text1))
     print(div_to_span(text2))
     print(div_to_span(text3))
     print(div_to_span(text4))
+    print(div_to_span(text5))

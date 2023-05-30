@@ -489,7 +489,7 @@ class AvlTree:
 
             self.insert_by_item(item, root.left)
 
-        else:
+        elif item > root.value:
             if not root.right:
 
                 new = Node(item)
@@ -502,6 +502,9 @@ class AvlTree:
                 return
 
             self.insert_by_item(item, root.right)
+
+        else:
+            return
 
     def find_deepest_node(self, root):
         if root is None:
@@ -614,10 +617,9 @@ class AvlTree:
 
 
 if __name__ == '__main__':
-    elems = [64, 32, 16, 48, 8, 24, 72, 68, 84]
+    elems = [1, 2, 3, 4, 5]
     tree = AvlTree(elems)
-    tree.insert_by_item(70)
-    tree.delete_by_item(48)
+    tree.insert_by_item(4)
     print(tree)
     tree.show_parents()
     tree.show_heights()

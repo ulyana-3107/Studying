@@ -11,24 +11,36 @@ import re
 import shutil
 
 
+# <img src="путь к картинке"> pictures add
+# not existing path check
+# проверка на уже посещенные ссылки
+
+
 def copy_files(src: str | Path, dst: str | Path) -> None:
     queue = deque([src])
     pat = r'href=[\'"](.*?)[\'"]'
+    pat2 = r'<img src\s?=\s?[\'"](.+?)[\'"]'
+    db = set()
 
     while queue:
         p = Path(queue.popleft())
         text = p.read_text()
         links = re.findall(pat, text)
+        img_links = re.findall(pat2, text)
+        links.extend(img_links)
 
         for elem in links:
+            path = Path(elem)
+            full = path.resolve()
 
-            if '.html' in elem:
-                queue.append(elem)
+            if full.exists():
+                if '.html' in elem and elem not in db:
+                    queue.append(elem)
+                    db.add(elem)
 
-            else:
-                f_name = dst + '\\' + Path(elem).parts[-1]
+                f_name = dst + '\\' + path.parts[-1]
                 Path(f_name).touch()
-                shutil.copyfile(Path(elem), f_name)
+                shutil.copyfile(full, f_name)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,6 @@
 # 4. Дан путь к html-файлу (через cmd) и путь к папке для вывода (--output). Необходимо скопировать данный файл и все
 # файлы, на который он ссылается (картинки, другие html-файлы). **Важно: Если есть ссылка на другой html-файл, то
 # проверить наличие ссылок и в нём. **
-#    1. Скопировать все просто в одну папку (эдакая мешанина).
 
 
 from pathlib import *
@@ -9,11 +8,6 @@ import argparse
 from collections import deque
 import re
 import shutil
-
-
-# <img src="путь к картинке"> pictures add
-# not existing path check
-# проверка на уже посещенные ссылки
 
 
 def copy_files(src: str | Path, dst: str | Path) -> None:

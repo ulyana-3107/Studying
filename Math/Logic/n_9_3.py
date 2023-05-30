@@ -22,22 +22,31 @@ def disjunction(a: int | bool, b: int | bool) -> bool:
 
 
 def create_truth_table(n: int) -> list:
-    table = [[] for i in range(2**n)]
+    all = 2 ** n
+    stop_indx, elems = {}, {i: [0, 0] for i in range(n)}
 
     for i in range(n):
-        middle = 2**n//2**i
-        elem, j = 0, 0
+        stop_indx[i] = all // 2 ** (i + 1)
 
-        for t in table:
-            if j == middle:
-                j = 0
-                elem = 1 if elem == 0 else 0
+    for i in range(all):
+        lst = []
 
-            t.append(elem)
-            j += 1
+        for j in range(n):
+            stop = stop_indx[j]
 
-    for t in table:
-        yield t
+            if elems[j][1] < stop:
+                lst.append(elems[j][0])
+                elems[j][1] += 1
+
+            elif elems[j][1] == stop:
+                lst.append(1) if elems[j][0] == 0 else lst.append(0)
+                elems[j] = [lst[-1], 1]
+
+            else:
+                lst.append(elems[j][0])
+                elems[j][1] += 1
+
+        yield lst
 
 
 def prove_tautology1(table: list):

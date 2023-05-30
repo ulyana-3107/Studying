@@ -3,6 +3,7 @@
 # 2. В папку, указанную в значении тега `<SAVE>...</SAVE>` (могут быть разными для каждого файла).
 
 
+from __future__ import annotations
 from pathlib import *
 import argparse
 from collections import deque
@@ -13,7 +14,7 @@ import shutil
 def copy_files(src: str | Path, ext: str = '.xml') -> None:
     dst = None
     queue = deque([src])
-    pat = r'<save>(.*?)<'
+    pat = r'<SAVE>(.*?)<'
 
     while queue:
         p = Path(queue.popleft())
@@ -23,12 +24,12 @@ def copy_files(src: str | Path, ext: str = '.xml') -> None:
             if p.suffix == ext:
                 text = p.read_text()
 
-                if '<save>' in text or '<save>'.upper() in text:
+                if '<SAVE>' in text:
                     dst = re.search(pat, text, flags=re.DOTALL).groups()[0]
                     dst = Path(dst)
 
                     if not dst.exists() or not dst.is_dir():
-                        Path.mkdir(dst)
+                        Path(dst).mkdir(parents=True, exist_ok=True)
 
                     file_name = dst / p.parts[-1]
                     Path(file_name).touch()
@@ -37,6 +38,8 @@ def copy_files(src: str | Path, ext: str = '.xml') -> None:
         else:
             for elem in p.iterdir():
                 queue.append(elem)
+
+    print('Files copied.')
 
 
 if __name__ == '__main__':

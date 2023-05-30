@@ -1,12 +1,24 @@
 import re
 
 
-def div_span(text: str) -> str:
+def need_replace(m) -> bool:
+    answer = False
+    if len(m[5]) < 21:
+        answer = True
 
-    p = r'((<div)(.*?)id=[\'"]spannable[\'"](.*?>)(.{,20})</div>)'
-    sub_pat = r'<span\3\4\5</span>'
+    return answer
 
-    return re.sub(p, sub_pat, text)
+
+def div_to_span(text: str) -> str:
+    p = r'((<div)(\s?)(id=[\'"]spannable[\'"])(.*?>)((?:(?:<div.*?</div>)?.*))</(div)>)'
+    sub_p = r'<span\3\4\5\6</span>'
+
+    for obj in re.findall(p, text):
+        if need_replace(obj):
+            res = re.sub(p, sub_p, obj[0])
+            text = text.replace(obj[0], res)
+
+    return text
 
 
 if __name__ == '__main__':
@@ -18,3 +30,12 @@ if __name__ == '__main__':
     '''
 
     text2 = '<div id="spannable">12345678901234567890</div>'
+
+    text3 = '<div id="spannable">hihihihi<div>45</div></div>'
+
+    text4 = '<div><span id="spannable">12345678901234567890</span></div>'
+
+    print(div_to_span(text1))
+    print(div_to_span(text2))
+    print(div_to_span(text3))
+    print(div_to_span(text4))

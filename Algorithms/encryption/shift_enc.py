@@ -16,7 +16,6 @@ def read_text(path: str) -> str:
 
 
 def shift_encrypt(text: str, key: str) -> str:
-    print(letters)
     indxs, text2 = {}, ''
 
     for i in range(len(letters)):

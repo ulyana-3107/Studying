@@ -12,7 +12,7 @@ def read_text(file_path: str) -> str:
     if Path(file_path).exists:
         return Path(file_path).read_text()
 
-    raise FileNotFoundError(f'Given file {Path(file_path).parts[-1]} does not exist!')
+    raise FileNotFoundError()
 
 
 def ceasar_encrypt(text: str, shift: int = 2) -> str:

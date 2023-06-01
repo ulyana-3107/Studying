@@ -15,7 +15,12 @@ def read_text(path: str) -> str:
     raise FileNotFoundError()
 
 
-def shift_encrypt(text: str, key: str) -> str:
+def shift_encrypt(path: str, dst_path: str, key: str) -> None:
+    if not Path(path).exists():
+        raise FileExistsError()
+
+    text = Path(path).read_text()
+
     indxs, text2 = {}, ''
 
     for i in range(len(letters)):
@@ -45,10 +50,19 @@ def shift_encrypt(text: str, key: str) -> str:
         i += 1
         text2 += let2
 
-    return text2
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(text2)
 
 
-def decrypt_from_shift(text: str, key: str) -> str:
+def decrypt_from_shift(path: str, dst_path: str, key: str) -> None:
+    if not Path(path).exists():
+        raise FileExistsError()
+
+    text = Path(path).read_text()
+
     len_nums = len([elem for elem in text if elem.lower() in letters])
     real_text, indxs = '', {}
 
@@ -77,18 +91,21 @@ def decrypt_from_shift(text: str, key: str) -> str:
         i -= 1
         real_text = let2 + real_text
 
-    return real_text
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(real_text)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Shift encryption realisation')
     parser.add_argument('path', type=str, help='path to the file with text')
+    parser.add_argument('dst_path', type=str, help='path for the en/de_crypted text to be written')
     parser.add_argument('key', type=str, help='key for encryption')
     parser.add_argument('-d', '--decrypt', type=bool, default=False, help='will decrypt text if True, else encrypt')
     args = parser.parse_args()
-    text = read_text(args.path)
     if args.decrypt:
-        res = decrypt_from_shift(text, args.key)
+        decrypt_from_shift(args.path, args.dst_path,  args.key)
     else:
-        res = shift_encrypt(text, args.key)
-    print(res)
+        shift_encrypt(args.path, args.dst_path, args.key)

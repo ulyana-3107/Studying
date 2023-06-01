@@ -12,7 +12,12 @@ def read_text(path: str) -> str:
     raise FileNotFoundError()
 
 
-def xor_encrypt(text: str, key: str) -> str:
+def xor_encrypt(path: str, dst_path: str,  key: str) -> None:
+    if not Path(path).exists():
+        raise FileExistsError()
+
+    text = Path(path).read_text()
+
     text2, i = '', 0
     cycle_ = cycle([i + 1 for i in range(len(key))])
 
@@ -22,10 +27,18 @@ def xor_encrypt(text: str, key: str) -> str:
 
         i += 1
 
-    return text2
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(text2)
 
 
-def decrypt_from_xor(text: str, key: str) -> str:
+def decrypt_from_xor(path: str, dst_path: str, key: str) -> None:
+    if not Path(path).exists():
+        raise FileExistsError()
+
+    text = Path(path).read_text()
 
     real_text, ind = '', len(text) - 1
 
@@ -42,21 +55,22 @@ def decrypt_from_xor(text: str, key: str) -> str:
         real_text = chr(elem) + real_text
         ind -= 1
 
-    return real_text
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(real_text)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='XOR encryption and decryption')
     parser.add_argument('path', type=str, help='path to the file with text')
+    parser.add_argument('dst_path', type=str, help='path for the en/de_crypted text to be written')
     parser.add_argument('key', type=str, help='key to encrypt given text')
     parser.add_argument('-d', '--decrypt', type=bool, default=False, help='if True, will decrypt text else encrypt')
     args = parser.parse_args()
 
-    text = read_text(args.path)
-
     if args.decrypt:
-        res = decrypt_from_xor(text, args.key)
+        decrypt_from_xor(args.path, args.dst_path,  args.key)
     else:
-        res =xor_encrypt(text, args.key)
-
-    print(res)
+        xor_encrypt(args.path, args.dst_path, args.key)

@@ -15,8 +15,13 @@ def read_text(file_path: str) -> str:
     raise FileNotFoundError()
 
 
-def ceasar_encrypt(text: str, shift: int = 2) -> str:
+def caesar_encrypt(path: str, dst_path: str, shift: int = 2) -> None:
+    if not Path(path).exists:
+        raise FileExistsError()
+
+    text = Path(path).read_text()
     indxs, text2 = {}, ''
+
     for i in range(len(letters)):
         if letters[i] in text or letters[i].upper():
             indxs[letters[i]] = i
@@ -39,10 +44,19 @@ def ceasar_encrypt(text: str, shift: int = 2) -> str:
 
         text2 += let2
 
-    return text2
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(text2)
 
 
-def decrypt_from_ceasar(text: str, shift: int = 2) -> str:
+def decrypt_from_caesar(path: str, dst_path: str, shift: int = 2) -> None:
+    if not Path(path).exists():
+        raise FileExistsError()
+
+    text = Path(path).read_text()
+
     indxs, real_text = {}, ''
     for i in range(len(letters)):
         if letters[i] in text or letters[i].upper() in text:
@@ -61,20 +75,24 @@ def decrypt_from_ceasar(text: str, shift: int = 2) -> str:
             let2 = let
         real_text += let2
 
-    return real_text
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(real_text)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Ceasar encryption')
     parser.add_argument('path', type=str, help='path to the file with text')
+    parser.add_argument('dst_path', type=str, help = 'path for the en/de_crypted text to be written')
     parser.add_argument('-sh', '--shift', type=int, default=2, help='number of indexes to shift letters')
     parser.add_argument('-dec', '--decrypt', type=bool, default=False, help='will decrypt text if True, else encrypt')
     args = parser.parse_args()
-    text = read_text(args.path)
     if args.decrypt:
-        res = decrypt_from_ceasar(text, args.shift)
+        decrypt_from_caesar(args.path, args.dst_path,  args.shift)
     else:
-        res = ceasar_encrypt(text, args.shift)
-    print(res)
+        caesar_encrypt(args.path, args.dst_path, args.shift)
+
 
 

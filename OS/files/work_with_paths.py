@@ -16,7 +16,6 @@ import argparse
 import os
 from pathlib import Path
 from collections import deque
-from pyshortcuts import make_shortcut
 
 
 def procedure_count_objects_and_calc_weight(path: str) -> None:

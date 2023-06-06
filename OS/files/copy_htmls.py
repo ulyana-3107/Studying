@@ -8,6 +8,7 @@ import argparse
 from collections import deque
 import re
 import shutil
+import os
 
 
 def copy_files(src: str | Path, dst: str | Path) -> None:
@@ -15,6 +16,9 @@ def copy_files(src: str | Path, dst: str | Path) -> None:
     pat = r'href=[\'"](.*?)[\'"]'
     pat2 = r'<img src\s?=\s?[\'"](.+?)[\'"]'
     db = set()
+    base_path = Path(src).parent
+    if not Path(dst).exists or not Path(dst).is_dir():
+        Path(dst).mkdir()
 
     while queue:
         p = Path(queue.popleft())
@@ -25,12 +29,12 @@ def copy_files(src: str | Path, dst: str | Path) -> None:
 
         for elem in links:
             path = Path(elem)
-            full = path.resolve()
+            full = base_path.joinpath(path.name)
+            db.add(full)
 
             if full.exists():
-                if '.html' in elem and elem not in db:
-                    queue.append(elem)
-                    db.add(elem)
+                if '.html' in elem and full not in db:
+                    queue.append(full)
 
                 f_name = dst + '\\' + path.parts[-1]
                 Path(f_name).touch()

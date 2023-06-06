@@ -1,4 +1,9 @@
-﻿Recursion -> combinations.py(edited)
+﻿Algorithms/encryption/caesr.py, shift_enc.py, xor_encryption.py
+OS/files/replace_parts1.py, repl_with_given_parts.py
+OS/files/encrypt_by_given_type.py
+Math/Logic/fast_calcs.py
+Math/Logic/byte_cl.py
+Recursion -> combinations.py(edited)
 OS/files/copy.xml_to_given_fold.py(edited)
 OS/files/copy_htmls.py(edited)
 Math/Logic/n_9_3.py (edited)

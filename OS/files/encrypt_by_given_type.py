@@ -11,6 +11,7 @@ import subprocess
 from pathlib import Path
 import csv
 import argparse
+import time
 
 
 def en_or_de_crypt_texts(path: str, call_paths: list) -> None:
@@ -30,13 +31,46 @@ def en_or_de_crypt_texts(path: str, call_paths: list) -> None:
             enc_type, mode, key = enc_data['Enc_type'], bool(modes[enc_data['Mode']]), enc_data['Key']
 
             if int(enc_type.strip()) == 1:
-                subprocess.call(['python', path1, src_path, dst_path, f'--decrypt= {mode}'])
+                t = time.time()
+
+                proc = subprocess.run(['python', path1, src_path, dst_path, f'--decrypt= {mode}'],
+                                      capture_output=True, text=True)
+
+                t2 = time.time()
+
+                if not proc.returncode == 0:
+                    print(proc.stderr)
+                    continue
+
+                print(f'Time taken: {t2 - t}')
 
             elif int(enc_type.strip()) == 2:
-                subprocess.call(['python', path2, src_path, dst_path, key, f'--decrypt= {mode}'])
+                t = time.time()
+
+                proc = subprocess.run(['python', path2, src_path, dst_path, key, f'--decrypt= {mode}'],
+                               capture_output=True, text=True)
+
+                t2 = time.time()
+
+                if not proc.returncode == 0:
+                    print(proc.stderr)
+                    continue
+
+                print(f'Time taken: {t2 - t}')
 
             else:
-                subprocess.call(['python', path3, src_path, dst_path, key, f'--decrypt= {mode}'])
+                t = time.time()
+
+                proc = subprocess.run(['python', path3, src_path, dst_path, key, f'--decrypt= {mode}'],
+                                      capture_output=True, text=True)
+
+                t2 = time.time()
+
+                if not proc.returncode == 0:
+                    print(proc.stderr)
+                    continue
+
+                print(f'Time taken: {t2 - t}')
 
 
 if __name__ == '__main__':

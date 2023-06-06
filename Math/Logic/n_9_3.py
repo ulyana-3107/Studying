@@ -1,3 +1,6 @@
+from collections import deque
+
+
 def implication(a: int | bool, b: int | bool) -> bool:
     if a and not b:
         return False
@@ -21,32 +24,27 @@ def disjunction(a: int | bool, b: int | bool) -> bool:
     return a or b
 
 
+def int_to_binary(num: int, quality: int) -> list:
+    bin = deque([])
+
+    while num > 0:
+        bin.appendleft(num % 2)
+        num = num // 2
+
+    for i in range(quality - len(bin)):
+        bin.appendleft(0)
+
+    return list(bin)
+
+
 def create_truth_table(n: int) -> list:
     all = 2 ** n
-    stop_indx, elems = {}, {i: [0, 0] for i in range(n)}
-
-    for i in range(n):
-        stop_indx[i] = all // 2 ** (i + 1)
-
     for i in range(all):
-        lst = []
-
-        for j in range(n):
-            stop = stop_indx[j]
-
-            if elems[j][1] < stop:
-                lst.append(elems[j][0])
-                elems[j][1] += 1
-
-            elif elems[j][1] == stop:
-                lst.append(1) if elems[j][0] == 0 else lst.append(0)
-                elems[j] = [lst[-1], 1]
-
-            else:
-                lst.append(elems[j][0])
-                elems[j][1] += 1
-
-        yield lst
+        if i == 0:
+            yield [0] * n
+        else:
+            lst = int_to_binary(i, n)
+            yield lst
 
 
 def prove_tautology1(table: list):

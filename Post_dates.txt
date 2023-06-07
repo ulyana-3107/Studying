@@ -1,6 +1,6 @@
 ﻿Algorithms/encryption/caesr.py, shift_enc.py (edited)
 OS/files/encrypt_by_given_type.py, copy_htmls.py (edited)
-Math/Logic/n_9_3.py, n_3_3_edited.jpg (edited)
+Math/Logic/n_9_3.py, n3_2nd3_edited.jpg, n2_2nd4_edited.jpg (edited)
 
 
 

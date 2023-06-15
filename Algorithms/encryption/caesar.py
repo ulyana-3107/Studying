@@ -8,11 +8,24 @@ from string import ascii_lowercase as letters
 import argparse
 
 
-def encrypt(path: str, dst_path: str, decrypt: bool = False, shift: int = 2) -> None:
+def read_text(path: str) -> str:
     if not Path(path).exists:
         raise FileExistsError()
 
-    text = Path(path).read_text('utf-8-sig')
+    with open(path, 'r', encoding='utf-8-sig') as fr:
+        text = fr.read()
+        return text
+
+
+def write_encrypted_text(text: str, dst_path: str) -> None:
+    if not Path(dst_path).exists():
+        Path(dst_path).touch()
+
+    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
+        writer.write(text)
+
+
+def encrypt(text, decrypt: bool = False, shift: int = 2) -> str:
     indxs, text2 = {}, ''
 
     for i in range(len(letters)):
@@ -39,11 +52,7 @@ def encrypt(path: str, dst_path: str, decrypt: bool = False, shift: int = 2) -> 
 
         text2 += let2
 
-    if not Path(dst_path).exists():
-        Path(dst_path).touch()
-
-    with open(dst_path, 'w', encoding='utf-8-sig') as writer:
-        writer.write(text2)
+    return text2
 
 
 if __name__ == '__main__':
@@ -53,11 +62,14 @@ if __name__ == '__main__':
     parser.add_argument('-dec', '--decrypt', type=bool, default=False, help='will decrypt text if True, else encrypt')
     parser.add_argument('-sh', '--shift', type=int, default=2, help='number of indexes to shift letters')
     args = parser.parse_args()
-    encrypt(args.path, args.dst_path, args.decrypt, args.shift)
-    # p1 = r'Algorithms\encryption\text.txt'
-    # p2 = r'res.txt'
-    # p3 = r'decrypted.txt'
-    # encrypt(p2, p3, True, 4)
+
+    text = read_text(args.path)
+
+    text_enc = encrypt(text, args.decrypt, args.shift)
+    write_encrypted_text(text_enc, args.dst_path)
+
+
+
 
 
 

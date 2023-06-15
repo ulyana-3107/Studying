@@ -8,11 +8,18 @@ import argparse
 from pathlib import Path
 
 
-def encrypt(path: str, dst_path: str, key: str, decrypt: bool = False) -> None:
+def read_text(path: str) -> str:
+
     if not Path(path).exists():
         raise FileExistsError()
 
-    text = Path(path).read_text('utf-8-sig')
+    with open(path, 'r', encoding='utf-8-sig') as reader:
+        text = reader.read()
+        return text
+
+
+def encrypt(text, key: str, decrypt: bool = False) -> str:
+
     indxs_txt, indxs_key, text2 = {}, {}, ''
 
     for i in range(len(letters)):
@@ -44,11 +51,15 @@ def encrypt(path: str, dst_path: str, key: str, decrypt: bool = False) -> None:
         i += 1
         text2 += let2
 
+    return text2
+
+
+def write_encrypted_text(text: str, dst_path: str) -> None:
     if not Path(dst_path).exists():
         Path(dst_path).touch()
 
     with open(dst_path, 'w', encoding='utf-8-sig') as writer:
-        writer.write(text2)
+        writer.write(text)
 
 
 if __name__ == '__main__':
@@ -57,5 +68,8 @@ if __name__ == '__main__':
     parser.add_argument('dst_path', type=str, help='path for the en/de_crypted text to be written')
     parser.add_argument('key', type=str, help='key for encryption')
     parser.add_argument('-d', '--decrypt', type=bool, default=False, help='will decrypt text if True, else encrypt')
+
     args = parser.parse_args()
-    encrypt(args.path, args.dst_path, args.key, args.decrypt)
+    text = read_text(args.path)
+    text2 = encrypt(text, args.key, args.decrypt)
+    write_encrypted_text(text2, args.dst_path)

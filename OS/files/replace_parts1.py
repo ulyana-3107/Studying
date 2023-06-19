@@ -65,6 +65,8 @@ def repl_parts(file: str, size: int):
         sub_text = '#' * elem[2]
         file.write(sub_text.encode())
 
+    file.close()
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Replaces some parts of a text in a given folder with sign')

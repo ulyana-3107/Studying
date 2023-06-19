@@ -5,6 +5,7 @@
 import argparse
 from pathlib import Path
 import re
+from collections import deque
 
 
 def repl_parts(src_file_path: str, repl_parts_path: str, b_size: int = 32) -> None:
@@ -53,6 +54,65 @@ def repl_parts(src_file_path: str, repl_parts_path: str, b_size: int = 32) -> No
                         break
 
 
+def split_parts(file: str) -> list:
+    text = Path(file).read_text()
+    return text.split('\n')
+
+
+def find_part(txt: str) -> int:
+    l = len(txt) - 1
+    while l > -1:
+        if txt[l] == ']':
+            return 0
+        elif txt[l] == '[':
+            return l
+        l -= 1
+    return 0
+
+
+def repl_parts2(src_file: str, parts_file: str, b_size: int = 32) -> None:
+    parts = deque(split_parts(parts_file))
+    indx, marks = 0, []
+    pat, num_pat = r'(\[\s*old_part\s*:\s*\d+\s*\])', r'\d+'
+
+    with open(src_file, 'r', encoding='utf-8-sig') as reader:
+        sub_text = None
+
+        while True:
+            text = reader.read(b_size)
+            if sub_text:
+                text = sub_text + text
+
+            if text:
+                for m in re.finditer(pat, text):
+                    marks.append([indx, m.span(), parts.popleft()])
+
+                part = find_part(text)
+                if part:
+                    sub_text = text[part:]
+                    indx += part
+                    continue
+
+                sub_text = None
+                indx += b_size
+
+            else: break
+
+    file = open(src_file, 'r+b')
+
+    for mark in marks:
+        sub_text = mark[2]
+
+        if len(sub_text) < mark[1][1] - mark[1][0]:
+            rest = mark[1][1] - mark[1][0] - len(sub_text)
+            sub_text += ' ' * rest
+
+        file.seek(mark[0] + mark[1][0], 0)
+        file.write(sub_text.encode())
+
+    file.close()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Replaces some parts with given parts')
     parser.add_argument('file_path', type=str, help='path to a source file')
@@ -60,4 +120,4 @@ if __name__ == '__main__':
     parser.add_argument('byte_size', type=int, help='maximum part size in bytes to read file')
     args = parser.parse_args()
 
-    repl_parts(args.file_path, args.parts_file_path, args.byte_size)
+    repl_parts2(args.file_path, args.parts_file_path, args.byte_size)

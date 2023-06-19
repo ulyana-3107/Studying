@@ -53,7 +53,7 @@ def repl_parts(file: str, size: int):
                     continue
 
                 sub_text = None
-                indx += 32
+                indx += size
 
             else:
                 break

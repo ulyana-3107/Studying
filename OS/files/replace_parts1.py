@@ -9,64 +9,61 @@
 import argparse
 import re
 from pathlib import Path
+import sys
+import re
 
 
-def repl_parts(file_name: str, b_size: int = 32) -> None:
-    f_name2 = 'edited_' + str(Path(file_name).parts[-1])
-    pat = r'(\[old_part\s*:\s*\d+\s*\])'
-    pat2 = r'(\d+)'
-    rest = ''
+def find_part(text: str) -> int:
+    l = len(text) - 1
 
-    with open(file_name, 'rb') as reader:
-        with open(f_name2, 'w', encoding='utf-8-sig') as writer:
-            while True:
-                parts, repl_parts = [], []
-                sub_text = reader.read(b_size)
+    while l > -1:
+        if text[l] == '[':
+            return l
+        elif text[l] == ']':
+            return 0
+        l -= 1
 
-                if sub_text:
-                    sub_text = rest + str(sub_text, 'utf-8-sig')
-                    rest = ''
-                    closed = False
-                    end, i = len(sub_text) // 2, len(sub_text) - 1
+    return 0
 
-                    while i > end:
-                        if sub_text[i] == '[':
 
-                            if closed:
-                                break
+def repl_parts(file: str, size: int):
+    indx, marks = 0, []
+    pat = r'(\[old_part:\s*\d+\s*\])'
+    num_pat = r'(\d+)'
 
-                            index = - (len(sub_text) - abs(i))
-                            rest = sub_text[index:]
-                            sub_text = sub_text[: index]
-                            break
+    with open(file, 'r', encoding='utf-8-sig') as r:
+        sub_text = None
+        while True:
+            text = r.read(size)
 
-                        elif sub_text[i] == ']':
-                            closed = True
+            if sub_text:
+                text = sub_text + text
 
-                        i -= 1
+            if text:
+                for m in re.finditer(pat, text):
+                    txt = text[m.span()[0]: m.span()[1]]
+                    num = int(re.findall(num_pat, txt)[0])
+                    marks.append([indx, m.span(), num])
 
-                    for it in re.finditer(pat, sub_text):
-                        num = int(re.findall(pat2, sub_text[it.span()[0]: it.span()[1]])[0])
-                        parts.append([it.span()[0], sub_text[it.span()[0]: it.span()[1]], num])
+                part = find_part(text)
 
-                    for p in parts:
-                        start, elem, num = p
+                if part:
+                    sub_text = text[part:]
+                    indx += part
+                    continue
 
-                        if num > len(elem):
-                            sub_part = elem + sub_text[start + len(elem): start + num]
+                sub_text = None
+                indx += 32
 
-                        else:
-                            sub_part = sub_text[start: start + num]
+            else:
+                break
 
-                        repl_parts.append([sub_part, '#' * len(sub_part)])
+    file = open(file, 'r+b')
 
-                    for repl in repl_parts:
-                        sub_text = sub_text.replace(repl[0], repl[1])
-
-                    writer.write(sub_text)
-
-                else:
-                    break
+    for elem in marks:
+        file.seek(elem[0] + elem[1][0], 0)
+        sub_text = '#' * elem[2]
+        file.write(sub_text.encode())
 
 
 if __name__ == '__main__':

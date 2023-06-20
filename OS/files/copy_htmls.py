@@ -8,37 +8,60 @@ import argparse
 from collections import deque
 import re
 import shutil
-import os
+
+
+def make_full_path(elem: str, base_path: str) -> Path:
+    indx = 0
+
+    while indx < len(elem) - 1:
+        if elem[indx].isalnum():
+            break
+
+        indx += 1
+
+    steps_back = elem[:indx].count('.')//2 + 1
+    parts = Path(base_path).parts[: -steps_back]
+
+    return Path('\\'.join(parts) + '\\' + elem[indx:])
 
 
 def copy_files(src: str | Path, dst: str | Path) -> None:
-    queue = deque([src])
+    queue, db = deque([src]), set()
     pat = r'href=[\'"](.*?)[\'"]'
     pat2 = r'<img src\s?=\s?[\'"](.+?)[\'"]'
-    db = set()
     base_path = Path(src).parent
+
     if not Path(dst).exists or not Path(dst).is_dir():
         Path(dst).mkdir()
+
+    file = dst + '\\' + str(Path(src).parts[-1])
+    if not Path(file).exists():
+        shutil.copy2(src, dst)
+        db.add(Path(src))
 
     while queue:
         p = Path(queue.popleft())
         text = p.read_text()
-        links = re.findall(pat, text)
-        img_links = re.findall(pat2, text)
+        links, img_links = re.findall(pat, text), re.findall(pat2, text)
         links.extend(img_links)
 
         for elem in links:
             path = Path(elem)
-            full = base_path.joinpath(path.name)
-            db.add(full)
+            if not elem.startswith('.'):
+                full = base_path.joinpath(path)
+            else:
+                full = make_full_path(elem, str(p))
 
-            if full.exists():
-                if '.html' in elem and full not in db:
-                    queue.append(full)
+            if full.exists() and full not in db:
+                if '.html' in elem:
+                    queue.append(str(full))
 
-                f_name = dst + '\\' + path.parts[-1]
-                Path(f_name).touch()
-                shutil.copyfile(full, f_name)
+                f_name = dst + '\\' + str(Path(elem).parts[-1])
+                if not Path(f_name).exists():
+                    Path(f_name).touch()
+                    shutil.copyfile(full, f_name)
+
+                db.add(full)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
 ﻿Math/Logic/byte_cl.py (edited ??)
 OS/files/copy_htmls.py (edited ?)
+OS/files/encrypt_by_given_type.py (edited ??????)
+
 
 
 

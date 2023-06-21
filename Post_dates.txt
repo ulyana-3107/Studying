@@ -1,8 +1,6 @@
-﻿Algorithms/encryption/caesr.py, shift_enc.py, xor_encrypt.py (edited)
-OS/files/encrypt_by_given_type.py, copy_htmls.py, replace_parts1.py, repl_with_given_parts.py (edited)
-Math/Logic/n_9_3.py, n3_2nd3_edited.jpg, n2_2nd4_edited.jpg (edited)
-cl_scripts/windows/*
-cl_scripts/unix/*
+﻿Math/Logic/byte_cl.py (edited ??)
+OS/files/copy_htmls.py (edited ?)
+
 
 
 

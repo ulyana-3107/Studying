@@ -12,10 +12,10 @@ set arg1=%%i
 set arg2=%%i
 if !arg1! geq !arg2! (
 if !arg1! LSS 0 (set /a ad=!arg1!*!arg1!) else (set /a ad=!arg1!)
-echo !ad! >> output.txt
+echo !ad!
 ) else (
 if !arg2! LSS 0 (set /a ad=!arg2!*!arg2!) else (set /a ad=!arg2!)
-echo !ad! >> output.txt
+echo !ad!
 )
 set arg1=
 set arg2=
@@ -25,10 +25,10 @@ if defined arg1 (
 set arg2=0
 if !arg1! geq !arg2! (
 if !arg1! LSS 0 (set /a ad=!arg1!*!arg1!) else (set /a ad=!arg1!)
-echo !ad! >> output.txt
+echo !ad!
 ) else (
 if !arg2! LSS 0 (set /a ad=!arg2!*!arg2!) else (set /a ad=!arg2!)
-echo !ad! >> output.txt
+echo !ad!
 )
 )
 )

@@ -1,6 +1,10 @@
 ﻿Math/Logic/byte_cl.py (edited ??)
 OS/files/copy_htmls.py (edited ?)
 OS/files/encrypt_by_given_type.py (edited ??????)
+cl_scripts/windows|unix/variable2.bat|.sh (edited)
+cl_scripts/windoows|unix/fib2.bat|.sh (edited)
+cl_scripts/unix/pairs2.sh (edited from pairs.sh)
+
 
 
 

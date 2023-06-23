@@ -105,6 +105,3 @@ def get_numeric_permission(permission: str) -> int:
 if __name__ == '__main__':
     for num in (644, 755, 555, 777):
         print(f'num: {num}, permission: {get_str_permission(num)}')
-
-
-

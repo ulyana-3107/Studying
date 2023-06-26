@@ -9,6 +9,9 @@ cl_scripts/windows/run_scripts2.bat (???)
 OS/files/check_access.py
 OS/files/check_access2.py
 OS/files/forbid_actions.py
+cl_scripts/unix/exp_path.sh
+new_libs\unix|windows.py
+
 
 
 

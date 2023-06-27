@@ -25,7 +25,7 @@ class Unix:
     def check_path(path: str) -> bool:
         if path.isalnum():
             return True
-        if len(path.split('\\')) == 1 or '/' in path:
+        if len(path.split('\\')) == 1 or '/' in path or not path.startswith('/'):
             return False
         return True
 
@@ -116,6 +116,3 @@ class Unix:
         self.curr_path = nwd
 
 
-up = Unix('a/b\\c')
-up.cd('../../r/v')
-print(up.curr_path)

@@ -14,7 +14,7 @@ import os
 class Windows:
     def __init__(self, curr_path: str):
         if not self.check_path(curr_path):
-            raise ValueError('Incorrect path separator!')
+            curr_path = self.normalise(curr_path)
 
         self.curr_path, self.sep = curr_path, '\\'
 
@@ -24,14 +24,17 @@ class Windows:
     def check_path(path: str):
         if path.isalnum():
             return True
-        if len(path.split('\\')) == 1:
-            return False
-        if len(set(path) & set('<>"/|?*')) or path.endswith('.') or len(path) > 260:
-            return False
         parts = path.split('\\')
+        if len(path) > 260:
+            raise ValueError('Incorrect length!')
         for p in parts:
             if len(p) > 255:
-                return False
+                raise ValueError('Incorrect length!')
+        if len(path.split('\\')) == 1:
+            return False
+        if len(set(path) & set('<>"/|?*')) or path.endswith('.'):
+            return False
+
         return True
 
     @staticmethod
@@ -39,8 +42,10 @@ class Windows:
         if path2 == '':
             return path1
 
-        if not Windows.check_path(path1) or not Windows.check_path(path2):
-            raise ValueError('Incorrect path separator given!')
+        if not Windows.check_path(path1):
+            path1 = Windows.normalise(path1)
+        if not Windows.check_path(path2):
+            path2 = Windows.normalise(path2)
 
         if path2.startswith('\\'):
             return f'{Windows.get_root()}' + path2
@@ -102,10 +107,21 @@ class Windows:
     def get_curr_path(self) -> str:
         return str(os.path.abspath(self.curr_path))
 
-    def cd(self, new_path: str) -> None:
-        if not self.check_path(new_path):
-            raise ValueError('Incorrect path separator!')
+    @staticmethod
+    def normalise(path: str) -> str:
+        pat1, pat2 = r'[<>|?*]', r'/'
+        path = path.strip()
 
+        if path.endswith('.'):
+            while path[-1] == '.':
+                path = path[: -1]
+
+        path = re.sub(pat1, '', path)
+        path = re.sub(pat2, '\\', path)
+
+        return path
+
+    def cd(self, new_path: str) -> None:
         if new_path.startswith('.'):
             back, parts = 0, new_path.split(self.sep)
 
@@ -119,9 +135,13 @@ class Windows:
             if p1[-1] == '':
                 p1.pop()
 
-            path1 = self.sep.join(p1[:-back])
+            new_path = self.sep.join(p1[:-back])
+
+        if not self.check_path(new_path):
+            new_path = self.normalise(new_path)
+
             path2 = self.sep.join(parts[back:])
-            nwd = self.join(path1, path2)
+            nwd = self.join(new_path, path2)
 
         else:
             nwd = self.join(self.curr_path, new_path)

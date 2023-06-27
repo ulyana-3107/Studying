@@ -24,8 +24,14 @@ class Windows:
     def check_path(path: str):
         if path.isalnum():
             return True
-        if len(path.split('\\')) == 1 or '/' in path:
+        if len(path.split('\\')) == 1:
             return False
+        if len(set(path) & set('<>"/|?*')) or path.endswith('.') or len(path) > 260:
+            return False
+        parts = path.split('\\')
+        for p in parts:
+            if len(p) > 255:
+                return False
         return True
 
     @staticmethod
@@ -36,6 +42,9 @@ class Windows:
         if not Windows.check_path(path1) or not Windows.check_path(path2):
             raise ValueError('Incorrect path separator given!')
 
+        if path2.startswith('\\'):
+            return f'{Windows.get_root()}' + path2
+
         result_path, sep, c = '', '\\', 0
         spl1, spl2 = deque(path1.split(sep)), deque(path2.split(sep))
 
@@ -43,8 +52,6 @@ class Windows:
             spl1.pop()
         if spl1[0] == '':
             spl1.popleft()
-        if spl2[0] == '':
-            spl2.popleft()
         if spl2[-1] == '':
             spl2.pop()
 
@@ -120,8 +127,3 @@ class Windows:
             nwd = self.join(self.curr_path, new_path)
 
         self.curr_path = nwd
-
-
-wp = Windows('a\\b\\c/d')
-wp.cd('..\\..\\r\\t')
-print(wp.curr_path)

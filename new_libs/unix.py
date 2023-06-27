@@ -14,12 +14,26 @@ from pathlib import Path
 class Unix:
 
     def __init__(self, curr_path: str):
-        self.curr_path = curr_path
-        self.sep = '/'
+        if not self.check_path(curr_path):
+            raise ValueError('Incorrect path separator!')
+
+        self.curr_path, self.sep = curr_path, '/'
+
         print('Unix')
 
     @staticmethod
+    def check_path(path: str) -> bool:
+        if path.isalnum():
+            return True
+        if len(path.split('\\')) == 1 or '/' in path:
+            return False
+        return True
+
+    @staticmethod
     def join(path1: str, path2: str) -> str:
+        if not Unix.check_path(path1) or not Unix.check_path(path2):
+            raise ValueError('Incorrect path separator!')
+
         if path2 == '':
             return path1
 
@@ -79,6 +93,9 @@ class Unix:
         return p.replace('\\', self.sep)
 
     def cd(self, new_path: str) -> None:
+        if not self.check_path(new_path):
+            raise ValueError('Incorrect path separator!')
+
         if new_path.startswith('.'):
             back, parts = 0, new_path.split(self.sep)
 
@@ -99,6 +116,6 @@ class Unix:
         self.curr_path = nwd
 
 
-up = Unix('a/b/c')
+up = Unix('a/b\\c')
 up.cd('../../r/v')
 print(up.curr_path)

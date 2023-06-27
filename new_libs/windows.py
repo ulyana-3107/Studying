@@ -13,14 +13,28 @@ import os
 
 class Windows:
     def __init__(self, curr_path: str):
-        self.sep = '\\'
-        self.curr_path = curr_path
+        if not self.check_path(curr_path):
+            raise ValueError('Incorrect path separator!')
+
+        self.curr_path, self.sep = curr_path, '\\'
+
         print('Windows')
+
+    @staticmethod
+    def check_path(path: str):
+        if path.isalnum():
+            return True
+        if len(path.split('\\')) == 1 or '/' in path:
+            return False
+        return True
 
     @staticmethod
     def join(path1: str, path2: str) -> str:
         if path2 == '':
             return path1
+
+        if not Windows.check_path(path1) or not Windows.check_path(path2):
+            raise ValueError('Incorrect path separator given!')
 
         result_path, sep, c = '', '\\', 0
         spl1, spl2 = deque(path1.split(sep)), deque(path2.split(sep))
@@ -82,6 +96,9 @@ class Windows:
         return str(os.path.abspath(self.curr_path))
 
     def cd(self, new_path: str) -> None:
+        if not self.check_path(new_path):
+            raise ValueError('Incorrect path separator!')
+
         if new_path.startswith('.'):
             back, parts = 0, new_path.split(self.sep)
 
@@ -105,6 +122,6 @@ class Windows:
         self.curr_path = nwd
 
 
-wp = Windows('a\\b\\c\\d')
+wp = Windows('a\\b\\c/d')
 wp.cd('..\\..\\r\\t')
 print(wp.curr_path)

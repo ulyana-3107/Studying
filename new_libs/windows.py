@@ -19,29 +19,60 @@ class Windows:
 
     @staticmethod
     def join(path1: str, path2: str) -> str:
+        if path2 == '':
+            return path1
+
         result_path, sep, c = '', '\\', 0
         spl1, spl2 = deque(path1.split(sep)), deque(path2.split(sep))
+
         if spl1[-1] == '':
             spl1.pop()
         if spl1[0] == '':
             spl1.popleft()
         if spl2[0] == '':
             spl2.popleft()
-        for i in range(min(len(spl1), len(spl2))):
-            if spl1[i] == spl2[i]:
-                result_path += spl1[i] + sep
-                c += 1
+        if spl2[-1] == '':
+            spl2.pop()
+
+        if len(set(spl1) & set(spl2)):
+            if spl1[0] == spl2[0]:
+                for i in range(min(len(spl1), len(spl2))):
+                    if spl1[i] == spl2[i]:
+                        result_path += spl1[i] + sep
+                        c += 1
+                    else:
+                        break
+
+                for i in range(c):
+                    spl2.popleft()
+
+                if len(spl2):
+                    other_part = sep.join(spl2)
+
+                else:
+                    other_part = ''
+                result_path += other_part
+
+                return result_path
+
             else:
-                break
-        for j in range(c):
-            spl2.popleft()
+                index1, index2 = 0, 0
+                for i in range(len(spl1)):
+                    if spl1[i] in (set(spl1) & set(spl2)):
+                        index1 = i
+                        break
 
-        if result_path != '':
-            result_path += sep.join(spl2)
+                for i in range(len(spl2)):
+                    if spl2[i] in (set(spl1) & set(spl2)):
+                        index2 = i
+                        break
+
+                result_path = sep.join(list(spl1)[: index1]) + sep + sep.join(list(spl2)[index2:])
+
+                return result_path
+
         else:
-            result_path += sep.join(spl1) + sep + sep.join(spl2)
-
-        return result_path
+            return sep.join(spl1) + sep + sep.join(spl2)
 
     @staticmethod
     def get_root() -> str:
@@ -51,38 +82,29 @@ class Windows:
         return str(os.path.abspath(self.curr_path))
 
     def cd(self, new_path: str) -> None:
-        sep, nwd, c = '\\', '', 0
-        spl1, spl2 = self.curr_path.split(sep), deque(new_path.split(sep))
-
         if new_path.startswith('.'):
-            parts = new_path.split(self.sep)
-            back = 0
-            for p in parts:
-                if p.startswith('.'):
-                    back += 1
+            back, parts = 0, new_path.split(self.sep)
 
-            if back > len(spl1):
-                raise ValueError('Incorrect path given')
-            for i in range(back):
-                spl1.pop()
-                spl2.popleft()
-
-        if not len(spl2):
-            nwd += sep.join(spl1)
-        else:
-            for i in range(min(len(spl1), len(spl2))):
-                if spl1[i] == spl2[i]:
-                    nwd += spl1[i] + sep
-                    c += 1
-                else:
+            for i in range(len(parts)):
+                if parts[i].isalnum():
                     break
+                back += 1
 
-            for j in range(c):
-                spl2.popleft()
+            p1 = self.curr_path.split(self.sep)
 
-        if nwd:
-            nwd += sep.join(spl2)
+            if p1[-1] == '':
+                p1.pop()
+
+            path1 = self.sep.join(p1[:-back])
+            path2 = self.sep.join(parts[back:])
+            nwd = self.join(path1, path2)
+
         else:
-            nwd += sep.join(spl1) + sep.join(spl2)
+            nwd = self.join(self.curr_path, new_path)
 
         self.curr_path = nwd
+
+
+wp = Windows('a\\b\\c\\d')
+wp.cd('..\\..\\r\\t')
+print(wp.curr_path)

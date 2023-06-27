@@ -22,16 +22,29 @@ class Windows:
 
     @staticmethod
     def check_path(path: str):
+        forbidden_names = ['CON', 'PRN', 'AUX', 'NUL', 'COM0', 'COM1', 'COM2', 'COM3',
+                           'COM4', 'COM5', 'COM6', 'COM7', 'COM8', 'COM9', 'LPT0', 'LPT1',
+                           'LPT2', 'LPT3', 'LPT4', 'LPT5', 'LPT6', 'LPT7', 'LPT8', 'LPT9']
+
+        for n in forbidden_names:
+            if n in path:
+                raise ValueError(f'Name {n} is forbidden!')
+
         if path.isalnum():
             return True
+
         parts = path.split('\\')
+
         if len(path) > 260:
             raise ValueError('Incorrect length!')
+
         for p in parts:
             if len(p) > 255:
                 raise ValueError('Incorrect length!')
+
         if len(path.split('\\')) == 1:
             return False
+
         if len(set(path) & set('<>"/|?*')) or path.endswith('.'):
             return False
 

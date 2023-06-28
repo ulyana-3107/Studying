@@ -12,6 +12,7 @@ from pathlib import Path
 import csv
 import argparse
 import time
+from string import ascii_lowercase as letters
 
 
 def en_or_de_crypt_texts(path: str, call_paths: list) -> None:
@@ -24,53 +25,30 @@ def en_or_de_crypt_texts(path: str, call_paths: list) -> None:
 
     with open(path, 'r', newline='') as csv_rd:
         reader = csv.DictReader(csv_rd)
-        modes = {'e': 0, 'd': 1}
+        modes = {'e': True, 'd': False}
 
         for enc_data in reader:
             src_path, dst_path = enc_data['Source_path'], enc_data['Dst_path']
-            enc_type, mode, key = enc_data['Enc_type'], bool(modes[enc_data['Mode']]), enc_data['Key']
+            enc_type, mode, key = enc_data['Enc_type'], modes[enc_data['Mode'].strip()], enc_data['Key']
 
-            if int(enc_type.strip()) == 1:
-                t = time.time()
+            script_code = int(enc_type.strip())
 
-                proc = subprocess.run(['python', path1, src_path, dst_path, f'--decrypt= {mode}'],
-                                      capture_output=True, text=True)
+            t = time.time()
 
-                t2 = time.time()
-
-                if not proc.returncode == 0:
-                    print(proc.stderr)
-                    continue
-
-                print(f'Time taken: {t2 - t}')
-
-            elif int(enc_type.strip()) == 2:
-                t = time.time()
-
-                proc = subprocess.run(['python', path2, src_path, dst_path, key, f'--decrypt= {mode}'],
-                               capture_output=True, text=True)
-
-                t2 = time.time()
-
-                if not proc.returncode == 0:
-                    print(proc.stderr)
-                    continue
-
-                print(f'Time taken: {t2 - t}')
-
+            if script_code == 1:
+                proc = subprocess.run(['python', eval('path' + str(script_code)), src_path, dst_path,
+                                       f'--decrypt={mode}', f'--shift={key}'], capture_output=True, text=True)
             else:
-                t = time.time()
+                proc = subprocess.run(['python', eval('path' + str(script_code)), src_path, dst_path, key,
+                                       f'--decrypt={mode}'], capture_output=True, text=True)
 
-                proc = subprocess.run(['python', path3, src_path, dst_path, key, f'--decrypt= {mode}'],
-                                      capture_output=True, text=True)
+            t2 = time.time()
 
-                t2 = time.time()
+            if not proc.returncode == 0:
+                print(proc.stderr)
+                continue
 
-                if not proc.returncode == 0:
-                    print(proc.stderr)
-                    continue
-
-                print(f'Time taken: {t2 - t}')
+            print(f'Time taken: {t2 - t}')
 
 
 if __name__ == '__main__':

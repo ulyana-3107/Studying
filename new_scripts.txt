@@ -1,0 +1,22 @@
+﻿Math/Logic/byte_cl.py (edited ??)
+OS/files/copy_htmls.py (edited ?)
+OS/files/encrypt_by_given_type.py (edited ??????)
+cl_scripts/windows/run_scripts2.bat (???)
+cl_scripts/unix/exp_path.sh (edited)
+
+28.06 - OS/threads/run_threads1.py (os.fork() does not work on Windows)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

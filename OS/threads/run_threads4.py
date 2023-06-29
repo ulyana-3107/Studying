@@ -7,8 +7,7 @@
 import multiprocessing
 import random
 import time
-import inspect
-import os
+import argparse
 
 
 def child_process(n):
@@ -24,7 +23,7 @@ def child_process(n):
     return return_code
 
 
-def main(n):
+def run_threads(n):
     process = None
     for i in range(n, 0, -1):
         if process is not None:
@@ -37,4 +36,7 @@ def main(n):
 
 
 if __name__ == "__main__":
-    main(3)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('N', type=int, help='Number of processes to run')
+    args = parser.parse_args()
+    run_threads(args.N)

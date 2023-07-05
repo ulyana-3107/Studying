@@ -77,7 +77,7 @@ def copy_files(src: str | Path, dst: str | Path) -> None:
             else:
                 full = make_full_path(elem, str(p))
 
-            if not Path(full).exists():
+            if not Path(full).is_file() or not Path(full).exists():
                 continue
 
             if full not in db:

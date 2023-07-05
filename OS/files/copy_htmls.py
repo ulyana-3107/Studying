@@ -101,4 +101,3 @@ if __name__ == '__main__':
     parser.add_argument('dst_path', type=str, help='path for extracting files there')
     args = parser.parse_args()
     copy_files(args.src_path, args.dst_path)
-    print('Done!')

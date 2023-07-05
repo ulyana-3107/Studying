@@ -8,6 +8,7 @@ import argparse
 from collections import deque
 import re
 import shutil
+import os
 
 
 def make_full_path(elem: str, base_path: str) -> Path:
@@ -25,6 +26,27 @@ def make_full_path(elem: str, base_path: str) -> Path:
     return Path('\\'.join(parts) + '\\' + elem[indx:])
 
 
+def pop_edges(parts:deque) -> deque:
+    if parts[0] == '':
+        parts.popleft()
+    if parts[-1] == '':
+        parts.pop()
+
+    return parts
+
+
+def join_paths(p1: str, p2: str, base: str) -> str:
+    parts1 = deque(p1.split('\\'))
+    parts2 = deque(p2.split('\\'))
+    parts3 = deque(base.split('\\'))
+    parts1 = pop_edges(parts1)
+    parts2 = pop_edges(parts2)
+    parts3 = pop_edges(parts3)
+
+    res_part = '\\'.join(list(parts1)[len(parts3):])
+    return '\\'.join(list(parts2)) + '\\' + res_part
+
+
 def copy_files(src: str | Path, dst: str | Path) -> None:
     queue, db = deque([src]), set()
     pat = r'href=[\'"](.*?)[\'"]'
@@ -34,9 +56,10 @@ def copy_files(src: str | Path, dst: str | Path) -> None:
     if not Path(dst).exists or not Path(dst).is_dir():
         Path(dst).mkdir()
 
-    file = dst + '\\' + str(Path(src).parts[-1])
+    file = join_paths(src, dst, str(base_path))
     if not Path(file).exists():
-        shutil.copy2(src, dst)
+        Path(file).touch()
+        shutil.copy2(src, file)
         db.add(Path(src))
 
     while queue:
@@ -48,18 +71,26 @@ def copy_files(src: str | Path, dst: str | Path) -> None:
         for elem in links:
             path = Path(elem)
             if not elem.startswith('.'):
-                full = base_path.joinpath(path)
+                parts = str(p).split('\\')
+                parts = pop_edges(deque(parts))
+                full = '\\'.join(list(parts)[:-1]) + '\\' + str(path)
             else:
                 full = make_full_path(elem, str(p))
 
-            if full.exists() and full not in db:
+            if not Path(full).exists():
+                continue
+
+            if full not in db:
                 if '.html' in elem:
                     queue.append(str(full))
 
-                f_name = dst + '\\' + str(Path(elem).parts[-1])
+                f_name = join_paths(str(full), dst, str(base_path))
                 if not Path(f_name).exists():
+                    dirs = Path(f_name).parent
+                    if not Path(dirs).exists():
+                        Path(dirs).mkdir(parents=True)
                     Path(f_name).touch()
-                    shutil.copyfile(full, f_name)
+                shutil.copyfile(full, f_name)
 
                 db.add(full)
 
@@ -70,3 +101,4 @@ if __name__ == '__main__':
     parser.add_argument('dst_path', type=str, help='path for extracting files there')
     args = parser.parse_args()
     copy_files(args.src_path, args.dst_path)
+    print('Done!')

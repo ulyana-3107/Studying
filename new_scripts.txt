@@ -1,18 +1,8 @@
-﻿Math/Logic/byte_cl.py (edited ??)
-OS/files/copy_htmls.py (edited ?)
-OS/files/encrypt_by_given_type.py (edited ??????)
-cl_scripts/windows/run_scripts2.bat (???)
-cl_scripts/unix/exp_path.sh (edited)
-
-OS/threads/run_threads1.py (os.fork() does not work on Windows)
-os/threads/run_threads(2, 3, 4).py 
+﻿Math/Logic/byte_cl.py (edited)
+OS/files/copy_htmls.py (edited)
 os/files/copy_htmls.py (edited)
-<<<<<<< HEAD
-
-
-=======
 new_libs\calculator.py
->>>>>>> 7afa2924476664a155634eae2772b4024e2598c5
+
 
 
 

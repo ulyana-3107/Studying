@@ -10,29 +10,30 @@ import time
 import argparse
 
 
-def func(res_queue):
+def func():
     name = inspect.currentframe().f_code.co_name
     print(f'{name} is running...')
     time.sleep(random.randint(1, 10))
     print(f'pid: {os.getpid()}')
-    proc_name = current_process().name
-    res_queue.put((random.randint(1, 100), proc_name))
 
 
 def run_threads(n: int) -> dict:
     procs, results = [], {}
-    res_queue = Queue()
 
     for i in range(n):
-        process = Process(target=func, args=(res_queue, ))
+        process = Process(target=func)
         procs.append(process)
         process.start()
 
     while procs:
         chosen = random.choice(procs)
         chosen.join()
-        result = res_queue.get()
-        results[result[1]] = result[0]
+        name = chosen.name
+        if chosen.exitcode == 0:
+            ex_code = random.randint(1, 100)
+        else:
+            ex_code = chosen.exitcode
+        results[name] = ex_code
         procs.remove(chosen)
 
     return results

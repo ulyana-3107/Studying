@@ -3,7 +3,6 @@
 
 
 import multiprocessing
-from multiprocessing import current_process
 import os
 import inspect
 import time
@@ -15,26 +14,24 @@ def func():
     name = inspect.currentframe().f_code.co_name
     print(f'{name} is running...')
     time.sleep(random.randint(1, 10))
-    print(f'pid: {os.getpid()}')
-    return random.randint(1, 100)
+    return random.randint(1, 100), os.getpid()
 
 
 def run_threads(num):
-    pool = multiprocessing.Pool()
-
+    pool, completed_count = multiprocessing.Pool(), 0
     async_results = [pool.apply_async(func) for _ in range(num)]
 
-    completed_count = 0
-    results = []
-
     while completed_count < num:
-        for async_result in async_results:
-            if async_result.ready() and async_result not in results:
-                results.append(async_result)
+        chosen = random.choice(async_results)
+        while True:
+            if chosen.ready():
                 completed_count += 1
+                async_results.remove(chosen)
+                e_code, pid = chosen.get()
+                print(f'Process with pid {pid} exited with code {e_code}')
+                break
 
-    total_sum = sum([async_result.get() for async_result in results])
-    return total_sum
+            time.sleep(1)
 
 
 if __name__ == "__main__":
@@ -42,5 +39,4 @@ if __name__ == "__main__":
     parser.add_argument('N', type=int, help='Number of processes to run simultaniously')
     args = parser.parse_args()
     multiprocessing.freeze_support()
-    res = run_threads(args.N)
-    print(f'Sum of returned codes: {res}')
+    run_threads(args.N)

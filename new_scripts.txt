@@ -1,7 +1,8 @@
 ﻿Math/Logic/byte_cl.py (edited)
 OS/files/copy_htmls.py (edited)
-os/files/copy_htmls.py (edited)
 new_libs\calculator.py
+OS\threads\run_threads(1, 2).py (edited)
+OS\threads\run_threads3.py (edited, os.waitpid не вышло использовать)
 
 
 

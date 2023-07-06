@@ -12,13 +12,14 @@ import time
 import random
 import inspect
 import os
+import sys
 import argparse
 
 
 def func():
     time.sleep(random.randint(1, 10))
-    print(os.getpid())
-    return random.randint(1, 100)
+    print(f'PID: {os.getpid()}')
+    sys.exit(random.randint(1, 100))
 
 
 def start_processes(n: int) -> int:
@@ -34,9 +35,8 @@ def start_processes(n: int) -> int:
 
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser(description='script for running processes')
-    # parser.add_argument('N', type=int, help='Number of processes to run!')
-    # args = parser.parse_args()
-    # exit_codes = start_processes(args.N)
-    # print(f'Sum of random exit codes of all processes: {exit_codes}')
-    start_processes(3)
+    parser = argparse.ArgumentParser(description='script for running processes')
+    parser.add_argument('N', type=int, help='Number of processes to run!')
+    args = parser.parse_args()
+    exit_codes = start_processes(args.N)
+    print(f'Sum of random exit codes of all processes: {exit_codes}')

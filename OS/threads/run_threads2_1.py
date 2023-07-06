@@ -13,18 +13,15 @@ import argparse
 
 
 def main(n):
-    processes = []
     finished_processes = 0
-    for _ in range(n):
-        process = subprocess.Popen(['python', 'script.py'], shell=True)
-        processes.append(process)
+    processes = [subprocess.Popen(['python', 'script.py'], shell=True) for _ in range(n)]
 
     time.sleep(5)
     # Sending SIGTERM signal to all processes
-    for process in processes:
+    for pr in processes:
         # process.terminate()
-        process.kill()
-        if process.poll() is not None:
+        pr.kill()
+        if pr.poll() is not None:
             finished_processes += 1
 
     return finished_processes

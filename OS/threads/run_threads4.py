@@ -7,20 +7,27 @@
 import multiprocessing
 import random
 import time
+import sys
 import argparse
 
 
 def child_thread(n: int):
     if n == 0:
-        return 0 + random.randint(1, 100)
-    else:
-        print('child process is running...')
         time.sleep(random.randint(1, 10))
-        return random.randint(1, 100) + child_thread(n - 1)
+        sys.exit(random.randint(1, 100))
+    else:
+        time.sleep(random.randint(1, 10))
+        child = multiprocessing.Process(target=child_thread, args=(n-1, ))
+        child.start()
+        child.join()
+        sys.exit(child.exitcode + random.randint(1, 100))
 
 
 def run_threads(n: int):
-    return child_thread(n)
+    pr = multiprocessing.Process(target=child_thread, args=(n, ))
+    pr.start()
+    pr.join()
+    return pr.exitcode
 
 
 if __name__ == "__main__":

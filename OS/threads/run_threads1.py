@@ -16,10 +16,9 @@ import argparse
 
 
 def func():
-    name = inspect.currentframe().f_code.co_name
-    print(f'{name} is running...')
     time.sleep(random.randint(1, 10))
-    print(f'pid: {os.getpid()}')
+    print(os.getpid())
+    return random.randint(1, 100)
 
 
 def start_processes(n: int) -> int:
@@ -29,16 +28,15 @@ def start_processes(n: int) -> int:
         process = multiprocessing.Process(target=func)
         process.start()
         process.join()
-        if process.exitcode == 0:
-            sum_of_codes + random.randint(1, 100)
+        sum_of_codes += process.exitcode
 
     return sum_of_codes
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='script for running processes')
-    parser.add_argument('N', type=int, help='Number of processes to run!')
-    args = parser.parse_args()
-    exit_codes = start_processes(args.N)
-    print(f'Sum of random exit codes of all processes: {exit_codes}')
-
+    # parser = argparse.ArgumentParser(description='script for running processes')
+    # parser.add_argument('N', type=int, help='Number of processes to run!')
+    # args = parser.parse_args()
+    # exit_codes = start_processes(args.N)
+    # print(f'Sum of random exit codes of all processes: {exit_codes}')
+    start_processes(3)

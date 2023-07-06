@@ -8,17 +8,17 @@ import inspect
 import random
 import time
 import argparse
+import sys
 
 
 def func():
-    name = inspect.currentframe().f_code.co_name
-    print(f'{name} is running...')
     time.sleep(random.randint(1, 10))
     print(f'pid: {os.getpid()}')
+    sys.exit(random.randint(1, 100))
 
 
-def run_threads(n: int) -> dict:
-    procs, results = [], {}
+def run_threads(n: int):
+    procs = []
 
     for i in range(n):
         process = Process(target=func)
@@ -29,14 +29,9 @@ def run_threads(n: int) -> dict:
         chosen = random.choice(procs)
         chosen.join()
         name = chosen.name
-        if chosen.exitcode == 0:
-            ex_code = random.randint(1, 100)
-        else:
-            ex_code = chosen.exitcode
-        results[name] = ex_code
+        ex_code = chosen.exitcode
+        print(f'{name} exited with code {ex_code}')
         procs.remove(chosen)
-
-    return results
 
 
 if __name__ == '__main__':
@@ -44,6 +39,4 @@ if __name__ == '__main__':
     parser.add_argument('N', type=int, help='Number of processes to run simultaniously')
     args = parser.parse_args()
     multiprocessing.freeze_support()
-    res = run_threads(args.N)
-    for pr_name, e_code in res.items():
-        print(f'name of process: {pr_name}  exit code: {e_code}')
+    run_threads(args.N)

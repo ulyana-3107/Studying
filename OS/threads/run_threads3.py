@@ -4,6 +4,7 @@
 
 import multiprocessing
 import os
+import sys
 import inspect
 import time
 import random
@@ -11,10 +12,8 @@ import argparse
 
 
 def func():
-    name = inspect.currentframe().f_code.co_name
-    print(f'{name} is running...')
     time.sleep(random.randint(1, 10))
-    return random.randint(1, 100), os.getpid()
+    return os.getpid()
 
 
 def run_threads(num):
@@ -27,8 +26,8 @@ def run_threads(num):
             if chosen.ready():
                 completed_count += 1
                 async_results.remove(chosen)
-                e_code, pid = chosen.get()
-                print(f'Process with pid {pid} exited with code {e_code}')
+                pid = chosen.get()
+                print(f'Process with pid {pid} exited.')
                 break
 
             time.sleep(1)

@@ -10,33 +10,22 @@ import time
 import argparse
 
 
-def child_process(n):
-    time.sleep(random.randint(1, 10))
-    par_ret_code = 0 if n == 1 else n - 1
-
-    random_return_code = random.randint(1, 100)
-    return_code = par_ret_code + random_return_code
-
-    process_id = multiprocessing.current_process().pid
-    print(f"Process {process_id} finished with return code {return_code}")
-
-    return return_code
+def child_thread(n: int):
+    if n == 0:
+        return 0 + random.randint(1, 100)
+    else:
+        print('child process is running...')
+        time.sleep(random.randint(1, 10))
+        return random.randint(1, 100) + child_thread(n - 1)
 
 
-def run_threads(n):
-    process = None
-    for i in range(n, 0, -1):
-        if process is not None:
-            process.join()
-
-        process = multiprocessing.Process(target=child_process, args=(i,))
-        process.start()
-
-    process.join()
+def run_threads(n: int):
+    return child_thread(n)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('N', type=int, help='Number of processes to run')
     args = parser.parse_args()
-    run_threads(args.N)
+    codes = run_threads(args.N)
+    print(f'Sum of all codes: {codes}')

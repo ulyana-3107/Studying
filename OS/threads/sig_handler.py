@@ -15,7 +15,7 @@ def child_process_handler(pid):
 
 
 def check_child_processes(processes):
-    events = [win32event.CreateEvent(None, 1, 1, 'MyEvent') for _ in processes]
+    events = [win32event.CreateEvent(None, 0, 1, None) for _ in processes]
 
     for i, process in enumerate(processes):
         thread = threading.Thread(target=wait_for_child_process, args=(process.pid, events[i]))
@@ -31,4 +31,3 @@ def wait_for_child_process(pid, event):
 if __name__ == "__main__":
     processes = [subprocess.Popen(["python", "-c", "import time; time.sleep(1)"]) for _ in range(5)]
     check_child_processes(processes)
-    time.sleep(5)

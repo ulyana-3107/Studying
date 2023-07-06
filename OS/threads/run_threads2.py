@@ -18,7 +18,7 @@ def func():
 
 
 def run_threads(n: int):
-    procs = []
+    procs, summ = [], 0
 
     for i in range(n):
         process = Process(target=func)
@@ -32,6 +32,9 @@ def run_threads(n: int):
         ex_code = chosen.exitcode
         print(f'{name} exited with code {ex_code}')
         procs.remove(chosen)
+        summ += ex_code
+
+    return summ
 
 
 if __name__ == '__main__':
@@ -39,4 +42,5 @@ if __name__ == '__main__':
     parser.add_argument('N', type=int, help='Number of processes to run simultaniously')
     args = parser.parse_args()
     multiprocessing.freeze_support()
-    run_threads(args.N)
+    res = run_threads(args.N)
+    print(f'Sum of all exit codes: {res}')

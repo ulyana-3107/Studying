@@ -10,22 +10,18 @@ import win32con
 import win32event
 
 
-def child_process_handler(pid):
-    print(f"Child process {pid} was finished")
-
-
 def check_child_processes(processes):
     events = [win32event.CreateEvent(None, 0, 1, None) for _ in processes]
 
-    for i, process in enumerate(processes):
-        thread = threading.Thread(target=wait_for_child_process, args=(process.pid, events[i]))
+    for i in range(len(processes)):
+        thread = threading.Thread(target=wait_for_child_process, args=(processes[i].pid, events[i]))
         thread.start()
 
 
 def wait_for_child_process(pid, event):
     wait_status = win32event.WaitForSingleObject(event, -1)
     if wait_status == win32con.WAIT_OBJECT_0:
-        child_process_handler(pid)
+        print(f"Child process {pid} was finished")
 
 
 if __name__ == "__main__":

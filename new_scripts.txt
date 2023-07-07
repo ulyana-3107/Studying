@@ -6,6 +6,7 @@ OS\threads\run_threads3.py (edited, os.waitpid не вышло использо�
 OS\threads\run_threads4.py (edited)
 OS\threads\run_threads2_1.py
 OS\threads\sig_handler.py
+OS\threads\sig_handler2.py
 
 
 

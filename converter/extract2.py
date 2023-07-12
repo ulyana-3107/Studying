@@ -5,6 +5,7 @@ import shutil
 import aspose.slides as asp_slides
 import aspose.pydrawing as drawing
 import pptx
+import json
 from docx import Document
 
 
@@ -127,16 +128,23 @@ def split_objects(pres_file: str) -> None:
             back_image.system_image.save(file)
             not_sorted_objects.append([file, 'slide_layout'])
 
-    for sl in sorted_objects:
-        print(sl)
-
-    write_json_data(sorted_objects, not_sorted_objects, sl_obj_nums)
+    write_json_data(sorted_objects)
 
 
-def write_json_data(texts: list, objects: list, slide_nums: list) -> None:
+def write_json_data(sorted_objects: list) -> None:
     data = {}
-    for i in range(len(texts)):
+
+    for i in range(len(sorted_objects)):
         name = f'slide_{i + 1}'
+        slide_data, slide = {}, sorted_objects[i]
+        for elem in slide:
+            slide_data[elem[0]] = elem[1]
+        data[name] = slide_data
+
+    file_name = 'pres_objects.json'
+    with open(file_name, 'w') as objects:
+        json.dump(data, objects, indent=3)
+        print(str(Path(file_name).resolve()))
 
 
 if __name__ == '__main__':

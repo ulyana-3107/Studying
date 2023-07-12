@@ -26,18 +26,20 @@ def split_objects(pres_file: str) -> None:
         Path(basename).mkdir()
     else:
         Path(basename).mkdir()
+
     pres1 = Presentation(pres_file)
     pres2 = asp_slides.Presentation(pres_file)
+
     n_text, n_image, n_links = 0, 0, 0
     sorted_objects, not_sorted_objects, sl_obj_nums = [], [], []
     links_dir = basename + '\\' + 'links'
 
     for i in range(len(pres1.slides)):
         sl, sl_elems = pres1.slides[i], []
-        links = set()
+        links, num = set(), 0
 
         for sh in sl.shapes:
-            num, curr = 0, []
+            written = False
             if sh.has_text_frame:
                 for par in sh.text_frame.paragraphs:
                     for run in par.runs:
@@ -51,11 +53,13 @@ def split_objects(pres_file: str) -> None:
                         num += 1
                         file_name = links_dir + '\\' + f'link_{n_links}'
                         with open(file_name, 'w', encoding='utf-8-sig') as file:
+                            written = True
                             file.write(address)
                         links.add(str(address))
-                        curr.append([file_name, 'link'])
+                        sl_elems.append([file_name, 'link'])
 
-            if sh.has_text_frame:
+                if written:
+                    continue
 
                 dir_name = basename + '\\' + 'texts'
                 if not Path(dir_name).exists():
@@ -79,86 +83,10 @@ def split_objects(pres_file: str) -> None:
                         Path(f_name).unlink()
                         n_text -= 1
                     else:
-                        curr.append([f_name, 'text'])
-                # extracting of hyperlinks
+                        sl_elems.append([f_name, 'text'])
 
-                sl_elems.append(curr)
-            # elif sh.shape_type == MSO_SHAPE_TYPE.PICTURE:
-            #     n_pic += 1
-            #     dir_name = basename + '\\pictures'
-            #
-            #     if not Path(dir_name).exists():
-            #         Path(dir_name).mkdir()
-            #
-            #     image = sh.image
-            #     img_bytes = image.blob
-            #     img_filename = f'{dir_name}\\image{str(n_pic)}.{image.ext}'
-            #
-            #     with open(img_filename, 'wb') as f:
-            #         f.write(img_bytes)
-            #
-            #     sl_elems.extend([img_filename, 'pic'])
-            #
-            # elif hasattr(sh, 'element') and sh.element.tag.endswith('phMath'):
-            #     n_form += 1
-            #     formula = sh.text_frame.text
-            #     print(f'Найдена формула: {formula}')
-            #     dir_name = basename + '\\' + 'formulas'
-            #     if not Path(dir_name).exists:
-            #         Path(dir_name).mkdir()
-            #     file_name = dir_name + '\\' + 'formula{n_form}.txt'
-            #     with open(file_name, 'w') as f:
-            #         f.write(formula)
-
-            # ???
-            # elif sh.has_table:
-            # curr = sh.table
-            # curr.append('table')
-            # sl_elems.append(curr)
-
-            # ???
-            # elif sh.has_chart:
-            #     curr = []
-            #     chart = sh.chart
-            #     chart_data = chart.chart_data
-            #     curr.extend([chart_data, 'chart'])
-            #     sl_elems.append(curr)
-# ???
-            # elif ' hyperlink ' in sh.part._element.xml or ' action ' in sh.part._element.xml:
-            #     text = sh.text_frame.text
-            #     href = sh.part._element.rId
-            #     n_links += 1
-            #     dir_name = basename + '\\' + 'links'
-            #     if not Path(dir_name).exists:
-            #         Path(dir_name).mkdir()
-            #     file_name = dir_name + '\\' + f'{text}{n_links}.txt'
-            #     with open(file_name, 'w') as f:
-            #         f.write(href)
-            #
-            #     sl_elems.append([file_name, 'link'])
-
-            # elif sh.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE:
-            #     n_part += 1
-            #     auto_sh = sl.shapes.add_shape(sh.auto_shape_type, sh.left, sh.top, sh.width, sh.height)
-            #     img_path = f'{basename}\\pictures\\{sl.slide_id}_{auto_sh.shape_id}{str(n_part)}.jpeg'
-            #     auto_sh.image.save(img_path)
-            #     curr.append(('picture', img_path))
-
-            # elif sh.shape_type == MSO_SHAPE_TYPE.GROUP:
-            #     n_group += 1
-            #     group_shape = sl.shapes.add_group_shape()
-            #     for member_shape in sh.shapes:
-            #         member_shape._element.add_to_group(group_shape._element)
-            #     group_shape.crop_left = Inches(0)
-            #     img_path = f"{sl.slide_id}_{sh.shape_id}{str(n_group)}.jpeg"
-            #     sl.save_picture(img_path, group_shape.left, group_shape.top, group_shape.width, group_shape.height)
-            #     # удаление временного объекта
-            #     sl.shapes._spTree.remove(group_shape._element)
-            else:
-                sl_elems.append(None)
-
-            sorted_objects.append(sl_elems)
-            sl_obj_nums.append(len(sl.shapes) - num)
+        sorted_objects.append(sl_elems)
+        sl_obj_nums.append(len(sl.shapes) - num)
 
     im_dir, layouts_dir = basename + '\\' + 'images', basename + '\\' + 'layouts'
 
@@ -198,6 +126,9 @@ def split_objects(pres_file: str) -> None:
             file = layouts_dir + '\\' + file_name.format("layout_" if is_layout else "", slide_index, image_type) + f'.{im_format}'
             back_image.system_image.save(file)
             not_sorted_objects.append([file, 'slide_layout'])
+
+    for sl in sorted_objects:
+        print(sl)
 
     write_json_data(sorted_objects, not_sorted_objects, sl_obj_nums)
 

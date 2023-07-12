@@ -3,6 +3,7 @@ from pylatex import Document, Section, Subsection, Command, Figure
 from extract2 import split_objects
 from pathlib import Path
 import json
+import argparse
 
 
 def split_text(text: str, length: int) -> list:
@@ -24,13 +25,11 @@ def create_latex_file(data: dict, output_file):
         Path(output_file + '.tex').touch()
     g_options = {"tmargin": "1cm", "lmargin": "10cm"}
     doc = Document(geometry_options=g_options)
-    texts, links = 0, 0
 
     for slide in data.values():
         if slide:
             for p, t in slide.items():
                 if t == 'text':
-                    texts += 1
                     # with doc.create(Section(f'Text_{texts}')):
                     f = open(p, 'r', encoding='utf-8-sig')
                     text = f.read()
@@ -43,12 +42,15 @@ def create_latex_file(data: dict, output_file):
                     f.close()
 
                 elif t == 'link':
-                    links += 1
                     # with doc.create(Section(f'Hyperlink_{links}')):
                     f = open(p, 'r', encoding='utf-8-sig')
                     link = f.read()
                     doc.append(link + '\n')
                     f.close()
+
+                elif t == 'image':
+                    with doc.create(Figure(position='h!')) as pic:
+                        pic.add_image(p, width='120px')
 
         doc.append('\n'*3)
 
@@ -62,8 +64,10 @@ def read_json(js_file: str):
 
 
 if __name__ == '__main__':
-    pres_path = input('Enter your presentation path:')
-    output_file = 'output'
-    js_file = split_objects(pres_path)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('pres', type=str, help='path to the Presentation')
+    parser.add_argument('output_file', type=str, help='name of output file withud extension')
+    args = parser.parse_args()
+    js_file = split_objects(args.pres)
     data = read_json(js_file)
-    create_latex_file(data, output_file)
+    create_latex_file(data, args.output_file)

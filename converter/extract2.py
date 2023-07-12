@@ -7,6 +7,7 @@ import aspose.pydrawing as drawing
 import pptx
 import json
 from docx import Document
+import argparse
 
 
 def get_image_format(image_type):
@@ -20,8 +21,8 @@ def get_image_format(image_type):
     }.get(image_type, drawing.imaging.ImageFormat.jpeg)
 
 
-def split_objects(pres_file: str) -> None:
-    basename = 'data'
+def split_objects(pres_file: str) -> str:
+    basename = str(Path().cwd()) + '\\' + 'data'
     if Path(basename).exists():
         shutil.rmtree(basename)
         Path(basename).mkdir()
@@ -33,6 +34,7 @@ def split_objects(pres_file: str) -> None:
 
     n_text, n_image, n_links = 0, 0, 0
     sorted_objects, not_sorted_objects, sl_obj_nums = [], [], []
+    im_dir, layouts_dir = basename + '\\' + 'images', basename + '\\' + 'layouts'
     links_dir = basename + '\\' + 'links'
 
     for i in range(len(pres1.slides)):
@@ -86,10 +88,19 @@ def split_objects(pres_file: str) -> None:
                     else:
                         sl_elems.append([f_name, 'text'])
 
+            elif sh.shape_type == MSO_SHAPE_TYPE.PICTURE:
+                if not Path(im_dir).exists():
+                    Path(im_dir).mkdir()
+                n_image += 1
+                image = sh.image
+                image_bytes = image.blob
+                f_name = im_dir + '\\' + f'image_{n_image}.{image.ext}'
+                with open(f_name, 'wb') as file:
+                    file.write(image_bytes)
+                sl_elems.append([f_name, 'image'])
+
         sorted_objects.append(sl_elems)
         sl_obj_nums.append(len(sl.shapes) - num)
-
-    im_dir, layouts_dir = basename + '\\' + 'images', basename + '\\' + 'layouts'
 
     # Extracting of images
     if len(pres2.images):
@@ -128,10 +139,10 @@ def split_objects(pres_file: str) -> None:
             back_image.system_image.save(file)
             not_sorted_objects.append([file, 'slide_layout'])
 
-    write_json_data(sorted_objects)
+    return write_json_data(sorted_objects)
 
 
-def write_json_data(sorted_objects: list) -> None:
+def write_json_data(sorted_objects: list) -> str:
     data = {}
 
     for i in range(len(sorted_objects)):
@@ -144,12 +155,15 @@ def write_json_data(sorted_objects: list) -> None:
     file_name = 'pres_objects.json'
     with open(file_name, 'w') as objects:
         json.dump(data, objects, indent=3)
-        print(str(Path(file_name).resolve()))
+
+    return file_name
 
 
 if __name__ == '__main__':
-    pres = r'C:\Users\andre\PycharmProjects\Studying\converter\Test presentation.pptx'
-    split_objects(pres)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('pres', type=int, help='Path to presentation')
+    args = parser.parse_args()
+    split_objects(args.pres)
 
 
 

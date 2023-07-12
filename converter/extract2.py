@@ -99,6 +99,11 @@ def split_objects(pres_file: str) -> str:
                     file.write(image_bytes)
                 sl_elems.append([f_name, 'image'])
 
+            # extracting shapes
+            # elif sh.shape_type == MSO_SHAPE_TYPE.AUTO_SHAPE:
+            # extracting group shapes
+            # elif sh.shape_type == MSO_SHAPE_TYPE.GROUP:
+
         sorted_objects.append(sl_elems)
         sl_obj_nums.append(len(sl.shapes) - num)
 

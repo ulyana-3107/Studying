@@ -166,7 +166,7 @@ def write_json_data(sorted_objects: list) -> str:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('pres', type=int, help='Path to presentation')
+    parser.add_argument('pres', type=str, help='Path to presentation')
     args = parser.parse_args()
     split_objects(args.pres)
 

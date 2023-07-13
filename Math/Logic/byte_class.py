@@ -16,8 +16,8 @@ class Byte:
 
     def get_flag(self, pos: int) -> bool:
         if self.position_validate(pos):
-
-            return bool(str((self.flags >> pos) & 1)[-1])
+            var = int(str((self.flags >> pos) & 1)[-1])
+            return bool(var)
 
         else:
             raise ValueError(f'Position must be between {Byte.min_pos} and {Byte.max_pos}')
@@ -26,6 +26,14 @@ class Byte:
         if self.position_validate(pos):
             if not self.get_flag(pos) == val:
                 self.flags = self.flags ^ (1 << pos)
-                print(f' flags changed to {self.flags}')
         else:
             raise ValueError(f'Position must be between {Byte.min_pos} and {Byte.max_pos}')
+
+
+if __name__ == '__main__':
+    b = Byte()
+    print(b.get_flag(4))
+    b.set_flag(4, True)
+    print(b.get_flag(4))
+    b.set_flag(4, False)
+    print(b.get_flag(4))

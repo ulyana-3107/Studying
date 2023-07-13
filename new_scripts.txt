@@ -1,13 +1,4 @@
-﻿Math/Logic/byte_cl.py (edited)
-OS/files/copy_htmls.py (edited)
-new_libs\calculator.py
-OS\threads\run_threads(1, 2).py (edited)
-OS\threads\run_threads3.py (edited, os.waitpid не вышло использовать)
-OS\threads\run_threads4.py (edited)
-OS\threads\run_threads2_1.py
-OS\threads\sig_handler.py
-OS\threads\sig_handler2.py
-converter\data2tex.py (1st version only)
+﻿OS\threads\run_threads3.py (edited, sys.exit не использовала, тк не работает i.ready() тогда)
 
 
 

@@ -14,15 +14,19 @@ import argparse
 
 def main(n):
     finished_processes = 0
-    processes = [subprocess.Popen(['python', 'script.py'], shell=True) for _ in range(n)]
+    processes = []
+    for i in range(n):
+        p = subprocess.Popen(['python', 'script.py'])
+        processes.append(p)
 
     time.sleep(5)
     # Sending SIGTERM signal to all processes
     for pr in processes:
-        # process.terminate()
-        pr.kill()
+        pr.send_signal(signal.SIGTERM)
+        print(f'{pr.pid} got SIGTERM signal. Terminating...)')
         if pr.poll() is not None:
             finished_processes += 1
+        pr.kill()
 
     return finished_processes
 
@@ -32,4 +36,4 @@ if __name__ == "__main__":
     parser.add_argument('N', type=int, help='Number of processes to run simultaniously')
     args = parser.parse_args()
     res = main(args.N)
-    print(f'Number of processes terminated before receiveing a SIGINT - {res}')
+    print(f'Number of processes terminated before receiveing a SIGINT = {res}')

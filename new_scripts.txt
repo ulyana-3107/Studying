@@ -1,4 +1,6 @@
 ﻿OS\threads\run_threads3.py (edited, sys.exit не использовала, тк не работает i.ready() тогда)
+OS\threads\run_threads2_1.py
+
 
 
 

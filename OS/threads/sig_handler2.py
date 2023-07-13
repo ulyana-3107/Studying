@@ -28,7 +28,7 @@ def child_process():
 def run_processes(n: int):
     pool = multiprocessing.Pool(processes=n)
     for i in range(n):
-        pool.apply_async(child_process, callback=callback)
+        res = pool.apply_async(child_process, callback=callback)
 
     pool.close()
     pool.join()

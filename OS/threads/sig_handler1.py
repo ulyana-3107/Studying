@@ -12,6 +12,10 @@ import subprocess
 import argparse
 
 
+def callback(pid):
+    print(f'Child process with pid {pid} got SIGTERM signal')
+
+
 def main(n):
     finished_processes = 0
     processes = []

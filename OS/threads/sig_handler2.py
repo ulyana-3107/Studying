@@ -1,64 +1,38 @@
-# 3. Написать программу, которая будет порождать поток, который будет порождать поток и так далее.
-# Последний поток засыпает на 30 минут, остальные (кроме главного) ждут окончание своего дочернего
-# потока. Главный поток посылает своему дочернему сигнал SIGTERM. Написать обработчик для этого
-# сигнала, чтобы все потоки сначала посылали SIGTERM своим дочерним потокам, ждали 60 секунд и
-# убивали их (если он так и не завершился) и корректно возвращались.
+# 2. Написать обработчик для сигнала, получаемого при завершении дочернего процесса, который будет писать
+# в консоль что-то вроде "Child process {pid} was finished". Породить n потоков и проверить работу этого
+# обработчика.
+# 1. Сообщение выводится ещё до того, как что-то завершится...
+# 2. В multiprocessing есть доп параметр callback. Попробуй его
 
 
 import threading
+import subprocess
 import time
-import signal
+import win32con
+import win32event
+import multiprocessing
+import random
 import os
-import sys
-import argparse
 
 
-def send_signal():
-    signal.signal(signal.SIGTERM, sigterm_handler)
+def callback(pid: int):
+    print(f'Child process finished with pid: {pid}')
 
 
-def child_thread(i, n):
-
-    print(f'thread {i}: starting...')
-    if i < n - 1:
-        t = threading.Thread(target=child_thread, args=(i + 1, n))
-        t.start()
-        print(f'thread {i}: waiting for thread {i + 1} to finish')
-        t.join()
-
-    else:
-        send_signal()
-        print(f'thread {i}: sleeping for 30 minutes')
-        time.sleep(30 * 60)
-
-    print(f'thread {i}: exiting...')
+def child_process():
+    sl_time = random.randint(1, 5)
+    time.sleep(sl_time)
+    return os.getpid()
 
 
-def sigterm_handler():
-    print('received SIGTERM')
+def run_processes(n: int):
+    pool = multiprocessing.Pool(processes=n)
+    for i in range(n):
+        pool.apply_async(child_process, callback=callback)
 
-    for thread in threading.enumerate():
-        if thread != threading.main_thread():
-            thread.join()
-
-    time.sleep(60)
-
-    for thread in threading.enumerate():
-        if thread != threading.main_thread():
-            thread.join()
-
-    print('Main Thread: Exiting...')
-    sys.exit(0)
+    pool.close()
+    pool.join()
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('n', type=int, help='Number of threads to start recursively')
-    args = parser.parse_args()
-    t = threading.Thread(target=child_thread, args=(0, args.n))
-    t.start()
-
-    while threading.active_count() > 1:
-        time.sleep(1)
-
-    print('All threads have exited.')
+if __name__ == "__main__":
+    run_processes(5)

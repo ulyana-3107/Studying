@@ -13,10 +13,6 @@ import sys
 import argparse
 
 
-def send_signal():
-    signal.signal(signal.SIGTERM, sigterm_handler)
-
-
 def child_thread(i, n):
 
     print(f'thread {i}: starting...')
@@ -25,9 +21,7 @@ def child_thread(i, n):
         t.start()
         print(f'thread {i}: waiting for thread {i + 1} to finish')
         t.join()
-
     else:
-        send_signal()
         print(f'thread {i}: sleeping for 30 minutes')
         time.sleep(30 * 60)
 
@@ -37,15 +31,11 @@ def child_thread(i, n):
 def sigterm_handler():
     print('received SIGTERM')
 
-    for thread in threading.enumerate():
-        if thread != threading.main_thread():
-            thread.join()
-
     time.sleep(60)
 
     for thread in threading.enumerate():
         if thread != threading.main_thread():
-            thread.join()
+            thread._stop()
 
     print('Main Thread: Exiting...')
     sys.exit(0)
@@ -56,9 +46,12 @@ if __name__ == '__main__':
     parser.add_argument('n', type=int, help='Number of threads to start recursively')
     args = parser.parse_args()
     t = threading.Thread(target=child_thread, args=(0, args.n))
+    signal.signal(signal.SIGTERM, sigterm_handler)
     t.start()
+    time.sleep(5)
 
-    while threading.active_count() > 1:
-        time.sleep(1)
+    for th in threading.enumerate():
+        if th != threading.main_thread():
+            th.join(timeout=0)
 
     print('All threads have exited.')

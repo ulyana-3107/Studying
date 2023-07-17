@@ -2,6 +2,9 @@
 OS\threads\sig_handler1.py
 OS\threads\sig_handler2.py (added callback)
 OS\threads\sig_handler3.py (edited but still doesnt work right)
+OS\socket\client.py
+OS\socket\server.py
+
 
 
 

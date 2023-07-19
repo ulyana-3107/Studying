@@ -6,7 +6,7 @@ OS\socket\client.py
 OS\socket\server.py
 OS\threads\output_msgs.py
 OS\threads\matrix_mult.py
-
+OS\threads\share_variables.py
 
 
 

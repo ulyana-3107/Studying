@@ -24,6 +24,8 @@ def send_data():
 
         decrypted_msg = encrypt(message, my_key)
         client.send(decrypted_msg.encode())
+        answer = client.recv(1024).decode()
+        print(answer)
 
     client.close()
 

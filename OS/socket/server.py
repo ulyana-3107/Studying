@@ -68,8 +68,9 @@ def handle_client(conn, addr):
             break
 
         print(f'just got a message: {message}')
-        encrypted_message = encrypt(message, key)
-        print(f'Just encrypted received message - {encrypted_message}')
+        decrypted_message = encrypt(message, key)
+        print(f'Just decrypted received message - {decrypted_message}')
+        conn.send(f'Received message after encryption: {message}\nMessage after decryption: {decrypted_message}'.encode())
 
     conn.close()
     if len(clients_db):
@@ -88,14 +89,15 @@ def accept_data(n):
     print(f"Server listening on {host}:{port}")
 
     while True:
+        server.settimeout(5)
         conn, addr = server.accept()
 
         try:
             server.close()
             handle_client(conn, addr)
-            sys.exit(0)
 
-        finally:
+        except socket.timeout:
+            print(f'Client connection timeout exceeded. Closing socket...')
             conn.close()
 
 

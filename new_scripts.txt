@@ -1,12 +1,5 @@
-﻿OS\threads\run_threads3.py (edited, sys.exit не использовала, тк не работает i.ready() тогда)
-OS\threads\sig_handler1.py
-OS\threads\sig_handler2.py (added callback)
-OS\threads\sig_handler3.py (edited but still doesnt work right)
-OS\socket\client.py
-OS\socket\server.py
-OS\threads\output_msgs.py
-OS\threads\matrix_mult.py
-OS\threads\share_variables.py
+﻿OS\threads\run_threads3.py (edited)
+
 
 
 

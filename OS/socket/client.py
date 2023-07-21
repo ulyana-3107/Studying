@@ -1,9 +1,10 @@
 import socket
 from encryption import encrypt
+import sys
+import signal
 
 
 def send_data():
-
     host = "127.0.0.1"
     port = 12345
 
@@ -25,7 +26,10 @@ def send_data():
         decrypted_msg = encrypt(message, my_key)
         client.send(decrypted_msg.encode())
         answer = client.recv(1024).decode()
-        print(answer)
+        if answer == 'SIGTERM':
+            print('Server terminated')
+        else:
+            print(answer)
 
     client.close()
 

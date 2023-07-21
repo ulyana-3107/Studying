@@ -49,6 +49,7 @@ def handle_client(conn, addr):
     clients_db = get_info(clients_file)
 
     client_login = conn.recv(1024).decode()
+
     if client_login in clients_db:
         key = clients_db[client_login]
     else:
@@ -62,15 +63,19 @@ def handle_client(conn, addr):
     print(f'Key sent')
 
     while True:
-        message = conn.recv(1024).decode()
+        try:
+            message = conn.recv(1024).decode()
 
-        if message.upper() in ("END SESSION", "SIGTERM"):
-            break
+            if message.upper() in ("END SESSION", "SIGTERM"):
+                break
 
-        print(f'just got a message: {message}')
-        decrypted_message = encrypt(message, key)
-        print(f'Just decrypted received message - {decrypted_message}')
-        conn.send(f'Received message after encryption: {message}\nMessage after decryption: {decrypted_message}'.encode())
+            print(f'just got a message: {message}')
+            decrypted_message = encrypt(message, key)
+            print(f'Just decrypted received message - {decrypted_message}')
+            conn.send(f'Received message after encryption: {message}\nMessage after decryption: {decrypted_message}'.encode())
+        except KeyboardInterrupt:
+            conn.send('SIGTERM'.encode())
+            conn.close()
 
     conn.close()
     if len(clients_db):
@@ -91,7 +96,6 @@ def accept_data(n):
     while True:
         server.settimeout(5)
         conn, addr = server.accept()
-
         try:
             server.close()
             handle_client(conn, addr)

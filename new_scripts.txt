@@ -3,6 +3,7 @@ OS\socket\server|client.py (edited)
 OS\threads\matrix_mult.py (edited)
 OS\threads\share_variables2.py (second version)
 OS\threads\share_variables.py (edited but doesnt work well)
+OS\threads\logger_thread.py
 
 
 

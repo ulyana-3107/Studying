@@ -1,11 +1,8 @@
-﻿OS\threads\run_threads3.py (edited)
-OS\socket\server|client.py (edited)
-OS\threads\matrix_mult.py (edited)
-OS\threads\share_variables2.py (second version)
-OS\threads\share_variables.py (edited but doesnt work well)
-OS\threads\logger_thread.py
-OS\threads\files_by_mask.py
-Recursion\l_list_rec.py
+﻿OS\threads\matrix_mult.py (edited)
+OS\threads\share_variables.py (edited)
+OS\threads\files_by_mask.py (edited)
+Alorithms\effective_search.py
+
 
 
 

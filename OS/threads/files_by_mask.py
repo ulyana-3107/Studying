@@ -16,61 +16,91 @@ import multiprocessing as mp
 import re
 
 
+def distribute(n: int, files: list) -> list:
+
+    res = [[] for _ in range(n)]
+    c1, c2, end = 0, 0, False
+
+    while not end:
+        if c2 % 2:
+            for i in range(n):
+                if c1 == len(files):
+                    end = True
+                    break
+                next = files[c1]
+                c1 += 1
+                res[i].append(next)
+            c2 += 1
+        else:
+            for i in range(n - 1, -1, -1):
+                if c1 == len(files):
+                    end = True
+                    break
+                next = files[c1]
+                c1 += 1
+                res[i].append(next)
+            c2 += 1
+
+    return res
+
+
 def main(mask: str, n_procs: int,  *args):
     all = []
     for elem in args:
         all.extend(pl.Path(elem).rglob(mask))
 
-    size = 0
+    size_sorted = sorted(all, key=lambda file: os.path.getsize(file))
+    distributed = distribute(n_procs, size_sorted)
 
-    for elem in all:
-        size += os.path.getsize(elem)
-
-    temp_file = 'temp.txt'
-    pl.Path(temp_file).touch()
-
-    avg = size // n_procs
     mutex = mp.Lock()
+    manager = mp.Manager()
+    db = manager.dict()
     pat = r'KEY:\[.+?\]\s+VALUE:\[.+?\]'
 
     processes = []
 
-    while all:
-        file = all.pop()
-        with open(file, 'r') as reader:
-            with open(temp_file, 'a') as writer:
-                text = reader.read(avg)
-                text2 = reader.read()
-                writer.write(text2)
-                pr = mp.Process(target=find_nd_write_data, args=(text, pat, mutex,))
-                pr.start()
-                processes.append(pr)
+    for files_arr in distributed:
+        if not len(files_arr):
+            continue
 
-    if sys.getsizeof(temp_file) != 0:
-        with open(temp_file, 'r') as reader:
-            text = reader.read()
-            last = mp.Process(target = find_nd_write_data, args=(text, pat, mutex, ))
-            last.start()
-            processes.append(last)
+        proc = mp.Process(target=find_data, args=(files_arr, pat, db))
+        proc.start()
+        processes.append(proc)
 
     for proc in processes:
         proc.join()
 
+    procs2 = []
 
-def find_nd_write_data(text: str, pat: str, mutex) -> None:
-    matches = re.findall(pat, text)
-    for m in matches:
-        key = re.findall(r"KEY:\[(.+?)\]", m)[0]
-        value = re.findall(r"VALUE:\[(.+?)\]", m)[0]
+    for k, v in db.items():
+        pr = mp.Process(target=write_data, args=(k, v,))
+        pr.start()
+        procs2.append(pr)
 
-        if pl.Path(f'{key}.txt').exists():
-            mode = 'a'
-        else:
-            mode = 'w'
+    for pr in procs2:
+        pr.join()
 
-        with mutex:
-            with open(f'{key}.txt', mode) as writer:
-                writer.write(value + '\n')
+
+def find_data(files_arr: str, pat: str, db) -> None:
+    for file in files_arr:
+        with open(file, 'r', encoding='utf-8-sig') as reader:
+            for line in reader.readlines():
+                matches = re.findall(pat, line)
+
+                for m in matches:
+                    key = re.findall(r"KEY:\[(.+?)\]", m)[0]
+                    value = re.findall(r"VALUE:\[(.+?)\]", m)[0]
+
+                    if key not in db:
+                        db[key] = [value]
+                    else:
+                        db[key].append(value)
+
+
+def write_data(key: str, values: list) -> None:
+    with open(f'{key.strip()}.txt', 'w', encoding='utf-8-sig') as vals_writer:
+        for v in values:
+            vals_writer.write(v.strip() + '\n')
 
 
 if __name__ == '__main__':

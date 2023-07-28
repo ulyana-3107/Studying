@@ -14,13 +14,17 @@ def read_matrix(file: str) -> list:
     return matrix
 
 
-def mult_rows(rows: list, matrix2: list, results):
-    result = []
+def mult_rows(rows: list, matrix2: list, results, id: int):
+    curr, result = [id], []
+
     for i in range(len(rows)):
         for col in zip(*matrix2):
             result.append(sum(x * y for x, y in zip(rows[i], col)))
 
-    results.append(result)
+        curr.append(result)
+        result = []
+
+    results.append(curr)
 
 
 def mult_matrixes(matrix1, matrix2, num_processes):
@@ -30,12 +34,13 @@ def mult_matrixes(matrix1, matrix2, num_processes):
     matrix1, jobs = deque(matrix1), []
 
     manager = multiprocessing.Manager()
-    res_matrix = manager.list()
 
     if len(matrix1) <= num_processes:
         t1, t2, rest = len(matrix1), 1, None
     else:
         t1, t2, rest = num_processes, len(matrix1) // num_processes, len(matrix1) % num_processes
+
+    res_matrix = manager.list()
 
     for i in range(t1):
         rows = []
@@ -46,22 +51,29 @@ def mult_matrixes(matrix1, matrix2, num_processes):
 
         for j in range(rng):
             rows.append(matrix1.popleft())
-
-        process = multiprocessing.Process(target=mult_rows, args=(rows, matrix2, res_matrix,))
+        process = multiprocessing.Process(target=mult_rows, args=(rows, matrix2, res_matrix, i))
         process.start()
         jobs.append(process)
 
     for i in range(t1):
         jobs[i].join()
 
-    return res_matrix
+    matrix = []
+    sorted_arr = sorted(res_matrix, key=lambda arr: arr[0])
+    for arr in sorted_arr:
+        for i in range(len(arr)):
+            if i != 0:
+                matrix.append(arr[i])
+
+    return matrix
 
 
 if __name__ == '__main__':
-    matrix1 = np.array(read_matrix('file1.txt'))
-    matrix2 = np.array(read_matrix('file2.txt'))
+    matrix1 = np.array(read_matrix('file1'))
+    matrix2 = np.array(read_matrix('file2'))
 
     num_processes = 4
 
     result = mult_matrixes(matrix1, matrix2, num_processes)
-    print(result)
+    for r in result:
+        print(r)

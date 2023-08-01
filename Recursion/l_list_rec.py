@@ -48,18 +48,25 @@ class LinkedList:
     def swap(self, i1, i2):
         if self.head is None:
             raise IndexError
-        else:
-            self._swap_rec(self.head, i1, i2)
 
-    def _swap_rec(self, curr, i1, i2):
-        if curr is None:
-            raise IndexError
-        elif i1 == 0 or i2 == 0:
-            temp = curr.elem
-            curr.elem = curr.next.elem
-            curr.next.elem = temp
+        if i1 == i2:
+            return
+
+        if i1 > i2:
+            i1, i2 = i2, i1
+
+        self._swap(i1, i2, curr=self.head)
+
+    def _swap(self, i1, i2, curr, c1=None):
+        if i2 == 0:
+            t = curr.data
+            curr.data = c1.data
+            c1.data = t
+        elif i1 == 0 and not c1:
+            c1 = curr
+            self._swap(i1, i2 - 1, curr.next, c1)
         else:
-            self._swap_rec(curr.next, i1 - 1, i2 - 1)
+            self._swap(i1 - 1, i2 - 1, curr.next, c1)
 
 
 if __name__ == '__main__':

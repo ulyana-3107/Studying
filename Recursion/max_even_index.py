@@ -21,6 +21,9 @@ def find_index(lst: list, i1, i2, checked=False) -> int:
             return find_index(lst, i1, i2, True)
 
 
+# O(logN), N - len(list).
+
+
 lst1 = [1, 3, 5]
 lst2 = [2, 1, 1, 1, 3, 5, 7]
 lst3 = [2, 2, 2, 2, 9]

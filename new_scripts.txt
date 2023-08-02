@@ -2,7 +2,9 @@
 OS\threads\share_variables.py (edited)
 OS\threads\files_by_mask.py (edited)
 Alorithms\effective_search.py
-
+Recursion\l_list_rec.py (edited swap function only)
+Recursion\max_even_index.py
+Recursion\newton_method.py
 
 
 

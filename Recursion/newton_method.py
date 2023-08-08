@@ -4,16 +4,19 @@
 #  после n-кратного применения (5.8). После этого определите их асимптотическую стоимость вычисления.
 
 
-def tail_rec(a, x0, n, func):
+def func2(a, x0):
+    return x0 - (x0**2 - a)/(2*x0)
+
+
+def func1(a, x0, n, func2):
     if n == 0:
         return x0
     else:
-        return tail_rec(a, func(a, x0), n - 1, func)
+        return func1(a, func2(a, x0), n - 1, func2)
 
 
-def func(a, x0):
-    return x0 - (x0**2 - a)*(2*x0)
-
+def tail_rec(a, x0, n, func1, func2):
+    return func1(a, x0, n, func2)
 
 # def linear_rec(a, x0, n, xn_1=None) -> float:
 #     if n == 0:
@@ -31,5 +34,5 @@ def func(a, x0):
 
 if __name__ == '__main__':
     x0, a, n = 1.4, 2, 5
-    res1 = tail_rec(a, x0, n, func)
+    res1 = tail_rec(a, x0, n, func1, func2)
     print(res1)

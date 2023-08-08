@@ -23,23 +23,19 @@ def distribute(n: int, files: list) -> list:
 
     while not end:
         if c2 % 2:
-            for i in range(n):
-                if c1 == len(files):
-                    end = True
-                    break
-                next = files[c1]
-                c1 += 1
-                res[i].append(next)
-            c2 += 1
+            start, end, step = 0, n, 1
         else:
-            for i in range(n - 1, -1, -1):
-                if c1 == len(files):
-                    end = True
-                    break
-                next = files[c1]
-                c1 += 1
-                res[i].append(next)
-            c2 += 1
+            start, end, step = n - 1, -1, -1
+
+        for i in range(start, end, step):
+            if c1 == len(files):
+                end = True
+                break
+            next = files[c1]
+            c1 += 1
+            res[i].append(next)
+
+        c2 += 1
 
     return res
 

@@ -1,11 +1,9 @@
 ﻿OS\threads\matrix_mult.py (edited)
-OS\threads\share_variables.py (edited)
 OS\threads\files_by_mask.py (edited)
-Alorithms\effective_search.py
-Recursion\l_list_rec.py (edited swap function only)
-Recursion\max_even_index.py
-Recursion\newton_method.py
-Recursion\find_speed.py
+Recursion\newton_method.py (edited)
+Recursion\find_speed.py (edited)
+
+Underdone:
 Recursion\interval_tree.py
 Recursion\interval_tree2.py
 

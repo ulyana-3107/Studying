@@ -44,8 +44,8 @@ def mult_matrixes(matrix1, matrix2, num_processes):
 
     for i in range(t1):
         rows = []
-        if i == t2 - 1 and rest:
-            rng = rest
+        if i == t1 - 1 and rest:
+            rng = rest + t2
         else:
             rng = t2
 

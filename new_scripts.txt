@@ -3,6 +3,7 @@ OS\threads\files_by_mask.py (edited)
 Recursion\newton_method.py (edited)
 Recursion\find_speed.py (edited)
 Recursion\exist_way.py (minimum number of steps is not guaranteed)
+Recursion\serpinsky_rect.py (not working well)
 
 Underdone:
 Recursion\interval_tree.py

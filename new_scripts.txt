@@ -1,15 +1,9 @@
-﻿OS\threads\matrix_mult.py (edited)
+﻿Recursion\segment_tree2.py
 OS\threads\files_by_mask.py (edited)
 Recursion\newton_method.py (edited)
 Recursion\find_speed.py (edited)
+
 Recursion\exist_way.py (minimum number of steps is not guaranteed)
-Recursion\serpinsky_rect.py (not working well)
-Recursion\find_index.py
-
-Underdone:
-Recursion\interval_tree.py
-Recursion\interval_tree2.py
-
 
 
 

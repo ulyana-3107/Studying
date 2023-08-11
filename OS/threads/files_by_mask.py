@@ -19,10 +19,10 @@ import re
 def distribute(n: int, files: list) -> list:
 
     res = [[] for _ in range(n)]
-    c1, c2, end = 0, 0, False
+    c1, even, end = 0, True, False
 
     while not end:
-        if c2 % 2:
+        if not even:
             start, end, step = 0, n, 1
         else:
             start, end, step = n - 1, -1, -1
@@ -35,7 +35,7 @@ def distribute(n: int, files: list) -> list:
             c1 += 1
             res[i].append(next)
 
-        c2 += 1
+        even = not even
 
     return res
 
@@ -68,11 +68,14 @@ def main(mask: str, n_procs: int,  *args):
 
     procs2 = []
 
-    for k, v in db.items():
-        pr = mp.Process(target=write_data, args=(k, v,))
+    sorted_texts = list(dict(sorted(db.items(), key=lambda item: len(item[1][0]))).keys())
+    distributed2 = distribute(n_procs, sorted_texts)
+
+    for arr in distributed2:
+        pr = mp.Process(target=write_data, args=(arr, db))
         pr.start()
         procs2.append(pr)
-
+        
     for pr in procs2:
         pr.join()
 
@@ -93,16 +96,19 @@ def find_data(files_arr: str, pat: str, db) -> None:
                         db[key].append(value)
 
 
-def write_data(key: str, values: list) -> None:
-    with open(f'{key.strip()}.txt', 'w', encoding='utf-8-sig') as vals_writer:
-        for v in values:
-            vals_writer.write(v.strip() + '\n')
+def write_data(keys: list, db: dict) -> None:
+    for k in keys:
+        values = db[k]
+        with open(f'{k.strip()}.txt', 'w', encoding='utf-8-sig') as vals_writer:
+            for v in values:
+                vals_writer.write(v.strip() + '\n')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('mask', type=str, help='template for finding files')
+    parser.add_argument('mask', type=str, help='template for finding file')
     parser.add_argument('--proc_num', type=int, default=2, help='Max number of processes to start')
     parser.add_argument('Paths', help='paths to the folders with files', nargs='*')
     args = parser.parse_args()
     main(args.mask, args.proc_num, *args.Paths)
+

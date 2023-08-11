@@ -10,8 +10,9 @@ class Node:
 
 
 class SegmentTree:
-    def __init__(self, arr: list):
-        self.tree_list = self.create_tl(arr)
+    def __init__(self, arr: list, func):
+        self.func = func
+        self.tree_list = self.create_tl(arr, self.func)
         self.head = self.build_tree(self.tree_list)
 
     def __repr__(self):
@@ -19,12 +20,12 @@ class SegmentTree:
 
     def append(self, elem):
         arr.append(elem)
-        self.tree_list = self.create_tl(arr)
+        self.tree_list = self.create_tl(arr, self.func)
         self.head = self.build_tree(self.tree_list)
 
     def pop(self):
         arr.pop()
-        self.tree_list = self.create_tl(arr)
+        self.tree_list = self.create_tl(arr, self.func)
         self.head = self.build_tree(self.tree_list)
 
     def calculate(self, i, j):
@@ -64,7 +65,7 @@ class SegmentTree:
 
         return head
 
-    def create_tl(self, arr):
+    def create_tl(self, arr, func):
         n = len(arr)
         if n % 2:
             arr = [arr[0] - 1] + arr
@@ -75,14 +76,18 @@ class SegmentTree:
             tree_list[n + i] = arr[i]
 
         for i in range(n - 1, 0, -1):
-            tree_list[i] = tree_list[i * 2] + tree_list[i * 2 + 1]
+            tree_list[i] = func(tree_list[i * 2], tree_list[i * 2 + 1])
 
         return tree_list[1:]
 
 
+def summ(a, b):
+    return a + b
+
+
 if __name__ == '__main__':
     arr = [1, 2, 3, 4]
-    st = SegmentTree(arr)
+    st = SegmentTree(arr, summ)
     print(st)
     st.pop()
     print(st)

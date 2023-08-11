@@ -11,34 +11,23 @@ def calculate_time(speed, distances) -> int | float:
     return time
 
 
-def optimal_speed(s1, s2, h, dist):
-    plus = (s2 - s1) / 2
-    time = calculate_time((s2 + plus) / 2, dist)
-
-    return time > h
-
-
-def find_best_speed(h: int, distances: list) -> int | float:
+def find_best_speed(h: int, distances: list, error: float = 0.25) -> int | float:
     speed = sum(distances) / h
     prev_speed = speed - 1
 
     while True:
         time1, time2 = calculate_time(prev_speed, distances), calculate_time(speed, distances)
 
-        if time2 == h:
+        diff = time2 - h
+
+        if diff <= error:
             return speed
 
-        elif time1 > h and time2 < h:
-            if optimal_speed(prev_speed, speed, h, distances):
-                return speed
-
-            else:
-                plus = (speed - prev_speed) / 2
-                prev_speed, speed = speed, speed + plus
-        else:
-            prev_speed, speed = speed, speed + 1
+        elif time2 > h:
+            mid = (speed - prev_speed) / 2
+            prev_speed, speed = prev_speed + mid, speed + mid
 
 
 if __name__ == '__main__':
-    res = find_best_speed(3, [5, 3, 1])
+    res = find_best_speed(3, [1, 2, 3])
     print(res)

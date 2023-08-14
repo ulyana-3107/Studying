@@ -1,9 +1,11 @@
-﻿Recursion\segment_tree2.py
+﻿ Recursion\segment_tree2.py
 OS\threads\files_by_mask.py (edited)
 Recursion\newton_method.py (edited)
 Recursion\find_speed.py (edited)
 
-Recursion\exist_way.py (minimum number of steps is not guaranteed)
+Undone:
+Recursion\hilbert_curve_real.py
+Recursion\exist_way.py
 
 
 

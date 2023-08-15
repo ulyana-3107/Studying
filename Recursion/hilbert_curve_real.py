@@ -177,7 +177,7 @@ def change_coords(coords, location: str, position, depth: int):
             coords.append(l5)
             change_coords(coords, 'right', 3, depth - 1)
         elif position == 2:
-            new_size = (x0 - x1) / 3
+            new_size = (x1 - x0) / 3
             l1 = ([x1, x1], [y1, y1 + new_size])
             coords.append(l1)
             change_coords(coords, 'left', 3, depth - 1)
@@ -193,7 +193,7 @@ def change_coords(coords, location: str, position, depth: int):
             coords.append(l5)
             change_coords(coords, 'right', 2, depth - 1)
         elif position == 4:
-            new_size = (x0 - x1) / 3
+            new_size = (x1 - x0) / 3
             l1 = ([x0, x0], [y0 - new_size, y0])
             coords.append(l1)
             change_coords(coords, 'left', 1, depth - 1)
@@ -247,6 +247,7 @@ def draw(x: int, y: int, depth: int, length: int | float):
         ax.plot(x, y, color='green')
 
 
-draw(1, 1, 3, 7)
+dep = 7
+draw(1, 1, dep, 3)
 plt.show()
 # Note! coordinates of single lines are being added from bottom to up, left to right not to get confused calculating new size

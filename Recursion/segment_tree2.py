@@ -6,29 +6,62 @@ class Node:
         self.val, self.left, self.right = val, None, None
 
     def __repr__(self):
-        return f'{self.val}: ({self.left}, {self.right})'
+        return f'{self.val}:   ({self.left}, {self.right})'
 
 
 class SegmentTree:
     def __init__(self, arr: list, func):
         self.func = func
-        self.tree_list = self.create_tl(arr, self.func)
-        self.head = self.build_tree(self.tree_list)
+        self.arr = sorted(arr)
+        self.height = 0
+        self.head = self.build_tree(self.arr)
 
     def __repr__(self):
         return f'{self.head}'
 
     def append(self, elem):
         arr.append(elem)
-        self.tree_list = self.create_tl(arr, self.func)
-        self.head = self.build_tree(self.tree_list)
 
     def pop(self):
-        arr.pop()
-        self.tree_list = self.create_tl(arr, self.func)
-        self.head = self.build_tree(self.tree_list)
+        case1 = len(arr) % 2 == 0
+        elem = arr.pop()
+
+        if case1:
+            visited = []
+            root = self.head
+
+            while root.right.val != elem:
+                visited.append(root)
+                root = root.right
+
+            root.right = None
+            visited.append(root)
+
+            while visited:
+                node = visited.pop()
+                node.val -= elem
+
+        else:
+            self.head = self.head.left
+            self.height -= 1
+
+    def create_tl(self, arr, func):
+        n = len(arr)
+        if n % 2:
+            arr = [arr[0] - 1] + arr
+            n += 1
+        tree_list = [None for _ in range(n * 2)]
+
+        for i in range(n):
+            tree_list[n + i] = arr[i]
+
+        for i in range(n - 1, 0, -1):
+            tree_list[i] = func(tree_list[i * 2], tree_list[i * 2 + 1])
+
+        return tree_list[1:]
 
     def calculate(self, i, j):
+        self.tree_list = self.create_tl(self.arr, self.func)
         summ = 0
         i += len(arr)
         j += len(arr)
@@ -47,38 +80,27 @@ class SegmentTree:
 
         return summ
 
+    def build_tree(self, arr):
+        nodes = deque([Node(i) for i in arr])
+        new_nodes = deque([])
+        while True:
+            while nodes:
+                left = nodes.popleft()
+                if not nodes:
+                    new_node = Node(left.val)
+                    new_node.left = left
+                    new_nodes.append(new_node)
+                else:
+                    right = nodes.popleft()
+                    new_node = Node(left.val + right.val)
+                    new_node.left, new_node.right = left, right
+                    new_nodes.append(new_node)
+            self.height += 1
 
-    def build_tree(self, tree_list):
-        queue = deque([(Node(tree_list[0]), 0)])
-        head = None
-
-        while queue:
-            elem, index = queue.popleft()
-            if index == 0:
-                head = elem
-            i1, i2 = index * 2 + 1, index * 2 + 2
-            if i1 >= len(tree_list) or i2 >= len(tree_list):
-                break
-            el1, el2 = Node(tree_list[i1]), Node(tree_list[i2])
-            elem.left, elem.right = el1, el2
-            queue.extend([(el1, i1), (el2, i2)])
-
-        return head
-
-    def create_tl(self, arr, func):
-        n = len(arr)
-        if n % 2:
-            arr = [arr[0] - 1] + arr
-            n += 1
-        tree_list = [None for _ in range(n * 2)]
-
-        for i in range(n):
-            tree_list[n + i] = arr[i]
-
-        for i in range(n - 1, 0, -1):
-            tree_list[i] = func(tree_list[i * 2], tree_list[i * 2 + 1])
-
-        return tree_list[1:]
+            if len(new_nodes) == 1:
+                return new_nodes[0]
+            else:
+                nodes, new_nodes = new_nodes, deque([])
 
 
 def summ(a, b):
@@ -86,8 +108,7 @@ def summ(a, b):
 
 
 if __name__ == '__main__':
-    arr = [1, 2, 3, 4]
+    arr = [1, 2]
     st = SegmentTree(arr, summ)
     print(st)
-    st.pop()
-    print(st)
+    print(st.height)

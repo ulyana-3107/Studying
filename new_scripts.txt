@@ -1,5 +1,4 @@
-﻿Recursion\hilbert_curve_real.py (edited)
-Recursion\find_speed.py (edited)
+﻿Recursion\find_speed.py (edited)
 Recursion\segment_tree2.py (edited)
 
 Undone:

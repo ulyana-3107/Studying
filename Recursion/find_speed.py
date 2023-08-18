@@ -12,8 +12,11 @@ def calculate_time(speed, distances) -> int | float:
 
 
 def find_best_speed(h: int, distances: list, error: float = 0.0001) -> int | float:
+    if h - len(distances) < 0:
+        return -1
+
     prev_speed = sum(distances) / h
-    speed = prev_speed + 1
+    speed = sum(distances) / max((h - len(distances)), error)
     mid = (speed + prev_speed) / 2
 
     while (speed - prev_speed > error):
@@ -24,11 +27,15 @@ def find_best_speed(h: int, distances: list, error: float = 0.0001) -> int | flo
         elif time < h:
             speed = mid
         else:
-            return mid
+            if (speed - prev_speed) <= error:
+                return mid
+            else:
+                speed = mid
 
     return mid
 
 
 if __name__ == '__main__':
     res = find_best_speed(3, [1, 2, 3])
-    print(res)
+    res2 = find_best_speed(7, [1, 1, 1, 1, 1, 15])
+    print(res2)

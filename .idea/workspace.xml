@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60a0434e-dfa7-4db7-8fda-51f1775a8939" name="Changes" comment="commit" />
+    <list default="true" id="60a0434e-dfa7-4db7-8fda-51f1775a8939" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/converter/docx2tex/docx2tex_git/d2t" beforeDir="false" afterPath="$PROJECT_DIR$/converter/docx2tex/docx2tex_git/d2t" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +27,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2J2ChGRoxD4BBeNYqdlfR6CTmJv" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -177,6 +179,14 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.avl_tree" />
+      <item itemvalue="Python.ladders2" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.regex3" />
+      <item itemvalue="Python.test2" />
+      <item itemvalue="Python.test" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.avl_tree" />

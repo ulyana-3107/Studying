@@ -1,5 +1,4 @@
-﻿Recursion\find_speed.py (edited)
-Recursion\segment_tree2.py (edited)
+﻿Recursion\segment_tree2.py (edited)
 
 Undone:
 Recursion\exist_way.py
